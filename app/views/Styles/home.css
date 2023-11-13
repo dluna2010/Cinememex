@@ -1,0 +1,133 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+header {
+    background-image: url(https://png.pngtree.com/background/20230617/original/pngtree-abstract-golden-glitter-splash-illuminated-in-3d-on-a-sleek-black-picture-image_3682236.jpg);
+}
+
+main {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+}*/
+
+body{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+}
+
+.navbar {
+    background-color: #333;
+}
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+.navbar .nav-link:hover {
+    color: #ddd;
+}
+
+/* Botón de sucursal */
+.btn-primary {
+    background-color: goldenrod;
+    /* Cambia el fondo a negro */
+    border: none;
+    /* Remueve el borde */
+    color: black;
+    /* Cambia el texto a blanco */
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    /* Márgenes */
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 2px solid #000;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.card-img {
+    max-height: 430px;
+    object-fit: cover;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 15px;
+    /* Añadido para dar algo de espacio dentro del overlay */
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1;
+}
+
+.card-img-overlay h5,
+.card-img-overlay button {
+    display: block;
+    /* Esto asegura que ambos elementos sean visibles */
+    width: 100%;
+    /* Esto hace que ocupen todo el ancho del overlay */
+    text-align: center;
+}
+
+.card-img-overlay button {
+    margin-top: 10px;
+    /* Espacio entre el título y el botón */
+}
+
+.carousel-item img {
+    max-height: 700px;
+    width: auto;
+    margin: auto;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Georgia', serif;
+}
+
+/* Estilo de la paginación */
+.pagination .page-link {
+    background-color: #000;
+    /* Fondo negro */
+    color: #fff;
+    /* Texto blanco */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #fff;
+    /* Fondo blanco para el item activo */
+    color: #000;
+    /* Texto negro para el item activo */
+}
