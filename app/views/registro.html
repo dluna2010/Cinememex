@@ -2,13 +2,10 @@
 <html lang="en">
 
 <head>
-  <title>Iniciar Sesión</title>
-  <!-- Required meta tags -->
+  <title>Regístrate</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="./Styles/Inicio_sesión.css">
-
+  <link rel="stylesheet" href="./Styles/registro.css">
 
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -69,27 +66,33 @@
     </nav>
   </header>
   <main>
-    <div class="login-container">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Iniciar sesión</h5>
-                </div>
-                <div class="modal-body">
-                    <form class="login-form">
-                        <div class="input-group mb-3">
-                            <input type="email" id="email" name="email" placeholder="Ingresa tu correo" class="form-control" required>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-                <div class="modal-footer text-center">
-                    ¿No tienes cuenta? <a href="./registro.html">Regístrate aquí</a>
-                </div>
+    <div class="register-container">
+        <h5 class="form-title">Registrar</h5>
+        <form class="register-form">
+            <div class="input-group mb-3">
+                <label for="firstName" class="form-label">Nombre(s)</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Ingresa tu nombre" required>
             </div>
+            <div class="input-group mb-3">
+                <label for="lastName" class="form-label">Apellidos</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Ingresa tus apellidos" required>
+            </div>
+            <div class="input-group mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Ingresa tu correo electrónico" required>
+            </div>
+            <div class="input-group mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Crea una contraseña" required>
+            </div>
+            <div class="input-group mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirma tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-success">Registrarse</button>
+        </form>
+        <div class="login-footer">
+            ¿Ya tienes una cuenta? <a href="Inicio_sesión.html">Iniciar sesión</a>
         </div>
     </div>
   </main>
