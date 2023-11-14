@@ -22,7 +22,7 @@ main {
 }
 
 /* Botón de sucursal */
-#botonIngresar {
+.btn-primary {
     background-color: goldenrod;
     /* Cambia el fondo a negro */
     border: none;
