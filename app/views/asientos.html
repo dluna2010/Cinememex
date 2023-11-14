@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Asientos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        .row-label {
+            font-size: 24px;
+            color: #000;
+            margin: 3px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .seat-number {
+            position: absolute;
+            font-size: 10px;
+            color: white;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+            /* Estilos para los asientos */
+        .seat {
+            font-size: 24px;
+            color: #808080; /* Color gris para asientos disponibles */
+            margin: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .seat:hover {
+            color: #bfbfbf; /* Color más claro al pasar el mouse */
+        }
+
+        .seat.selected {
+            color: #28a745; /* Color verde para asientos seleccionados */
+        }
+
+        .seat.unavailable {
+            color: #dc3545; /* Color rojo para asientos no disponibles */
+        }
+
+        /* Estilo para la pantalla */
+        /* Estilos para la pantalla */
+        .screen {
+            width: 100%;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: bold;
+        }
+
+        /* Estilos para la descripción de la función */
+        .movie-description {
+            background-image: url('https://static.cinepolis.com/resources/mx/movies/posters/264x386/43450-342529-20231024011049.jpg');
+            background-size: cover;
+            color: white;
+            padding: 10px;
+        }
+
+        .movie-info {
+            text-align: left;
+            padding: 10px;
+        }
+
+        /* Estilos para la imagen de la película */
+        .movie-image {
+            max-width: 150px; /* Tamaño máximo de la imagen */
+        }
+
+        /* Estilos para centrar las filas de asientos */
+        .seat-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para el contenedor principal para asegurar el centrado */
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estilos para el footer */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        /* Estilos para los encabezados del footer */
+        .footer h5 {
+            font-size: 18px;
+        }
+
+        /* Estilos para las listas del footer */
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Estilos para los números de teléfono */
+        .footer ul li:last-child {
+            font-weight: bold;
+        }
+
+        /* Estilos para los derechos de autor y desarrollador */
+        .footer p {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Cinememex</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- Este espacio se dejará vacío para centrar el dropdown -->
+            </ul>
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sucursal
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Sucursal 1</a></li>
+                  <li><a class="dropdown-item" href="#">Sucursal 2</a></li>
+                  <li><a class="dropdown-item" href="#">Sucursal 3</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Iniciar sesión</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+    <!-- Descripción de la función -->
+    <div class="movie-description">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://static.cinepolis.com/resources/mx/movies/posters/264x386/43450-342529-20231024011049.jpg" alt="Película">
+                </div>
+                <div class="col-md-8 movie-info">
+                    <h2>Película: Five Nights at Freddy’s: La Película SP ESP</h2>
+                    <p>Sucursal: Cinememex Sania</p>
+                    <p>Fecha: 13 de noviembre de 2023</p>
+                    <p>Función: 3:15 PM</p>
+                    <p>Boletos: ADULTO PLUUS (1) ($75)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      
+    <div class="container mt-5">
+        <div class="screen">PANTALLA</div>
+        <div class="row">
+            <div class="col-12">
+                <div id="seats"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón "Continuar" -->
+    <div class="container mt-3">
+        <button class="btn btn-primary btn-block">Continuar</button>
+    </div>
+
+    <!-- Footer "Sobre Nosotros" -->
+    <footer class="footer text-center mt-5" style="background-color: #000; color: #fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>CARTELERA</h5>
+                    <ul>
+                        <li>Cumpleaños de Película</li>
+                        <li>Próximos estrenos</li>
+                        <li>Preventas</li>
+                        <li>Garantía Cinememex®</li>
+                        <li>Muestras y festivales</li>
+                        <li>+ Que Cine</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>LEGALES</h5>
+                    <ul>
+                        <li>Términos y condiciones</li>
+                        <li>Términos Cinecash</li>
+                        <li>Aviso de privacidad</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>¿QUIÉNES SOMOS?</h5>
+                    <ul>
+                        <li>Ventas Corporativas</li>
+                        <li>Proveedores</li>
+                        <li>Trabaja en Cinememex®</li>
+                        <li>Corporativo</li>
+                        <li>Próximas Aperturas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <p>CONTACTO</p>
+                    <ul>
+                        <li>Facturación electrónica</li>
+                        <li>Déjanos tus comentarios</li>
+                        <li>Chatea con los expertos</li>
+                        <li>01 552 144 80 70</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p>Contenido del sitio 2023© Derechos reservados Exhibidora Mexicana Cinememex®, S.A. de C.V.</p>
+                    <p>Desarrollado por IA Interactive</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const seatsContainer = document.getElementById('seats');
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const numSeatsPerRow = 12;
+
+    function createSeats() {
+        rows.forEach(row => {
+            const seatRow = document.createElement('div');
+            seatRow.classList.add('seat-row');
+
+            // Crear y agregar la letra de la fila
+            const rowLabel = document.createElement('div');
+            rowLabel.classList.add('row-label');
+            rowLabel.textContent = row;
+            seatRow.appendChild(rowLabel);
+
+            for (let i = 1; i <= numSeatsPerRow; i++) {
+                const seat = document.createElement('i');
+                seat.classList.add('fas', 'fa-couch', 'seat');
+                seat.dataset.row = row;
+                seat.dataset.seatNumber = i;
+
+                // Crear y agregar el número del asiento
+                const seatNumber = document.createElement('span');
+                seatNumber.classList.add('seat-number');
+                seatNumber.textContent = i;
+                seat.appendChild(seatNumber);
+
+                if (Math.random() < 0.3) { // Ejemplo de asientos no disponibles
+                    seat.classList.add('unavailable');
+                }
+
+                seat.addEventListener('click', toggleSeatSelection);
+                seatRow.appendChild(seat);
+            }
+
+            seatsContainer.appendChild(seatRow);
+        });
+    }
+
+    function toggleSeatSelection(event) {
+        const seat = event.target.closest('.seat');
+        if (!seat.classList.contains('unavailable')) {
+            seat.classList.toggle('selected');
+        }
+    }
+
+    createSeats();
+});
+
+
+    </script>
+    
+</body>
+</html>
