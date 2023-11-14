@@ -131,3 +131,27 @@ footer {
     color: #000;
     /* Texto negro para el item activo */
 }
+
+.payment-header {
+    background-color: goldenrod; /* Color de fondo dorado */
+    color: white; /* Color de texto blanco */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Alineación del texto */
+}
+
+/* Estilos para los botones de pago */
+.payment-button {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    background-color: darkgray; /* Fondo blanco para los botones */
+    border: 1px solid #ddd; /* Borde ligero para mejor visibilidad */
+    display: block; /* Hace que el botón ocupe todo el ancho disponible */
+}
+
+.payment-button img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 4px; /* Espacio entre la imagen y el texto */
+}

@@ -1,0 +1,112 @@
+.row-label {
+    font-size: 24px;
+    color: #000;
+    margin: 3px;
+    width: 30px;
+    text-align: center;
+}
+
+.seat-number {
+    position: absolute;
+    font-size: 10px;
+    color: white;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+    /* Estilos para los asientos */
+.seat {
+    font-size: 24px;
+    color: #808080; /* Color gris para asientos disponibles */
+    margin: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.seat:hover {
+    color: #bfbfbf; /* Color más claro al pasar el mouse */
+}
+
+.seat.selected {
+    color: #28a745; /* Color verde para asientos seleccionados */
+}
+
+.seat.unavailable {
+    color: #dc3545; /* Color rojo para asientos no disponibles */
+}
+
+/* Estilo para la pantalla */
+/* Estilos para la pantalla */
+.screen {
+    width: 100%;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+}
+
+/* Estilos para la descripción de la función */
+.movie-description {
+    background-image: url('https://static.cinepolis.com/resources/mx/movies/posters/264x386/43450-342529-20231024011049.jpg');
+    background-size: cover;
+    color: white;
+    padding: 10px;
+}
+
+.movie-info {
+    text-align: left;
+    padding: 10px;
+}
+
+/* Estilos para la imagen de la película */
+.movie-image {
+    max-width: 150px; /* Tamaño máximo de la imagen */
+}
+
+/* Estilos para centrar las filas de asientos */
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+/* Estilo para el contenedor principal para asegurar el centrado */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para el footer */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+/* Estilos para los encabezados del footer */
+.footer h5 {
+    font-size: 18px;
+}
+
+/* Estilos para las listas del footer */
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 5px;
+}
+
+/* Estilos para los números de teléfono */
+.footer ul li:last-child {
+    font-weight: bold;
+}
+
+/* Estilos para los derechos de autor y desarrollador */
+.footer p {
+    font-size: 12px;
+    margin: 5px 0;
+}
