@@ -9,6 +9,10 @@ main {
     background-color: #333;
 }
 
+.bg-black {
+    background-color: black !important;
+}
+
 .navbar .nav-link {
     color: #fff;
 }
@@ -18,7 +22,7 @@ main {
 }
 
 /* Botón de sucursal */
-.btn-primary {
+#botonIngresar {
     background-color: goldenrod;
     /* Cambia el fondo a negro */
     border: none;
