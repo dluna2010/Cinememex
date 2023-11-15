@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: goldenrod;
+    margin-bottom: 20px;
+}
+
+img.img-fluid {
+    max-width: 50%;
+    height: auto;
+    margin-top: 30px;
+}
