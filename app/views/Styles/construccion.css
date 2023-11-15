@@ -1,16 +1,33 @@
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 h1 {
     color: goldenrod;
     margin-bottom: 20px;
+    font-size: 2.5rem; /* Aumenta el tamaño del título */
 }
 
-img.img-fluid {
-    max-width: 50%;
-    height: auto;
-    margin-top: 30px;
+p {
+    font-size: 18px;
+    color: white;
+}
+
+.lottie-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Georgia', serif;
 }
