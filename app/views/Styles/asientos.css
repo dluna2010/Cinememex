@@ -1,3 +1,42 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+header {
+    background-image: url(https://png.pngtree.com/background/20230617/original/pngtree-abstract-golden-glitter-splash-illuminated-in-3d-on-a-sleek-black-picture-image_3682236.jpg);
+}
+
+main {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+}*/
+
+.navbar {
+    background-color: #333;
+}
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+.navbar .nav-link:hover {
+    color: #ddd;
+}
+
+/* Botón de sucursal */
+.btn-primary {
+    background-color: goldenrod;
+    /* Cambia el fondo a negro */
+    border: none;
+    /* Remueve el borde */
+    color: black;
+    /* Cambia el texto a blanco */
+}
+
 .row-label {
     font-size: 24px;
     color: #000;
