@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="./Styles/home.css">
+    <link rel="stylesheet" type="text/css" href="./Styles/horarios.css">
 
 </head>
 
@@ -71,11 +71,12 @@
         
     </header>
     <main>
+        <br><br>
         <!-- Contenedor Principal para una Película -->
-        <div class="container my-4">
+        <div class="container">
             <div class="row">
                 <!-- Trailer de la Película (Izquierda) -->
-                <div class="col-md-6">
+                <div class="col-md-6 iframe-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -83,18 +84,23 @@
                 </div>
     
                 <!-- Contenido Informativo (Derecha) -->
-                <div class="col-md-6">
-                    <h3>Título de la Película</h3>
-                    <p><strong>Sinopsis:</strong> Aquí va la sinopsis.</p>
-                    <p><strong>Director:</strong> Nombre del Director.</p>
-                    <p><strong>Género:</strong> Género de la película.</p>
-                    <p><strong>Duración:</strong> Duración de la película.</p>
-                    <p><strong>Reparto:</strong> Nombres del reparto.</p>
+                <div class="col-md-6 info-container">
+                    <h3> Five Nights at Freddy's </h3>
+                    <p><strong>Sinopsis:</strong> El terrorífico fenómeno del videojuego de terror se transforma en un escalofriante espectáculo cinematográfico,
+                    Blumhouse (productora de M3GAN, El teléfono negro y El hombre invisible) lleva Five Nights at Freddy's a la gran
+                    pantalla. La película trata de un problemático guardia de seguridad que empieza a trabajar en Freddy Fazbear's Pizza.
+                    Mientras pasa su primera noche en el trabajo, se da cuenta de que el turno de noche en Freddy's no será tan fácil de
+                    superar. </p>
+                    <p><strong>Director:</strong> Emma Tammi </p>
+                    <p><strong>Género:</strong> Terror </p>
+                    <p><strong>Duración:</strong> 112 min </p>
+                    <p><strong>Reparto:</strong> David Gordon Green </p>
                 </div>
             </div>
     
             <!-- Horarios de las Funciones -->
             <div class="row mt-3">
+                <h2> Sucursal 1 </h2>
                 <div class="col-12">
                     <h4>Horarios</h4>
                     <p>2D Subtitulada: 
@@ -107,12 +113,80 @@
                         <a style="color:white; text-decoration: none;" href="./boletos.html"><button class="btn btn-primary">19:00</button></a>
                         <a style="color:white; text-decoration: none;" href="./boletos.html"><button class="btn btn-primary">21:00</button></a>
                     </p>
-                    <!-- Añadir más tipos de funciones y horarios según sea necesario -->
+                </div>
+            </div>
+            <!-- Sucursal 2 -->
+            <div class="row mt-3">
+                <h2> Sucursal 2 </h2>
+                <div class="col-12">
+                    <h4>Horarios</h4>
+                    <p>2D Doblada:
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">11:30</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">1:30</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">4:20</button></a>
+                    </p>
+                    <p>3D Subtitulada:
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">12:00</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">16:00</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">21:10</button></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repetir el Contenedor Principal para otras películas -->
+        <div class="container my-4">
+            <div class="row">
+                <!-- Trailer de la Película (Izquierda) -->
+                <div class="col-md-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=rFNAN1PJUU6E4z0Q"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+        
+                <!-- Contenido Informativo (Derecha) -->
+                <div class="col-md-6">
+                    <h3>Título de la Película</h3>
+                    <p><strong>Sinopsis:</strong> Aquí va la sinopsis.</p>
+                    <p><strong>Director:</strong> Nombre del Director.</p>
+                    <p><strong>Género:</strong> Género de la película.</p>
+                    <p><strong>Duración:</strong> Duración de la película.</p>
+                    <p><strong>Reparto:</strong> Nombres del reparto.</p>
+                </div>
+            </div>
+        
+            <!-- Horarios de las Funciones -->
+            <div class="row mt-3">
+                <h2> Sucursal 1 </h2>
+                <div class="col-12">
+                    <h4>Horarios</h4>
+                    <p>2D Subtitulada:
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">16:40</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">18:30</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">20:20</button></a>
+                    </p>
+                    <p>3D Doblada:
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">17:00</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">19:00</button></a>
+                        <a style="color:white; text-decoration: none;" href="./boletos.html"><button
+                                class="btn btn-primary">21:00</button></a>
+                    </p>
                 </div>
             </div>
         </div>
     
-        <!-- Repetir el Contenedor Principal para otras películas -->
     </main>
     <footer>
 

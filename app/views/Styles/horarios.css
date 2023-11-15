@@ -1,25 +1,48 @@
 /* Estilos generales */
 .container {
-    background-color: white;
-    padding: 20px;
-    margin-top: 30px;
-    /* Ajusta según sea necesario */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Fondo blanco con opacidad */
+    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
-/* Estilos para el contenido de la película */
-.col-md-6 {
-    margin-bottom: 20px;
+/* Estilos para el iframe y contenido informativo */
+.iframe-container,
+.info-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Fondo ligeramente transparente */
+    padding: 15px;
+    border-radius: 8px;
 }
 
-h3,
-h4 {
+/* Estilización de títulos y texto */
+h3 {
+    font-family: 'Georgia', serif;
+    font-size: 24px;
     color: #333;
-    /* Color para los títulos */
 }
 
-/* Estilos para los horarios */
 p {
-    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    color: #444;
+}
+
+/* Estilización de botones de horarios */
+.btn-primary {
+    background-color: goldenrod;
+    color: black;
+    border-radius: 20px;
+    /* Botones redondos */
+    border: 2px solid goldenrod;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: green;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    /* Efecto de ampliación al pasar el mouse */
 }
