@@ -22,6 +22,7 @@ body {
     background-color: rgba(0, 0, 0, 0.123);
     /* Fondo oscuro y transparente */
     padding: 1rem;
+    margin-right: 2rem;
     margin-bottom: 2rem;
     /* Espacio entre contenedores */
     border-radius: 10px;
@@ -31,6 +32,7 @@ body {
 .info-container {
     background-color: rgba(0, 0, 0, 0.123);
     /* Fondo oscuro y transparente */
+    margin-left: 2rem;
     padding: 1rem;
     margin-bottom: 2rem;
     /* Espacio entre contenedores */
