@@ -64,16 +64,20 @@ body {
 }
 
 .input-group {
+    display: flex;
+    /* Usa flexbox */
+    align-items: center;
     margin-bottom: 15px;
 }
 
 .input-group label {
-    display: block;
-    margin-bottom: 5px;
+    flex: 0 0 30%;
+    margin-bottom: 0px;
+    padding-right: 5px;
 }
 
 .input-group input {
-    width: 100%;
+    flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
