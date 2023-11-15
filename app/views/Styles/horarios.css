@@ -1,4 +1,13 @@
 /* Estilos generales */
+
+body {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 .container {
     background-color: rgba(255, 255, 255, 0.8);
     /* Fondo blanco con opacidad */
@@ -9,19 +18,40 @@
 }
 
 /* Estilos para el iframe y contenido informativo */
-.iframe-container,
-.info-container {
-    background-color: rgba(255, 255, 255, 0.5);
-    /* Fondo ligeramente transparente */
-    padding: 15px;
-    border-radius: 8px;
+.iframe-container {
+    background-color: rgba(0, 0, 0, 0.123);
+    /* Fondo oscuro y transparente */
+    padding: 1rem;
+    margin-bottom: 2rem;
+    /* Espacio entre contenedores */
+    border-radius: 10px;
+    align-items: center;
 }
 
-/* Estilización de títulos y texto */
-h3 {
-    font-family: 'Georgia', serif;
-    font-size: 24px;
-    color: #333;
+.info-container {
+    background-color: rgba(0, 0, 0, 0.123);
+    /* Fondo oscuro y transparente */
+    padding: 1rem;
+    margin-bottom: 2rem;
+    /* Espacio entre contenedores */
+    border-radius: 10px;
+    text-align: justify;
+}
+
+/* Estilos para el título */
+.movie-title {
+    text-align: center;
+    font-size: 2.5rem;
+    /* Tamaño más grande */
+    font-family: 'Arial', sans-serif;
+    /* Cambia la fuente si lo deseas */
+    color: goldenrod;
+    /* Color llamativo */
+}
+
+.sucursal-container {
+    margin-bottom: 2rem;
+    /* Espacio entre sucursales */
 }
 
 p {
