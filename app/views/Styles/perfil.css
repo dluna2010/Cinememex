@@ -1,0 +1,90 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+header {
+    background-image: url(https://png.pngtree.com/background/20230617/original/pngtree-abstract-golden-glitter-splash-illuminated-in-3d-on-a-sleek-black-picture-image_3682236.jpg);
+}
+
+main {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+}*/
+
+body{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
+}
+
+.navbar {
+    background-color: #333;
+}
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+.navbar .nav-link:hover {
+    color: #ddd;
+}
+
+/* Botón de sucursal */
+.btn-primary {
+    background-color: goldenrod;
+    /* Cambia el fondo a negro */
+    border: none;
+    /* Remueve el borde */
+    color: black;
+    /* Cambia el texto a blanco */
+}
+
+.profile-container {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+    position: relative; /* Para posicionar el ícono */
+}
+
+.user-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 30px; /* Tamaño del ícono */
+}
+
+.user-details {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.user-details h2 {
+    margin-bottom: 15px;
+}
+
+.user-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el botón */
+.btn-orders {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-orders:hover {
+    background-color: #0056b3;
+}
