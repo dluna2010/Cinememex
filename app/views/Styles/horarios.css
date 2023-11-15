@@ -19,18 +19,18 @@ body {
 
 /* Estilos para el iframe y contenido informativo */
 .iframe-container {
-    background-color: rgba(0, 0, 0, 0.123);
+    background-color: rgba(0, 0, 0, 0.265);
     /* Fondo oscuro y transparente */
     padding: 1rem;
     margin-right: 2rem;
     margin-bottom: 2rem;
     /* Espacio entre contenedores */
     border-radius: 10px;
-    align-items: center;
+    text-align: center;
 }
 
 .info-container {
-    background-color: rgba(0, 0, 0, 0.123);
+    background-color: rgba(0, 0, 0, 0.079);
     /* Fondo oscuro y transparente */
     margin-left: 2rem;
     padding: 1rem;
@@ -40,14 +40,19 @@ body {
     text-align: justify;
 }
 
+h4{
+    font-family: "Copperplate";
+    font-size: 30px;
+}
+
 /* Estilos para el título */
 .movie-title {
     text-align: center;
     font-size: 2.5rem;
     /* Tamaño más grande */
-    font-family: 'Arial', sans-serif;
+    font-family: "Lucida Bright";
     /* Cambia la fuente si lo deseas */
-    color: goldenrod;
+    color: black;
     /* Color llamativo */
 }
 
@@ -57,9 +62,18 @@ body {
 }
 
 p {
-    font-family: 'Arial', sans-serif;
-    color: #444;
+    font-family: 'Times New Roman', sans-serif;
+    color: #100101;
+    font-size: 18px;
 }
+
+.info-container p strong {
+    color: goldenrod;
+    font-size: 20px;
+    /* Cambia el color a goldenrod */
+}
+
+
 
 /* Estilización de botones de horarios */
 .btn-primary {
