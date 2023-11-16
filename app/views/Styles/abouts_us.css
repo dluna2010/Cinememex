@@ -24,3 +24,43 @@ p {
     margin-top: 10px;
     line-height: 1.6;
 }
+
+
+.cofounders-section {
+    padding: 2rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.355);
+    /* Color de fondo */
+}
+
+.cofounders-title {
+    font-size: 2rem;
+    color: goldenrod;
+    /* Color dorado para el título */
+    font-family: 'Georgia', serif;
+    /* Tipografía elegante para el título */
+    margin-bottom: 1.5rem;
+}
+
+.cofounders-list {
+    text-align: center;
+    font-size: 1.2rem;
+    color: whitesmoke;
+    /* Color de texto */
+    font-family: 'Times New Roman', serif;
+    /* Tipografía elegante para los nombres */
+}
+
+.cofounders-list li {
+    margin-bottom: 0.8rem;
+}
+
+/* Estilos para elementos gráficos adicionales */
+.decorative-line {
+    border-top: 2px solid #ccc;
+    /* Línea decorativa */
+    width: 50%;
+    margin: 2rem auto;
+    /* Centrado con margen */
+}
