@@ -9,7 +9,7 @@ class SucursalException {
 
 //Creación de la clase película
 class Sucursal {
-    constructor(titulo, sinopsis, posterUrl, genero, duration, reparto, trailerIframe) {
+    constructor(nombre, descripción, posterUrl, genero, duration, reparto, trailerIframe) {
         this._uuid = generateUUID(); // Utilizamos el generate UUID
         this.titulo = titulo;
         this.sinopsis = sinopsis;
