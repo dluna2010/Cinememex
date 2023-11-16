@@ -6,8 +6,6 @@ const cors = require('cors');
 const app = express();
 const port = 3001;
 
-//let products = JSON.parse(fs.readFileSync("./app/data/products.json", "utf-8"));
-
 app.listen(port, () => {
     console.log("Mov7eZ corriendo en el puerto " + port);
 });
