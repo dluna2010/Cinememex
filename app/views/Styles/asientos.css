@@ -6,6 +6,46 @@ html {
     margin: 0;
 }
 
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Georgia', serif;
+}
+/* Estilos para el footer */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+/* Estilos para los encabezados del footer */
+.footer h5 {
+    font-size: 18px;
+}
+
+/* Estilos para las listas del footer */
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 5px;
+}
+
+/* Estilos para los números de teléfono */
+.footer ul li:last-child {
+    font-weight: bold;
+}
+
+/* Estilos para los derechos de autor y desarrollador */
+.footer p {
+    font-size: 12px;
+    margin: 5px 0;
+}
 /*
 header {
     background-image: url(https://png.pngtree.com/background/20230617/original/pngtree-abstract-golden-glitter-splash-illuminated-in-3d-on-a-sleek-black-picture-image_3682236.jpg);
@@ -83,14 +123,7 @@ main {
     padding: 15px 0;
     font-weight: bold;
 }
-footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    font-family: 'Georgia', serif;
-}
+
 
 /* Estilos para la descripción de la función */
 .movie-description {
@@ -117,43 +150,4 @@ footer {
     margin-bottom: 5px;
 }
 
-/* Estilo para el contenedor principal para asegurar el centrado */
-.container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
 
-/* Estilos para el footer */
-.footer {
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-}
-
-/* Estilos para los encabezados del footer */
-.footer h5 {
-    font-size: 18px;
-}
-
-/* Estilos para las listas del footer */
-.footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer ul li {
-    margin-bottom: 5px;
-}
-
-/* Estilos para los números de teléfono */
-.footer ul li:last-child {
-    font-weight: bold;
-}
-
-/* Estilos para los derechos de autor y desarrollador */
-.footer p {
-    font-size: 12px;
-    margin: 5px 0;
-}
