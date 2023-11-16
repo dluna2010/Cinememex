@@ -5,32 +5,6 @@ main {
     /* Fondo negro uniforme */
 }
 
-.navbar {
-    background-color: #333;
-}
-
-.bg-black {
-    background-color: black !important;
-}
-
-.navbar .nav-link {
-    color: #fff;
-}
-
-.navbar .nav-link:hover {
-    color: #ddd;
-}
-
-/* Botón de sucursal */
-.btn-primary {
-    background-color: goldenrod;
-    /* Cambia el fondo a negro */
-    border: none;
-    /* Remueve el borde */
-    color: black;
-    /* Cambia el texto a blanco */
-}
-
 .title {
     font-size: 36px;
     /* Tamaño del título */
@@ -49,46 +23,4 @@ main {
 p {
     margin-top: 10px;
     line-height: 1.6;
-}
-
-footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    font-family: 'Georgia', serif;
-}
-
-/* Estilos para el footer */
-.footer {
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-}
-
-/* Estilos para los encabezados del footer */
-.footer h5 {
-    font-size: 18px;
-}
-
-/* Estilos para las listas del footer */
-.footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer ul li {
-    margin-bottom: 5px;
-}
-
-/* Estilos para los números de teléfono */
-.footer ul li:last-child {
-    font-weight: bold;
-}
-
-/* Estilos para los derechos de autor y desarrollador */
-.footer p {
-    font-size: 12px;
-    margin: 5px 0;
 }
