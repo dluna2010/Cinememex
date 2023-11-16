@@ -19,19 +19,7 @@ body{
     background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
 }
 
-.navbar {
-    background-color: #333;
-}
-
-.navbar .nav-link {
-    color: #fff;
-}
-
-.navbar .nav-link:hover {
-    color: #ddd;
-}
-
-/* Botón de sucursal */
+/* Botones */
 .btn-primary {
     background-color: goldenrod;
     /* Cambia el fondo a negro */
@@ -108,15 +96,6 @@ body{
     margin: auto;
 }
 
-footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    font-family: 'Georgia', serif;
-}
-
 /* Estilo de la paginación */
 .pagination .page-link {
     background-color: #000;
@@ -154,37 +133,4 @@ footer {
     max-width: 100%;
     height: auto;
     margin-bottom: 4px; /* Espacio entre la imagen y el texto */
-}
-
-/* Estilos para el footer */
-.footer {
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-}
-
-/* Estilos para los encabezados del footer */
-.footer h5 {
-    font-size: 18px;
-}
-
-/* Estilos para las listas del footer */
-.footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer ul li {
-    margin-bottom: 5px;
-}
-
-/* Estilos para los números de teléfono */
-.footer ul li:last-child {
-    font-weight: bold;
-}
-
-/* Estilos para los derechos de autor y desarrollador */
-.footer p {
-    font-size: 12px;
-    margin: 5px 0;
 }
