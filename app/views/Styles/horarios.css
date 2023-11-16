@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-.container {
+.movie_container {
     background-color: rgba(255, 255, 255, 0.8);
     /* Fondo blanco con opacidad */
     border: 1px solid #ddd;
@@ -61,7 +61,7 @@ h4{
     /* Espacio entre sucursales */
 }
 
-p {
+.movie-container p {
     font-family: 'Times New Roman', sans-serif;
     color: #100101;
     font-size: 18px;
@@ -74,9 +74,8 @@ p {
 }
 
 
-
 /* Estilización de botones de horarios */
-.btn-primary {
+.btn-horario {
     background-color: goldenrod;
     color: black;
     border-radius: 20px;
@@ -85,43 +84,10 @@ p {
     transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
+.btn-horario:hover {
     background-color: green;
     color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
     /* Efecto de ampliación al pasar el mouse */
-}
-
-/* Estilos para el footer */
-.footer {
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-}
-
-/* Estilos para los encabezados del footer */
-.footer h5 {
-    font-size: 18px;
-}
-
-/* Estilos para las listas del footer */
-.footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer ul li {
-    margin-bottom: 5px;
-}
-
-/* Estilos para los números de teléfono */
-.footer ul li:last-child {
-    font-weight: bold;
-}
-
-/* Estilos para los derechos de autor y desarrollador */
-.footer p {
-    font-size: 12px;
-    margin: 5px 0;
 }
