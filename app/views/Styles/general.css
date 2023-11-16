@@ -60,3 +60,17 @@ body {
 li a {
     color: #fff;
 }
+
+#Continue-Ticket{
+    /* Cambia el fondo a negro */
+    background-color: goldenrod;
+    /* Remueve el borde */
+    border: none;
+    /* Cambia el texto a blanco */
+    color: black;
+}
+
+#Continue-Ticket:hover {
+    /* Cambia el fondo a negro */
+    background-color: gold;
+}
