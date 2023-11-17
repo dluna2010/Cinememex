@@ -1,0 +1,111 @@
+### Obtener todos los películas
+GET http://localhost:3000/movies
+
+// Búsquedas
+### Categoría y título
+GET http://localhost:3000/movies/search/
+
+### Categoría
+GET http://localhost:3000/movies/search/Card Game:
+
+### Título
+GET http://localhost:3000/movies/search/:
+
+### Añadir películas al carrito mediante su ID (todo correcto)
+POST http://localhost:3000/movies/cart
+Content-Type: application/json
+
+[
+    "8841b088-a97d-4f14-8840-4b8f6bf0c607",
+    "67154b1a-6c68-4496-b385-dafb44c7fe6a",
+    "09011e15-c086-4ea7-9f69-f7a03bb22068"
+]
+
+### Añadir películas al carrito mediante su ID (Por lo menos un ID incorrecto)
+POST http://localhost:3000/movies/cart
+Content-Type: application/json
+
+[
+    "Id invalido",
+    "67154b1a-6c68-4496-b385-dafb44c7fe6a"
+]
+
+### Añadir películas al carrito mediante su ID (todo incorrecto)
+POST http://localhost:3000/movies/cart
+Content-Type: application/json
+
+### Obtener película mediante ID (correcto)
+GET http://localhost:3000/movies/09011e15-c086-4ea7-9f69-f7a03bb22068
+
+### Obtener película mediante ID (incorrecto)
+GET http://localhost:3000/movies/7a519ffa-bee2-4bd7-af2d-6c6bfb81f45c
+
+### Añadir un nuevo película (Admin y correcto)
+POST http://localhost:3000/admin/movies
+Content-Type: application/json
+x-auth: admin
+
+{
+    "_uuid": "UUID_15",
+    "title": "película admin nueva",
+    "description": "película nueva desde admin movies",
+    "imageUrl": "EsteEsUnLinkGenerico.com",
+    "unit": "unit",
+    "stock": 69,
+    "pricePerUnit": 24.7,
+    "category": "Moded"
+}
+
+### Añadir una nueva película (Sin admin)
+POST http://localhost:3000/admin/movies
+
+{
+    "title": "película admin nuevo",
+    "description": "película nuevo desde admin movies",
+    "imageUrl": "EsteEsUnLinkGenerico.com",
+    "unit": "unit",
+    "stock": 69,
+    "pricePerUnit": 24.7,
+    "category": "Moded"
+}
+
+### Actualizar un película ya existente (Admin)
+PUT http://localhost:3000/admin/movies/1a402515-bfae-478a-afd5-b01a8fd1b167
+Content-Type: application/json
+x-auth: admin
+
+{
+    "title": "película admin modificado",
+    "description": "película modificado desde admin movies",
+    "imageUrl": "EsteEsUnLinkGenericoYModificado.com",
+    "category": "Moded"
+}
+
+### Actualizar un película ya existente (Sin admin)
+PUT http://localhost:3000/admin/movies/1a402515-bfae-478a-afd5-b01a8fd1b167
+Content-Type: application/json
+
+{
+    "title": "película admin modificado",
+    "description": "película modificado desde admin movies",
+    "imageUrl": "EsteEsUnLinkGenericoYModificado.com",
+    "category": "Moded"
+}
+
+### Borrar un película (Con admin)
+DELETE http://localhost:3000/admin/movies/1a402515-bfae-478a-afd5-b01a8fd1b167
+x-auth: admin
+
+### Borrar un película (Sin admin)
+DELETE http://localhost:3000/admin/movies/1a402515-bfae-478a-afd5-b01a8fd1b167
+
+### Ingresar a /
+GET http://localhost:3000/ 
+
+### Ingresar a /home
+GET http://localhost:3000/home
+
+### Ingresar a /shopping_cart
+GET http://localhost:3000/shopping_cart
+
+//Ignorar, población de mi archivo JSON con mis películas
