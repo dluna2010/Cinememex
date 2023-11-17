@@ -127,4 +127,4 @@ class Movie {
     }
 }
 
-module.exports = Product;
+module.exports = Movie;

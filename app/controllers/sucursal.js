@@ -8,6 +8,7 @@ class SucursalException {
 }
 
 //Creación de la clase película
+// Añadirle UUID a este coso
 class Sucursal {
     constructor(nombre, descripción, posterUrl, genero, duration, reparto, trailerIframe) {
         this._uuid = generateUUID(); // Utilizamos el generate UUID

@@ -9,6 +9,7 @@ class HorarioException {
 
 //Creación de la clase película
 class Horario {
+    //Añadirle UUID y precio
     constructor(Hora, categoría, posterUrl, genero, duration, reparto, trailerIframe) {
         this._uuid = generateUUID(); // Utilizamos el generate UUID
         this.titulo = titulo;
