@@ -101,13 +101,13 @@ class Movie {
     }
 
     // Métodos estáticos
-    //Crear producto desde String JSON
+    //Crear película desde String JSON
     static createFromJson(jsonValue) {
         let obj = JSON.parse(jsonValue);
         return this.createFromObject(obj);
     }
 
-    //Crear producto desde objeto
+    //Crear película desde objeto
     static createFromObject(obj) {
         let cleanObj = this.cleanObject(obj);
         return new Product(cleanObj.uuid, cleanObj.titulo, cleanObj.sinopsis, cleanObj.posterUrl, cleanObj.genero, cleanObj.reparto, cleanObj.duration, cleanObj.trailerIframe);
