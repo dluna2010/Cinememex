@@ -18,7 +18,7 @@ async function fetchMovies() {
 }
 
 // Renderizar las cartitas de películas
-function createMovieCard(movie) {
+function renderMovieCard(movie) {
     // Crear el div de la columna
     const col = document.createElement('div');
     col.className = 'col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3';
@@ -43,7 +43,7 @@ function createMovieCard(movie) {
     // Agregar el título
     const title = document.createElement('h5');
     title.className = 'card-title';
-    title.textContent = movie.title;
+    title.textContent = movie.titulo;
     cardImgOverlay.appendChild(title);
 
     // Crear y agregar el botón
@@ -61,7 +61,6 @@ function createMovieCard(movie) {
     // Retornar el div de la columna
     return col;
 }
-
 
 // Renderizar todos los películas en la página
 function renderMoviesPage(movies, pageIndex) {

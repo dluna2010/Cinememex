@@ -1,12 +1,12 @@
 [
   {
     "_uuid": "489f4f78-e346-4e62-8bd9-47b0a46e4f17",
-    "_titulo": "Five Night's At Freddy's",
-    "_sinopsis": "película nueva desde admin movies",
-    "_posterUrl": "EsteEsUnLinkGenerico.com",
-    "_genero": "Terror",
-    "_duration": 120,
-    "_reparto": "Peeta",
-    "_trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
+    "titulo": "Five Night's At Freddy's",
+    "sinopsis": "película nueva desde admin movies",
+    "posterUrl": "https://static.cinepolis.com/resources/mx/movies/posters/264x386/43450-342529-20231024011049.jpg",
+    "genero": "Terror",
+    "duration": 120,
+    "reparto": "Peeta",
+    "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
   }
 ]
