@@ -1,5 +1,5 @@
 ### Obtener todos los películas
-GET http://localhost:3000/movies
+GET http://localhost:3001/movies
 
 // Búsquedas
 ### Categoría y título
@@ -41,19 +41,18 @@ GET http://localhost:3000/movies/09011e15-c086-4ea7-9f69-f7a03bb22068
 GET http://localhost:3000/movies/7a519ffa-bee2-4bd7-af2d-6c6bfb81f45c
 
 ### Añadir un nuevo película (Admin y correcto)
-POST http://localhost:3000/admin/movies
+POST http://localhost:3001/admin/movies
 Content-Type: application/json
 x-auth: admin
 
 {
-    "_uuid": "UUID_15",
-    "title": "película admin nueva",
-    "description": "película nueva desde admin movies",
-    "imageUrl": "EsteEsUnLinkGenerico.com",
-    "unit": "unit",
-    "stock": 69,
-    "pricePerUnit": 24.7,
-    "category": "Moded"
+    "titulo": "Five Night's At Freddy's",
+    "sinopsis": "película nueva desde admin movies",
+    "posterUrl": "EsteEsUnLinkGenerico.com",
+    "genero": "Terror",
+    "duration": 120,
+    "reparto": "Peeta",
+    "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
 }
 
 ### Añadir una nueva película (Sin admin)
