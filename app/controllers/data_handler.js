@@ -3,6 +3,7 @@ const path = require("path");
 
 const { generateUUID } = require("./util");
 
+//Apartado para Movie
 const moviesFilePath = path.join(__dirname, "..", "data", "movies.json");
 
 // LEER películas del json
@@ -114,6 +115,14 @@ function findMovie(query) {
         return matchCategory && matchTitulo;
     });
 }
+
+//Apartado para 
+
+//Apartado para 
+
+//Apartado para 
+
+//Apartado para 
 
 module.exports = {
     getMovies,
