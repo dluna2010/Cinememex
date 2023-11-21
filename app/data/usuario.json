@@ -1,0 +1,20 @@
+[
+    {
+        "_idUsuario": "1",
+        "_nombre": "Juan",
+        "_email": "juan@email.com",
+        "_contraseñaEncriptada": "contraseña1"
+    },
+    {
+        "_idUsuario": "12",
+        "_nombre": "Pedro",
+        "_email": "pedro@email.com",
+        "_contraseñaEncriptada": "contraseña2"
+    },
+    {
+        "_idUsuario": "3",
+        "_nombre": "Andrea",
+        "_email": "andrea@email.com",
+        "_contraseñaEncriptada": "contraseña3"
+    }
+]
