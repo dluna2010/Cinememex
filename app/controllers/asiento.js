@@ -24,7 +24,7 @@ class Asiento {
     }
 
     set numeroAsiento(value) {
-        if (value <= 0) throw new AsientoException("El número del asiento debe ser mayor que cero");
+        if (!value.trim()) throw new AsientoException("El número del asiento no puede estar vacío");
         this._numeroAsiento = value;
     }
     get numeroAsiento() {

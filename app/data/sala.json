@@ -1,0 +1,14 @@
+[
+    {
+        "uuid":"UUIDS1",
+        "numeroDeSala":1,
+        "capacidad":30,
+        "idSucursal":"UUID_1"
+    },
+    {
+        "uuid":"UUIDS2",
+        "numeroDeSala":2,
+        "capacidad":30,
+        "idSucursal":"UUID_2"
+    }
+]

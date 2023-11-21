@@ -1,0 +1,23 @@
+[
+    {
+        "idReserva":"IDR1",
+        "idUsuario":"IDI1",
+        "idFuncion":"IDF1",
+        "cantidadBoletos":4,
+        "precioTotal":240
+    },
+    {
+        "idReserva":"IDR2",
+        "idUsuario":"IDI1",
+        "idFuncion":"IDF2",
+        "cantidadBoletos":2,
+        "precioTotal":120
+    },
+    {
+        "idReserva":"IDR3",
+        "idUsuario":"IDI1",
+        "idFuncion":"IDF3",
+        "cantidadBoletos":5,
+        "precioTotal":300
+    }
+]
