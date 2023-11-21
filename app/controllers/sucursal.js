@@ -1,80 +1,71 @@
 const { generateUUID } = require("./util");
 
-//Creación de la clase de excepción del película
+// Clase de excepción personalizada para Sucursal
 class SucursalException {
     constructor(errorMessage) {
         this.errorMessage = errorMessage;
     }
 }
 
-//Creación de la clase película
-// Añadirle UUID a este coso
+// Clase Sucursal
 class Sucursal {
-    constructor(nombre, descripción, ubicación) {
-        this._uuid = generateUUID(); // Utilizamos el generate UUID
-        this.nombre = nombre;
-        this.descripción = descripción;
-        this.ubicación = ubicación;
+    constructor(uuid, nombre, ubicacion, numeroDeSalas) {
+        this._uuiid = generateUUID();
+        this._nombre = nombre;
+        this._ubicacion = ubicacion;
+        this._numeroDeSalas = numeroDeSalas;
     }
 
-    // Getters y Setters con validación y lanzamiento de excepciones.
-    // Setter y Getter para uuid
+    // Setters y Getters con validaciones
     set uuid(value) {
-        throw new SucursalException("El UUID es auto-generado");
+        throw new SucursalException("El ID es auto-generado");
     }
-
     get uuid() {
-        return this._uuid;
+        return this._id;
     }
 
-    // Setter y Getter para nombre
     set nombre(value) {
         if (!value.trim()) throw new SucursalException("El nombre no puede estar vacío");
         this._nombre = value;
     }
-
     get nombre() {
         return this._nombre;
     }
 
-    // Setter y Getter para descriçión
-    set descripción(value) {
-        if (!value.trim()) throw new SucursalException("La descripción no puede estar vacía");
-        this._descripción = value;
-    }
-
-    get descripción() {
-        return this._descripción;
-    }
-
-    // Setter y Getter para ubicación
-    set ubicación(value) {
+    set ubicacion(value) {
         if (!value.trim()) throw new SucursalException("La ubicación no puede estar vacía");
-        this._ubicación = value;
+        this._ubicacion = value;
+    }
+    get ubicacion() {
+        return this._ubicacion;
     }
 
-    get ubicación() {
-        return this._ubicación;
+    set numeroDeSalas(value) {
+        if (value <= 0) throw new SucursalException("El número de salas debe ser mayor que cero");
+        this._numeroDeSalas = value;
+    }
+    get numeroDeSalas() {
+        return this._numeroDeSalas;
     }
 
     // Métodos estáticos
-    //Crear Sucursal desde String JSON
     static createFromJson(jsonValue) {
         let obj = JSON.parse(jsonValue);
-        return this.createFromObject(obj);
+        return new Sucursal(obj.id, obj.nombre, obj.ubicacion, obj.numeroDeSalas);
     }
 
-    //Crear Sucursal desde objeto
     static createFromObject(obj) {
+        id = generateUUID();
+        this._nombre = nombre;
+        this._ubicacion = ubicacion;
+        this._numeroDeSalas = numeroDeSalas;
         let cleanObj = this.cleanObject(obj);
-        return new Product(cleanObj.uuid, cleanObj.nombre, cleanObj.descripción, cleanObj.ubicación);
+        return new Product(cleanObj.uuid, cleanObj.nombre, cleanObj.ubicacion, cleanObj.numeroDeSalas);
     }
 
-    //Limpiar el objeto si tiene cosas extras no pertenecientes a Sucursal
     static cleanObject(obj) {
         let cleanObj = {};
-        // Aquí se especifican solo las propiedades que pertenecen a la clase Sucursal
-        const validKeys = ["uuid", "nombre", "descripción", "ubicación"]
+        const validKeys = ["id", "nombre", "ubicacion", "numeroDeSalas"];
         for (let key of validKeys) {
             if (obj.hasOwnProperty(key)) {
                 cleanObj[key] = obj[key];
