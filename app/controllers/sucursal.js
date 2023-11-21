@@ -55,7 +55,7 @@ class Sucursal {
     }
 
     static createFromObject(obj) {
-        id = generateUUID();
+        uuid = generateUUID();
         this._nombre = nombre;
         this._ubicacion = ubicacion;
         this._numeroDeSalas = numeroDeSalas;
