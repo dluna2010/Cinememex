@@ -1,7 +1,7 @@
 [
     {
         "nombre":"Sania",
-        "descripción":"Sucursal de Plaza Sania",
-        "ubicación":"Av. Vallarta"
+        "ubicación":"Av. Vallarta",
+        "numeroDeSalas":2
     }
 ]
