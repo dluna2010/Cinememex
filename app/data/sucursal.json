@@ -1,7 +1,20 @@
 [
     {
+        "uuid":"UUID_1",
         "nombre":"Sania",
         "ubicación":"Av. Vallarta",
+        "numeroDeSalas":2
+    },
+    {
+        "uuid":"UUID_2",
+        "nombre":"La Gran Plaza",
+        "ubicación":"Av. Vallarta",
+        "numeroDeSalas":2
+    },
+    {
+        "uuid":"UUID_3",
+        "nombre":"Anadres",
+        "ubicación":"Av. Puerta de Hierro",
         "numeroDeSalas":2
     }
 ]

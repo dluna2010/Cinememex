@@ -55,6 +55,16 @@ x-auth: admin
     "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
 }
 
+### Añadir una nueva función (Admin y correcto)
+POST http://localhost:3001/admin/json
+Content-Type: application/json
+x-auth: admin
+
+{
+    "fechHora":"12",
+    
+}
+
 ### Añadir una nueva película (Sin admin)
 POST http://localhost:3000/admin/movies
 
