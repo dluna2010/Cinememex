@@ -19,4 +19,7 @@ router.get('/sucursales/:id', (req, res) => {
     }
 });
 
+
+module.exports = router;
+
 // Rutas adicionales para crear, actualizar y eliminar sucursales...

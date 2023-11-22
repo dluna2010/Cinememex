@@ -19,4 +19,4 @@ router.get('/sucursales/:id', (req, res) => {
     }
 });
 
-// Rutas adicionales para crear, actualizar y eliminar salas...
+module.exports = router;

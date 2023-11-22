@@ -1,7 +1,6 @@
 const express = require('express');
-const fs = require('fs');
-const router = require("./app/controllers/router");
 const cors = require('cors');
+const router = require("./app/controllers/router");
 
 const app = express();
 const port = 3000;
@@ -11,14 +10,6 @@ app.listen(port, () => {
 });
 
 app.use(express.json());
-
 app.use(cors());
-
-app.get("/", (req, res) => {
-    res.send("Mov7eZ  Cinema Offical Website");
-    console.log("Entro a la raíz");
-});
-
 app.use('/static', express.static('static'));
-
 app.use("/", router);

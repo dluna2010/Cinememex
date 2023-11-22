@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dataHandler = require('./función.js');  // Asumiendo que 'función.js' contiene tus data handlers
+const dataHandler = require('../controllers/data_handler'); 
 
 // Obtener todas las funciones
 router.get('/funciones', (req, res) => {
@@ -18,3 +18,5 @@ router.get('/funciones/:id', (req, res) => {
         res.status(404).send('Función no encontrada');
     }
 });
+
+module.exports = router;
