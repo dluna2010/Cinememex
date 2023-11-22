@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-//Añadir a boleto
+//Añadir a horarios
 function addToHorarios(movie) {
     /* Casteamos la entrada a entero
     quantity = parseInt(quantity);
