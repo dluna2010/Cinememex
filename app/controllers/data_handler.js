@@ -164,8 +164,8 @@ function createFuncion(newFuncion) {
     return newFuncion;
 }
 
-// Actualizar un película
-function updateMovie(uuid, updatedFuncion) {
+// Actualizar una función
+function updateFuncion(uuid, updatedFuncion) {
     const funcion = readFuncionesFromFile();
     const index = funcion.findIndex(funcion => funcion.uuid === uuid);
     if (index !== -1) {
@@ -252,4 +252,14 @@ module.exports = {
     updateMovie,
     deleteMovie,
     findMovie
+};
+
+module.exports = {
+    getFunciones,
+    getFuncionById,
+    writeFuncionesToFile,
+    createFuncion,
+    updateFuncion,
+    deleteFuncion,
+    findFuncion
 };
