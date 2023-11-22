@@ -110,3 +110,28 @@ function renderMovieDetails(movie, funciones, salas, sucursales) {
 
     return movieContainer;
 }
+
+document.querySelectorAll('.btn-horario').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const peliculaId = this.getAttribute('data-pelicula-id');
+        const horarioId = this.getAttribute('data-horario-id');
+        
+        // Aquí se asume que tienes una función que puede obtener los detalles de la película y el horario
+        const detallesPelicula = obtenerDetallesPelicula(peliculaId);
+        const detallesHorario = obtenerDetallesHorario(horarioId);
+
+        sessionStorage.setItem('detallesPelicula', JSON.stringify(detallesPelicula));
+        sessionStorage.setItem('detallesHorario', JSON.stringify(detallesHorario));
+        window.location.href = 'boletos.html';
+    });
+});
+
+function obtenerDetallesPelicula(peliculaId) {
+    // Implementación para obtener detalles de la película, por ejemplo, desde movies.json
+    // Esto puede variar según cómo estés cargando o almacenando estos datos
+}
+
+function obtenerDetallesHorario(horarioId) {
+    // Implementación similar para obtener detalles del horario desde funcion.json
+}
+
