@@ -608,79 +608,58 @@ function deleteReserva(idReserva) {
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Movie
 module.exports = {
+    // Funciones de Movie
     getMovies,
     getMovieById,
     writeMoviesToFile,
     createMovie,
     updateMovie,
     deleteMovie,
-    findMovie
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Movie
-module.exports = {
+    findMovie,
+    // Funciones de Función
     getFunciones,
     getFuncionById,
     writeFuncionesToFile,
     createFuncion,
     updateFuncion,
-    deleteFuncion
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Sucursal
-module.exports = {
+    deleteFuncion,
+    // Funciones de Sucursal
     getSucursales,
     getSucursalById,
     writeSucursalesToFile,
     createSucursal,
     updateSucursal,
-    deleteSucursal
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Usuario
-module.exports = {
+    deleteSucursal,
+    // Funciones de Usuario
     getUsuarios,
     getUsuarioById,
     writeUsuariosToFile,
     createUsuario,
     updateUsuario,
-    deleteUsuario
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Boleto
-module.exports = {
+    deleteUsuario,
+    // Funciones de Boleto
     getBoletos,
     getBoletoById,
     writeBoletosToFile,
     createBoleto,
     updateBoleto,
-    deleteBoleto
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Asiento
-module.exports = {
+    deleteBoleto,
+    // Funciones de Asiento
     getAsientos,
     getAsientoById,
     writeAsientosToFile,
     createAsiento,
     updateAsiento,
-    deleteAsiento
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Sala
-module.exports = {
+    deleteAsiento, 
+    // Funciones de Sala
     getSalas,
     getSalaById,
     writeSalasToFile,
     createSala,
     updateSala,
-    deleteSala
-};
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//Modulos de Reserva
-module.exports = {
+    deleteSala,
+    // Funciones de Reserva
     getReservas,
     getReservaById,
     writeReservasToFile,

@@ -1,13 +1,21 @@
 const express = require('express');
 const path = require('path');
+
+// Importar rutas
 const moviesRoutes = require('../routes/movies');
 const adminMoviesRoutes = require('../routes/admin_movies');
+const funcionesRoutes = require('../routes/funciones');
+const salasRoutes = require('../routes/salas');
+const sucursalRoutes = require('../routes/sucursal');
 
-const router = express.Router();
+const app = express();
 
-// Usar películas y Admin de películas
-router.use('/movies', moviesRoutes);
-router.use('/admin/movies', adminMoviesRoutes);
+// Configurar rutas
+app.use('/movies', moviesRoutes);
+app.use('/admin/movies', adminMoviesRoutes);
+app.use('/funciones', funcionesRoutes);
+app.use('/salas', salasRoutes);
+app.use('/sucursal', sucursalRoutes);
 
 // Rutas pata los html
 router.get('/', (req, res) => {
