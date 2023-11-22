@@ -111,6 +111,22 @@ function renderMovieDetails(movie, funciones, salas, sucursales) {
     return movieContainer;
 }
 
+function renderHorariosPage(products, pageIndex) {
+    const productsContainer = document.getElementById('movie_container');
+    productsContainer.innerHTML = '';  
+    const start = pageIndex * 1; 
+    const end = start + 1; 
+    const productsToRender = products.slice(start, end);
+    productsToRender.forEach(product => { 
+        const col = renderMovieDetails(product);
+        productsContainer.appendChild(col);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    renderMovieDetails();
+}); 
+
 document.querySelectorAll('.btn-horario').forEach(btn => {
     btn.addEventListener('click', function() {
         const peliculaId = this.getAttribute('data-pelicula-id');
