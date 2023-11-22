@@ -50,10 +50,10 @@ function renderMovieCard(movie) {
     const buttonLink = document.createElement('a');
     buttonLink.style = "color:black; text-decoration: none;";
     buttonLink.href = "./horarios.html"; // Enlace a la página de horarios
-
     const button = document.createElement('button');
-    button.className = 'btn btn-primary';
+    button.className = 'btn btn-primary ver-horario-button';
     button.textContent = 'Ver Horarios';
+    button.setAttribute('data-movie-id', movie.uuid);
     buttonLink.appendChild(button);
 
     cardImgOverlay.appendChild(buttonLink);
@@ -119,12 +119,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-/*
-//Añadir al carrito
-function addToCart(movie, quantity) {
-    // Casteamos la entrada a entero
+//Añadir a boleto
+function addToHorarios(movie) {
+    /* Casteamos la entrada a entero
     quantity = parseInt(quantity);
-
+    
     // Verificamos que la cantidad sea un número válido y mayor que 0
     if (isNaN(quantity) || quantity <= 0) {
         alert('Por favor, ingresa una cantidad válida (mayor que 0).');
@@ -133,47 +132,64 @@ function addToCart(movie, quantity) {
         quantityModal.hide();
         document.querySelector(".modal-backdrop").remove();
         return; // Salimos de la función para no continuar con la adición al carrito
-    }
-
-    // Creamos nuestro carrito tipo objeto
-    let cart = JSON.parse(sessionStorage.getItem('cart')) || {};
+    }*/
+    
+    // Creamos nuestro boleto tipo objeto
+    let object = JSON.parse(sessionStorage.getItem('object')) || {};
     const uuid = movie.uuid;
-
-    // Si ya existe en el carrito, sumamos la cantidad
+    
+    /* Si ya existe en el carrito, sumamos la cantidad
     if (cart[uuid]) {
         cart[uuid].quantity += quantity;
         // Si no existe, lo agregamos
     } else {
         cart[uuid] = { movie, quantity };
-    }
-
+    }*/
+    
     // Lo almacenamos en el SessionStorage
-    sessionStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('object', JSON.stringify(object));
     // Si se almacenó correctamente, redirigimos al carrito
-    if (cart[uuid]) {
-        window.location.href = "./shopping_cart.html";
+    if (object[uuid]) {
+        window.location.href = "./horarios.html";
     }
 }
 
-// Listener del botón de AÑADIR AL CARRITO
+// Listener del botón de AÑADIR A HORARIOS
 document.addEventListener('click', function (event) {
-    if (event.target.classList.contains('add-to-cart-button')) {
+    if (event.target.classList.contains('ver-horario-button')) {
         // Obtiene el ID del película del botón que fue clickeado
         var movieId = event.target.getAttribute('data-movie-id');
         // Configura el ID del película en el campo oculto del modal
         document.getElementById('hiddenmovieIdInput').value = movieId;
-        // Abre el modal
+
+        try {
+            // Realizar la solicitud para obtener los datos del película usando el movie UUID
+            const response = fetch(`http://localhost:3000/movies/${movieId}`);
+            // Si no jala, no lo encuentra...
+            if (!response.ok) {
+                throw new Error('El película no pudo ser cargado');
+            }
+            const movie = response.json();
+            
+            // Llama a la función addToCart con el película y la cantidad seleccionada
+            addToHorarios(movie);
+        } catch (error) {
+            // Manejamos el error por si truena de alguna otra manera
+            console.error('Error al obtener el película:', error);
+        }
+        /* Abre el modal
         var quantityModal = new bootstrap.Modal(document.getElementById('quantityModal'));
-        quantityModal.show();
+        quantityModal.show();*/
     }
 });
 
+/*
 // Listener del botón de confirmar del modal de añadir al carrito (declarado fuera de todo tipo de 
 // listener por que también su buggean y explotan)
 document.getElementById('confirmQuantityBtn').addEventListener('click', async function () {
     var quantity = document.getElementById('quantityInput').value;
     var movieId = document.getElementById('hiddenmovieIdInput').value;
-
+    
     try {
         // Realizar la solicitud para obtener los datos del película usando el movie UUID
         const response = await fetch(`http://localhost:3000/movies/${movieId}`);
@@ -182,10 +198,10 @@ document.getElementById('confirmQuantityBtn').addEventListener('click', async fu
             throw new Error('El película no pudo ser cargado');
         }
         const movie = await response.json();
-
+        
         // Llama a la función addToCart con el película y la cantidad seleccionada
         addToCart(movie, quantity);
-
+        
         // Cierra el modal
         var quantityModal = bootstrap.Modal.getInstance(document.getElementById('quantityModal'));
         quantityModal.hide();
@@ -195,12 +211,13 @@ document.getElementById('confirmQuantityBtn').addEventListener('click', async fu
     }
 });
 
+/*
 document.getElementById('cancelQuantityBtn').addEventListener('click', async function () {
     // Hacer que jale el botón el modal #GraciasDorx :(
-    document.querySelector(".modal-backdrop").remove();
-});
+        document.querySelector(".modal-backdrop").remove();
+    });
 
-document.getElementById('cross-close-modal').addEventListener('click', async function () {
-    // Hacer que jale el botón el modal #GraciasDorx :(
+    document.getElementById('cross-close-modal').addEventListener('click', async function () {
+        // Hacer que jale el botón el modal #GraciasDorx :(
     document.querySelector(".modal-backdrop").remove();
 });*/
