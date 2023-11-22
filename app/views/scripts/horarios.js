@@ -61,6 +61,7 @@ async function fetchFunciones() {
 const moviesInHorarios = document.getElementById('movie_container')
 //const cartTotal = document.getElementById('total');
 
+/*
 function showMoviesInHorarios() {
     let object = JSON.parse(sessionStorage.getItem('object')) || {};
     const moviesInHorarios = document.getElementById('movie_container'); // Contenedor para los productos en el carrito
@@ -226,7 +227,7 @@ function updateCartTotal() {
 document.addEventListener('DOMContentLoaded', function () {
     showMoviesInHorarios();
 }); 
-
+*/
 
 
 
