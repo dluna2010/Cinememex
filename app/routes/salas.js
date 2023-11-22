@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Sala = require('../models/sala'); // Asegúrate de que la ruta sea correcta
+const Sala = require('../controllers/sala'); // Asegúrate de que la ruta sea correcta
 
 // Obtener todas las salas
 router.get('/', async (req, res) => {

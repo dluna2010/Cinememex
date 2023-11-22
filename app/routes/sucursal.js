@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Sucursal = require('../models/sucursal'); // Asegúrate de que la ruta sea correcta
+const Sucursal = require('../controllers/sucursal'); // Asegúrate de que la ruta sea correcta
 
 // Obtener todas las sucursales
 router.get('/', async (req, res) => {

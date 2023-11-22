@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Funcion = require('../models/funcion'); // Asegúrate de que la ruta sea correcta
+const Funcion = require('../controllers/funcion'); // Asegúrate de que la ruta sea correcta
 
 // Obtener todas las funciones
 router.get('/', async (req, res) => {
