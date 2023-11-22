@@ -11,8 +11,8 @@ class SalaException {
 class Sala {
     constructor(uuid, numeroDeSala, capacidad, idSucursal) {
         this._uuid = generateUUID();
-        this._numeroDeSala = numeroDeSala;
-        this._capacidad = capacidad;
+        this.numeroDeSala = numeroDeSala;
+        this.capacidad = capacidad;
         this._idSucursal = idSucursal; // Relación con Sucursal
     }
 

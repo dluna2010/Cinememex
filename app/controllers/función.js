@@ -9,7 +9,7 @@ class FuncionException {
 class Funcion {
     constructor(idFuncion, fechaHora, idPelicula, idSala) {
         this._idFuncion = idFuncion;
-        this._fechaHora = fechaHora;
+        this.fechaHora = fechaHora;
         this._idPelicula = idPelicula; // Relación con Película
         this._idSala = idSala; // Relación con Sala
     }

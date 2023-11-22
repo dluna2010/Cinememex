@@ -1,23 +1,24 @@
-const productsInCart = document.getElementById('cart-container')
-const cartTotal = document.getElementById('total');
+const moviesInBoleto = document.getElementById('boleto-container')
+//const cartTotal = document.getElementById('total');
 
 function showProductsInCart() {
-    let cart = JSON.parse(sessionStorage.getItem('cart')) || {};
-    const productsInCart = document.getElementById('cart-container'); // Contenedor para los productos en el carrito
+    let boleto = JSON.parse(sessionStorage.getItem('boleto')) || {};
+    const moviesInBoleto = document.getElementById('boleto-container'); // Contenedor para los productos en el carrito
 
-    productsInCart.innerHTML = '';
+    moviesInBoleto.innerHTML = '';
 
-    if (Object.keys(cart).length === 0) {
-        productsInCart.innerHTML = '<h5>No hay productos en el carrito.</h5>';
+    if (Object.keys(boleto).length === 0) {
+        boleto.innerHTML = '<h5>No hay nada en el boleto.</h5>';
         return;
     }
 
-    Object.keys(cart).forEach(uuid => {
-        const cartItem = cart[uuid];
-        const product = cartItem.product;
-        const quantity = cartItem.quantity;
+    Object.keys(boleto).forEach(uuid => {
+        const boletoItem = boleto[uuid];
+        const movie = boletoItem.movie;
+        const funcion = boletoItem.funcion;
 
-        if (!product || !product.title || !product.description || !product.imageUrl || !product.pricePerUnit) {
+
+        if (!product || !product.titulo || !product.description || !product.imageUrl || !product.pricePerUnit) {
             console.error('Producto con UUID:', uuid, 'tiene datos incompletos o incorrectos:', product);
             return; 
         }
@@ -67,6 +68,59 @@ function showProductsInCart() {
                 <!-- Columna para la imagen del producto, se ajusta en diferentes tamaños de pantalla -->
                 <div class="col-12 col-md-4 col-lg-3">
                     <img src="${product.imageUrl}" class="img-fluid float-md-right" alt="${product.title}" style="max-width: 120px; height: auto;">
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Resumen de compra -->
+        <div class="movie-description">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="${movie.posterUrl}" alt="Película" class="img-fluid">
+                    </div>
+                    <div class="col-md-8 movie-info">
+                        <h2 style="color: goldenrod;">Película: ${movie.titulo}</h2>
+                        <p style="color: white;">Sucursal: Mov7eZ Sania</p>
+                        <p style="color: white;">Fecha: ${funcion.fechaHora}</p>
+                        <p style="color: white;">Función: 3:15 PM</p>
+
+                        <div style="text-align: center; color: white;">
+                            <h1>Selecciona tus boletos</h1>
+                            <p>A continuación selecciona la cantidad de boletos que desea para la función</p>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <!-- Grupo de entrada para la cantidad -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Cantidad:</span>
+                                </div>
+                                <input type="number" class="form-control quantity-input" value="${quantity}" disabled>
+                                <!-- Botones para editar cantidad -->
+                                <button type="button" class="btn btn-primary btn-sm edit-btn">
+                                    <i class="fas fa-pencil-alt edit-icon"></i>
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm confirm-btn" style="display: none;">
+                                    <i class="fas fa-check confirm-edit-icon"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm cancel-btn" style="display: none;">
+                                    <i class="fas fa-times cancel-edit-icon"></i>
+                                </button>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Precio:</span>
+                                </div>
+                                <input type="text" class="form-control" value="${funcion.pricePerUnit}" disabled>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">MXN</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>`;
@@ -120,7 +174,7 @@ function showProductsInCart() {
         });
     });
 
-    updateCartTotal();
+    //updateCartTotal();
 }
 
 function deleteProduct(productUUID) {
@@ -128,7 +182,7 @@ function deleteProduct(productUUID) {
     delete cart[productUUID];
     sessionStorage.setItem('cart', JSON.stringify(cart));
 }
-
+/*
 function updateCartTotal() {
     let cart = JSON.parse(sessionStorage.getItem('cart')) || {};
     let total = 0;
@@ -161,7 +215,7 @@ function updateCartTotal() {
     if (Object.keys(cart).length === 0) {
         document.getElementById('cart-container').innerHTML = '<h5>No hay productos en el carrito.</h5>';
     }
-}
+}*/
 
 document.addEventListener('DOMContentLoaded', function () {
     showProductsInCart();
