@@ -268,7 +268,7 @@ function renderMovieDetails(movie, funciones, salas, sucursales) {
         <p><strong>Reparto:</strong> ${movie.reparto}</p>`;
     movieContainer.appendChild(infoContainer);
 
-    // Horarios de las funciones por sucursal
+    /* Horarios de las funciones por sucursal
     sucursales.forEach(sucursal => {
         const sucursalContainer = document.createElement('div');
         sucursalContainer.className = 'row mt-3 sucursal-container';
@@ -289,7 +289,7 @@ function renderMovieDetails(movie, funciones, salas, sucursales) {
             }).join('');
         sucursalContainer.appendChild(horariosContainer);
         movieContainer.appendChild(sucursalContainer);
-    });
+    });*/
 
     return movieContainer;
 }
@@ -300,15 +300,39 @@ function renderHorariosPage(products, pageIndex) {
     const start = pageIndex * 1; 
     const end = start + 1; 
     const productsToRender = products.slice(start, end);
-    productsToRender.forEach(product => { 
-        const col = renderMovieDetails(product);
+    productsToRender.forEach(movies => { 
+        const col = renderMovieDetails(movies);
         productsContainer.appendChild(col);
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     renderMovieDetails();
-}); 
+}); */
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const movies = await fetchMovies();
+        const salas = await fetchSalas();
+        const sucursales = await fetchSucursal();
+        const funciones = await fetchFunciones();
+    
+        renderHorariosPage(movies, 0);
+
+        /* Dejar lista la páginación
+        document.querySelectorAll('.pagination .page-item').forEach((item, index) => {
+            if (index === 0) {
+                item.addEventListener('click', (event) => handlePrevNextClick(event, movies, false));
+            } else if (index === 4) {
+                item.addEventListener('click', (event) => handlePrevNextClick(event, movies, true));
+            } else {
+                item.addEventListener('click', (event) => handlePaginationClick(event, movies));
+            }
+        });*/
+    } catch (error) {
+        console.error('Error loading movies:', error);
+    }
+});
 
 document.querySelectorAll('.btn-horario').forEach(btn => {
     btn.addEventListener('click', function() {
