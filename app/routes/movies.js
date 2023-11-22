@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         const movies = dataHandler.getMovies();
         res.json(movies);
     } catch (error) {
-        res.status(500).json({ message: "Error fetching movies", error: error.message });
+        res.status(500).json({ message: "Error fetching movie", error: error.message });
     }
 });
 

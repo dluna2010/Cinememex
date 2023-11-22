@@ -1,22 +1,32 @@
 const Usuario = require('../controllers/usuario');
 const express = require('express');
-const dataHandler = require('../controllers/data_handler');
+const dataHandler_users = require('../controllers/data_handler_users');
 
 const router = express.Router();
 
 // Middleware de validación
-function validateAdmin(req, res, next) {
-    const authToken = req.headers['x-auth'];
-    if (authToken !== 'admin') {
-        res.status(403).json({ message: "Acceso no autorizado, no se cuenta con privilegios de administrador" });
-        return;
-    }
-    next();
-}
+//function validateAdmin(req, res, next) {
+//    const authToken = req.headers['x-auth'];
+//    if (authToken !== 'admin') {
+//        res.status(403).json({ message: "Acceso no autorizado, no se cuenta con privilegios de administrador" });
+//        return;
+//    }
+//    next();
+//}
 
 // Hacemos que use en TODAS las rutas :)
-router.use(validateAdmin);
+//router.use(validateAdmin);
 
+// Obtener todos los usuarios
+router.get('/', (req, res) => {
+    try {
+        const usuarios = dataHandler_users.getUsuarios();
+        res.json(usuarios);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching usuarios", error: error.message });
+    }
+});
+/*
 // Ruta para crear un nuevo usuario
 router.post('/', (req, res) => {
     try {
@@ -45,7 +55,7 @@ router.post('/login', (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Error en el servidor', error: error.message });
     }
-});
+});*/
 
 // Otras rutas para usuarios, si son necesarias
 

@@ -1,12 +1,15 @@
 ### Obtener todos los películas
 GET http://localhost:3000/movies
 
+### Obtener todos los usuarios
+GET http://localhost:3000/usuarios
+
 // Búsquedas
 ### Categoría y título
 GET http://localhost:3000/movies/search/
 
 ### Categoría
-GET http://localhost:3000/movies/search/Card Game:
+GET http://localhost:3000/movies/search/Terror
 
 ### Título
 GET http://localhost:3000/movies/search/:
