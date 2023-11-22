@@ -232,3 +232,5 @@ GET http://localhost:3001/api/users?email=andrea@email.com
 ###
 GET http://localhost:3001/api/users/655e86f32343f2e9b2e55565
 
+###
+GET http://localhost:3001/api/movies

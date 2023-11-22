@@ -1,4 +1,53 @@
-const { generateUUID } = require("./util");
+const mongoose = require('mongoose');
+
+// Esquema de Mongoose para la película
+const movieSchema = new mongoose.Schema({
+    titulo: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    sinopsis: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    posterUrl: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    genero: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    duration: {
+        type: Number,
+        required: true,
+        min: 0
+    },
+    reparto: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    trailerIframe: {
+        type: String,
+        required: true,
+        trim: true
+    }
+}, {
+    timestamps: true
+});
+
+// Crear el modelo Mongoose utilizando el esquema definido
+const Movie = mongoose.model('Movie', movieSchema);
+
+module.exports = Movie;
+
+
+/*const { generateUUID } = require("./util");
 
 //Creación de la clase de excepción del película
 class MovieException {
@@ -127,4 +176,4 @@ class Movie {
     }
 }
 
-module.exports = Movie;
+module.exports = Movie;*/

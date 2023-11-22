@@ -1,4 +1,73 @@
 const express = require('express');
+const router = express.Router();
+const Movie = require('../controllers/movie'); // Importando el modelo Mongoose de Movie
+
+// Obtener todas las películas
+router.get('/', async (req, res) => {
+    try {
+        const movies = await Movie.find();
+        res.json(movies);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching movies", error: error.message });
+    }
+});
+
+// Obtener una película por su ID
+router.get('/:id', async (req, res) => {
+    try {
+        const movie = await Movie.findById(req.params.id);
+        if (!movie) {
+            res.status(404).json({ message: "Movie not found" });
+            return;
+        }
+        res.json(movie);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching movie", error: error.message });
+    }
+});
+
+// Crear una nueva película
+router.post('/', async (req, res) => {
+    try {
+        const newMovie = new Movie(req.body);
+        const savedMovie = await newMovie.save();
+        res.status(201).json(savedMovie);
+    } catch (error) {
+        res.status(400).json({ message: "Error creating movie", error: error.message });
+    }
+});
+
+// Actualizar una película por su ID
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedMovie) {
+            res.status(404).json({ message: "Movie not found" });
+            return;
+        }
+        res.json(updatedMovie);
+    } catch (error) {
+        res.status(400).json({ message: "Error updating movie", error: error.message });
+    }
+});
+
+// Eliminar una película por su ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const deletedMovie = await Movie.findByIdAndDelete(req.params.id);
+        if (!deletedMovie) {
+            res.status(404).json({ message: "Movie not found" });
+            return;
+        }
+        res.json({ message: "Movie deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting movie", error: error.message });
+    }
+});
+
+module.exports = router;
+
+/*const express = require('express');
 const dataHandler = require('../controllers/data_handler');
 const ShoppingCart = require('../controllers/shopping_cart');
 
@@ -62,4 +131,4 @@ router.get('/search/:query', (req, res) => {
     res.json(movies);
 });
 
-module.exports = router;
+module.exports = router;*/

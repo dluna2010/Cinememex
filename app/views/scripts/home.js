@@ -4,7 +4,7 @@ let currentPageIndex = 0;
 // Ir a buscar los películas en la base de datos
 async function fetchMovies() {
     try {
-        const response = await fetch('http://127.0.0.1:3000/movies');
+        const response = await fetch('http://127.0.0.1:3001/api/movies');
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch movies');

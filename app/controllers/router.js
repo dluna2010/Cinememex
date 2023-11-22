@@ -11,7 +11,7 @@ const sucursalRoutes = require('../routes/sucursal');
 const usuariosRoutes = require('../routes/usuarios');
 
 // Montar rutas importadas
-router.use('/movies', moviesRoutes);
+router.use('/api/movies', moviesRoutes);
 router.use('/admin/movies', adminMoviesRoutes);
 router.use('/funciones', funcionesRoutes);
 router.use('/salas', salasRoutes);

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const router = require("./app/controllers/router");
 
 const app = express();
 
@@ -69,10 +70,12 @@ app.get('/api/users/:id', async (req, res) => {
 
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+    console.log("Mov7eZ corriendo en el puerto " + port);
 });
+
+app.use("/", router);
 
 
 /*const express = require('express');
