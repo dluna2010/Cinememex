@@ -2,20 +2,20 @@ const express = require('express');
 const router = express.Router();
 const dataHandler = require('../controllers/data_handler');
 
-// Obtener todas las sucursales
-router.get('/sucursales', (req, res) => {
-    const sucursales = dataHandler.getSucursales();
-    res.json(sucursales);
+// Obtener todas las salas
+router.get('/salas', (req, res) => {
+    const salas = dataHandler.getSucursales();
+    res.json(salas);
 });
 
-// Obtener una sucursal por ID
-router.get('/sucursales/:id', (req, res) => {
+// Obtener una sala por ID
+router.get('/salas/:id', (req, res) => {
     const id = req.params.id;
-    const sucursal = dataHandler.getSucursalById(id);
-    if (sucursal) {
-        res.json(sucursal);
+    const sala = dataHandler.getSucursalById(id);
+    if (sala) {
+        res.json(sala);
     } else {
-        res.status(404).send('Sucursal no encontrada');
+        res.status(404).send('Sala no encontrada');
     }
 });
 
