@@ -1,5 +1,5 @@
 ### Obtener todos los películas
-GET http://localhost:3001/movies
+GET http://localhost:3000/movies
 
 // Búsquedas
 ### Categoría y título
@@ -41,17 +41,17 @@ GET http://localhost:3000/movies/09011e15-c086-4ea7-9f69-f7a03bb22068
 GET http://localhost:3000/movies/7a519ffa-bee2-4bd7-af2d-6c6bfb81f45c
 
 ### Añadir un nuevo película (Admin y correcto)
-POST http://localhost:3001/admin/movies
+POST http://localhost:3000/admin/movies
 Content-Type: application/json
 x-auth: admin
 
 {
     "titulo": "Five Night's At Freddy's",
-    "sinopsis": "película nueva desde admin movies",
-    "posterUrl": "EsteEsUnLinkGenerico.com",
+    "sinopsis": "El terrorífico fenómeno del videojuego de terror se transforma en un escalofriante espectáculo cinematográfico, Blumhouse (productora de M3GAN, El teléfono negro y El hombre invisible) lleva Five Nights at Freddy's a la gran pantalla. La película trata de un problemático guardia de seguridad que empieza a trabajar en Freddy Fazbear's Pizza. Mientras pasa su primera noche en el trabajo, se da cuenta de que el turno de noche en Freddy's no será tan fácil de superar.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BYTI0ZmI4NDItZGFlZC00M2E4LWIyZWEtMTFhMjQwYmU4MGNlXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
     "genero": "Terror",
-    "duration": 120,
-    "reparto": "Peeta",
+    "duration": 112,
+    "reparto": "Josh Hutcherson, Elizabeth Lail, Piper Rubio, Mary Stuart Masterson, Matthew Lillard",
     "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
 }
 
@@ -118,3 +118,32 @@ GET http://localhost:3000/home
 GET http://localhost:3000/shopping_cart
 
 //Ignorar, población de mi archivo JSON con mis películas
+### Añadir un nuevo película (Admin y correcto)
+POST http://localhost:3000/admin/movies
+Content-Type: application/json
+x-auth: admin
+
+{
+    "titulo": "Five Night's At Freddy's",
+    "sinopsis": "El terrorífico fenómeno del videojuego de terror se transforma en un escalofriante espectáculo cinematográfico, Blumhouse (productora de M3GAN, El teléfono negro y El hombre invisible) lleva Five Nights at Freddy's a la gran pantalla. La película trata de un problemático guardia de seguridad que empieza a trabajar en Freddy Fazbear's Pizza. Mientras pasa su primera noche en el trabajo, se da cuenta de que el turno de noche en Freddy's no será tan fácil de superar.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BYTI0ZmI4NDItZGFlZC00M2E4LWIyZWEtMTFhMjQwYmU4MGNlXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+    "genero": "Terror",
+    "duration": 112,
+    "reparto": "Josh Hutcherson, Elizabeth Lail, Piper Rubio, Mary Stuart Masterson, Matthew Lillard",
+    "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
+}
+
+### Añadir un nuevo película (Admin y correcto)
+POST http://localhost:3000/admin/movies
+Content-Type: application/json
+x-auth: admin
+
+{
+    "titulo": "The Jester",
+    "sinopsis": "Después de la reciente muerte de su padre, dos hermanas separadas se encuentran siendo acechadas por un ser malévolo conocido como El Bufón. Revelándose como algo más que un simple hombre enmascarado, la entidad maligna comienza a atormentar aún más a los habitantes de este pequeño pueblo en la noche de Halloween.",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BZDcyYzRiZmItMTliMS00M2JkLWE0MGMtOWFkMDJmOTAzY2IzXkEyXkFqcGdeQXVyOTMzOTMzMTg@._V1_FMjpg_UX1000_.jpg",
+    "genero": "Terror",
+    "duration": 90,
+    "reparto": "Lelia Symington, Sam Lukowski, Michael Sheffield, Matt Servitto",
+    "trailerIframe": "https://www.youtube.com/embed/FgLPG38ZX7E?si=BabLKSnH5Ux7vX88"
+}
