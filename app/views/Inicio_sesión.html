@@ -72,15 +72,15 @@
                     <h5 class="modal-title">Iniciar sesión</h5>
                 </div>
                 <div class="modal-body">
-                    <form class="login-form">
+                    <form class="login-form" id="loginForm">
                         <div class="input-group mb-3">
                             <input type="email" id="email" name="email" placeholder="Ingresa tu correo" class="form-control" required>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" class="form-control" required>
+                            <input type="password" id="password" name="password" placeholder="Ingresa tu password" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
+                    </form>                    
                 </div>
                 <div class="modal-footer text-center">
                     ¿No tienes cuenta?&nbsp <a href="./registro.html"> Regístrate aquí</a>
@@ -89,6 +89,34 @@
         </div>
     </div>
   </main>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        var email = document.getElementById('email').value;
+        var contraseña = document.getElementById('password').value; // Cambiado a 'password'
+    
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, contraseña })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Inicio de sesión exitoso') {
+                alert('Inicio de sesión exitoso');
+                window.location.href = './home.html';
+            } else {
+                alert('Usuario no encontrado o contraseña incorrecta');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    </script>
+    
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
