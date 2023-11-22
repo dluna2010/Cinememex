@@ -164,7 +164,7 @@ document.addEventListener('click', function (event) {
 
         try {
             // Realizar la solicitud para obtener los datos del película usando el movie UUID
-            const response = fetch(`http://localhost:3000/movies/${movieId}`);
+            const response = fetch(`http://localhost:3001/movies/${movieId}`);
             // Si no jala, no lo encuentra...
             if (!response.ok) {
                 throw new Error('El película no pudo ser cargado');
