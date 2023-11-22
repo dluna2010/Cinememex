@@ -3,6 +3,7 @@ const path = require("path");
 
 const { generateUUID } = require("./util");
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Apartado para Movie
 const moviesFilePath = path.join(__dirname, "..", "data", "movies.json");
 
@@ -606,6 +607,7 @@ function deleteReserva(idReserva) {
     return null;
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Movie
 module.exports = {
     getMovies,
@@ -616,7 +618,7 @@ module.exports = {
     deleteMovie,
     findMovie
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Movie
 module.exports = {
     getFunciones,
@@ -626,7 +628,7 @@ module.exports = {
     updateFuncion,
     deleteFuncion
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Sucursal
 module.exports = {
     getSucursales,
@@ -636,7 +638,7 @@ module.exports = {
     updateSucursal,
     deleteSucursal
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Usuario
 module.exports = {
     getUsuarios,
@@ -646,7 +648,7 @@ module.exports = {
     updateUsuario,
     deleteUsuario
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Boleto
 module.exports = {
     getBoletos,
@@ -656,7 +658,7 @@ module.exports = {
     updateBoleto,
     deleteBoleto
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Asiento
 module.exports = {
     getAsientos,
@@ -666,7 +668,7 @@ module.exports = {
     updateAsiento,
     deleteAsiento
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Sala
 module.exports = {
     getSalas,
@@ -676,7 +678,7 @@ module.exports = {
     updateSala,
     deleteSala
 };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 //Modulos de Reserva
 module.exports = {
     getReservas,
