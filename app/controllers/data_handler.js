@@ -27,7 +27,7 @@ function writeMoviesToFile(movies) {
     }
 }
 
-// Obtener todos los películas
+// Obtener todas las películas
 function getMovies() {
     let data = readMoviesFromFile();
     return data;
@@ -122,7 +122,7 @@ function findMovie(query) {
 //Apartado para funcion
 const funcionesFilePath = path.join(__dirname, "..", "data", "funcion.json");
 
-// LEER películas del json
+// LEER funciones del json
 function readFuncionesFromFile() {
     try {
         const data = fs.readFileSync(funcionesFilePath, 'utf8');
@@ -134,7 +134,7 @@ function readFuncionesFromFile() {
     }
 }
 
-// ESCRIBIR películas en el json
+// ESCRIBIR funciones en el json
 function writeFuncionesToFile(funcion) {
     try {
         fs.writeFileSync(funcionesFilePath, JSON.stringify(funcion, null, 2), 'utf8');
@@ -143,19 +143,19 @@ function writeFuncionesToFile(funcion) {
     }
 }
 
-// Obtener todos los películas
+// Obtener todos los funciones
 function getFunciones() {
     let data = readFuncionesFromFile();
     return data;
 }
 
-// Obtener un película por ID
+// Obtener una funcion por ID
 function getFuncionById(uuid) {
     const funcion = readFuncionesFromFile();
     return funcion.find(funcion => funcion.uuid === uuid);
 }
 
-// Crear un nuevo película
+// Crear un nueva funcion
 function createFuncion(newFuncion) {
     const funcion = readFuncionesFromFile();
     newFuncion.uuid = generateUUID();
@@ -177,7 +177,7 @@ function updateFuncion(uuid, updatedFuncion) {
     return null;
 }
 
-// Borrar un película
+// Borrar una funcion
 function deleteFuncion(uuid) {
     const funcion = readFuncionesFromFile();
     const index = funcion.findIndex(funcion => funcion.uuid === uuid);
@@ -189,7 +189,7 @@ function deleteFuncion(uuid) {
     return null;
 }
 
-// Encontrar un película mediante una consulta
+// Encontrar la funcion mediante una consulta
 // Método adicional para buscar películas por categoría y/o nombre
 function findFuncion(query) {
     if (!query) return [];
