@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const connectionString = 'mongodb+srv://admin:admin@cluster0.necdoj1.mongodb.net/';

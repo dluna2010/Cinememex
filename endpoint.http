@@ -210,3 +210,25 @@ x-auth: admin
     "reparto": "Tahar Rahim, Ludivine Sagnier, Vanessa Kirby, Catherine Walker, Joaquin Phoenix",
     "trailerIframe": "https://www.youtube.com/embed/1DJYiG6wh0w?si=3Su2Xxlx1qigPMsY"
 }
+
+//Rutas de MongoDB
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "idUsuario": "3",
+    "nombre": "Andrea",
+    "email": "andrea@email.com",
+    "password": "contraseña3"
+}
+
+###
+GET http://localhost:3001/api/users
+
+###
+GET http://localhost:3001/api/users?email=andrea@email.com
+
+###
+GET http://localhost:3001/api/users/655e86f32343f2e9b2e55565
+
