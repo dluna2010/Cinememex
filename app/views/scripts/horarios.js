@@ -13,37 +13,50 @@ async function fetchMovies() {
     }
 }
 
-// Cargar la información de las salas desde el archivo JSON
-fetch('../../data/sala.json')
-    .then(response => {
+async function fetchSalas() {
+    try {
+        const response = await fetch('http://127.0.0.1:3000/sala');
+        const data = await response.json();
         if (!response.ok) {
-            throw new Error('No se pudo cargar el archivo JSON de salas');
+            throw new Error(data.message || 'Failed to fetch salas');
         }
-        return response.json();
-    })
-    .then(salas => {
-        // Aquí puedes usar la información de salas
-        // Asegúrate de que "salas" sea un arreglo con la información de las salas
-    })
-    .catch(error => {
-        console.error('Error al cargar el archivo JSON de salas:', error);
-    });
+        return data;
+        // Si no se encuentran
+    } catch (error) {
+        console.error('Error fetching salas:', error);
+        throw error;
+    }
+}
 
-// Cargar la información de las sucursales desde el archivo JSON
-fetch('../../data/sucursal.json')
-    .then(response => {
+async function fetchSucursal() {
+    try {
+        const response = await fetch('http://127.0.0.1:3000/sucursal');
+        const data = await response.json();
         if (!response.ok) {
-            throw new Error('No se pudo cargar el archivo JSON de sucursales');
+            throw new Error(data.message || 'Failed to fetch sucursal');
         }
-        return response.json();
-    })
-    .then(sucursales => {
-        // Aquí puedes usar la información de sucursales
-        // Asegúrate de que "sucursales" sea un arreglo con la información de las sucursales
-    })
-    .catch(error => {
-        console.error('Error al cargar el archivo JSON de sucursales:', error);
-    });
+        return data;
+        // Si no se encuentran
+    } catch (error) {
+        console.error('Error fetching sucursal:', error);
+        throw error;
+    }
+}
+
+async function fetchFunciones() {
+    try {
+        const response = await fetch('http://127.0.0.1:3000/funciones');
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to fetch funciones');
+        }
+        return data;
+        // Si no se encuentran
+    } catch (error) {
+        console.error('Error fetching funciones:', error);
+        throw error;
+    }
+}
 
 function renderMovieDetails(movie, funciones, salas, sucursales) {
     // Crear el contenedor principal para una película
