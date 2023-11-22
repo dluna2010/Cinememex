@@ -118,7 +118,7 @@ GET http://localhost:3000/home
 GET http://localhost:3000/shopping_cart
 
 //Ignorar, población de mi archivo JSON con mis películas
-### Añadir un nuevo película (Admin y correcto)
+### Añadir un nuevo película
 POST http://localhost:3000/admin/movies
 Content-Type: application/json
 x-auth: admin
@@ -133,7 +133,7 @@ x-auth: admin
     "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
 }
 
-### Añadir un nuevo película (Admin y correcto)
+### Añadir un nuevo película
 POST http://localhost:3000/admin/movies
 Content-Type: application/json
 x-auth: admin
@@ -146,4 +146,34 @@ x-auth: admin
     "duration": 90,
     "reparto": "Lelia Symington, Sam Lukowski, Michael Sheffield, Matt Servitto",
     "trailerIframe": "https://www.youtube.com/embed/FgLPG38ZX7E?si=BabLKSnH5Ux7vX88"
+}
+
+### Añadir un nuevo película
+POST http://localhost:3000/admin/movies
+Content-Type: application/json
+x-auth: admin
+
+{
+    "titulo": "Los Asesinos de la Luna",
+    "sinopsis": "En la década de 1920, los miembros de la tribu de nativos americanos del condado de Osage, en Oklahoma, son asesinados cuando se encuentra petróleo en sus tierras. El FBI establece una investigación para encontrar a los culpables.",
+    "posterUrl": "https://dx35vtwkllhj9.cloudfront.net/paramountpictures/killers-of-the-flower-moon/images/regions/mx/onesheet.jpg",
+    "genero": "Suspenso",
+    "duration": 206,
+    "reparto": "Leonardo DiCaprio, Lily Gladstone, Robert De Niro, Jesse Plemons, Brendan Fraser",
+    "trailerIframe": "https://www.youtube.com/embed/57yrWZt5z2g?si=8GuKw4h2B8ybGJQN"
+}
+
+### Añadir un nuevo película
+POST http://localhost:3000/admin/movies
+Content-Type: application/json
+x-auth: admin
+
+{
+    "titulo": "La Patrulla Canina: La superpelícula",
+    "sinopsis": "Los cachorros obtienen superpoderes tras la caída de un meteorito en la ciudad, pero las cosas se complican cuando los villanos les roban sus superpoderes.",
+    "posterUrl": "https://static.wikia.nocookie.net/doblaje/images/4/4e/F2XieuEXYAASUKW.jpeg/revision/latest?cb=20230731140231&path-prefix=es",
+    "genero": "Aventura Infantil",
+    "duration": 93,
+    "reparto": "Taraji P. Henson, Kim Kardashian, Finn Lee-Epp, Ron Pardo",
+    "trailerIframe": "https://www.youtube.com/embed/UDgjJ9XzgHk?si=-04mQODOX0Z5RAEI"
 }

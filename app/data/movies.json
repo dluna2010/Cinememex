@@ -1,6 +1,6 @@
 [
   {
-    "_uuid": "ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+    "uuid": "ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
     "titulo": "Five Night's At Freddy's",
     "sinopsis": "El terrorífico fenómeno del videojuego de terror se transforma en un escalofriante espectáculo cinematográfico, Blumhouse (productora de M3GAN, El teléfono negro y El hombre invisible) lleva Five Nights at Freddy's a la gran pantalla. La película trata de un problemático guardia de seguridad que empieza a trabajar en Freddy Fazbear's Pizza. Mientras pasa su primera noche en el trabajo, se da cuenta de que el turno de noche en Freddy's no será tan fácil de superar.",
     "posterUrl": "https://m.media-amazon.com/images/M/MV5BYTI0ZmI4NDItZGFlZC00M2E4LWIyZWEtMTFhMjQwYmU4MGNlXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
@@ -10,7 +10,7 @@
     "trailerIframe": "https://www.youtube.com/embed/FRffQncR1HQ?si=VuixvUC2TjQXEubM"
   },
   {
-    "_uuid": "b32b4a1c-e8aa-4966-a4ca-bcad6e1c24ee",
+    "uuid": "b32b4a1c-e8aa-4966-a4ca-bcad6e1c24ee",
     "titulo": "The Jester",
     "sinopsis": "Después de la reciente muerte de su padre, dos hermanas separadas se encuentran siendo acechadas por un ser malévolo conocido como El Bufón. Revelándose como algo más que un simple hombre enmascarado, la entidad maligna comienza a atormentar aún más a los habitantes de este pequeño pueblo en la noche de Halloween.",
     "posterUrl": "https://m.media-amazon.com/images/M/MV5BZDcyYzRiZmItMTliMS00M2JkLWE0MGMtOWFkMDJmOTAzY2IzXkEyXkFqcGdeQXVyOTMzOTMzMTg@._V1_FMjpg_UX1000_.jpg",
@@ -18,5 +18,25 @@
     "duration": 90,
     "reparto": "Lelia Symington, Sam Lukowski, Michael Sheffield, Matt Servitto",
     "trailerIframe": "https://www.youtube.com/embed/FgLPG38ZX7E?si=BabLKSnH5Ux7vX88"
+  },
+  {
+    "uuid": "38f959db-1b86-43ef-8b42-614cd58a61de",
+    "titulo": "Los Asesinos de la Luna",
+    "sinopsis": "En la década de 1920, los miembros de la tribu de nativos americanos del condado de Osage, en Oklahoma, son asesinados cuando se encuentra petróleo en sus tierras. El FBI establece una investigación para encontrar a los culpables.",
+    "posterUrl": "https://dx35vtwkllhj9.cloudfront.net/paramountpictures/killers-of-the-flower-moon/images/regions/mx/onesheet.jpg",
+    "genero": "Suspenso",
+    "duration": 206,
+    "reparto": "Leonardo DiCaprio, Lily Gladstone, Robert De Niro, Jesse Plemons, Brendan Fraser",
+    "trailerIframe": "https://www.youtube.com/embed/57yrWZt5z2g?si=8GuKw4h2B8ybGJQN"
+  },
+  {
+    "uuid": "fa0e4a13-2041-4d5f-b099-0dc79a9f86fe",
+    "titulo": "La Patrulla Canina: La superpelícula",
+    "sinopsis": "Los cachorros obtienen superpoderes tras la caída de un meteorito en la ciudad, pero las cosas se complican cuando los villanos les roban sus superpoderes.",
+    "posterUrl": "https://static.wikia.nocookie.net/doblaje/images/4/4e/F2XieuEXYAASUKW.jpeg/revision/latest?cb=20230731140231&path-prefix=es",
+    "genero": "Aventura Infantil",
+    "duration": 93,
+    "reparto": "Taraji P. Henson, Kim Kardashian, Finn Lee-Epp, Ron Pardo",
+    "trailerIframe": "https://www.youtube.com/embed/UDgjJ9XzgHk?si=-04mQODOX0Z5RAEI"
   }
 ]
