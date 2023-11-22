@@ -1,8 +1,38 @@
 [
     {
         "idFuncion":"IDF1",
-        "fechaHora":"21-11-2023",
-        "idPelícula":,
-        "idSala":
+        "fechaHora":"12:30",
+        "idPelícula":"ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+        "idSala": "UUIDS1"
+    },
+    {
+        "idFuncion": "IDF2",
+        "fechaHora": "4:30",
+        "idPelícula": "ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+        "idSala": "UUIDS1"
+    },
+    {
+        "idFuncion": "IDF3",
+        "fechaHora": "7:30",
+        "idPelícula": "ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+        "idSala": "UUIDS1"
+    },
+    {
+        "idFuncion":"IDF1",
+        "fechaHora":"12:30",
+        "idPelícula":"ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+        "idSala": "UUIDS1"
+    },
+    {
+        "idFuncion": "IDF2",
+        "fechaHora": "4:30",
+        "idPelícula": "ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+        "idSala": "UUIDS1"
+    },
+    {
+        "idFuncion": "IDF3",
+        "fechaHora": "7:30",
+        "idPelícula": "ff950bf2-183e-4dfa-83a3-b0982ff02a1c",
+        "idSala": "UUIDS1"
     }
 ]
