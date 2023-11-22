@@ -33,10 +33,30 @@
     "uuid": "fa0e4a13-2041-4d5f-b099-0dc79a9f86fe",
     "titulo": "La Patrulla Canina: La superpelícula",
     "sinopsis": "Los cachorros obtienen superpoderes tras la caída de un meteorito en la ciudad, pero las cosas se complican cuando los villanos les roban sus superpoderes.",
-    "posterUrl": "https://static.wikia.nocookie.net/doblaje/images/4/4e/F2XieuEXYAASUKW.jpeg/revision/latest?cb=20230731140231&path-prefix=es",
+    "posterUrl": "https://dx35vtwkllhj9.cloudfront.net/paramountpictures/paw-patrol-the-mighty-movie/images/regions/mx/updates/onesheet.jpg",
     "genero": "Aventura Infantil",
     "duration": 93,
     "reparto": "Taraji P. Henson, Kim Kardashian, Finn Lee-Epp, Ron Pardo",
     "trailerIframe": "https://www.youtube.com/embed/UDgjJ9XzgHk?si=-04mQODOX0Z5RAEI"
+  },
+  {
+    "uuid": "ea2d2177-308a-47c9-b109-5ad9bf313c66",
+    "titulo": "Los Juegos del Hambre Balada de Pájaros Cantores y Serpientes",
+    "sinopsis": "En este regreso de los Juegos del Hambre, años antes de que se convirtiera en el presidente tirano de Panem, un joven Coriolanus Snow ver la oportunidad de un cambio de fortunas cuando es elegido para ser mentor de Lucy Gray Baird, la chica tributo del empobrecido Distrito 12.",
+    "posterUrl": "https://www.citicinemas.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fciticinemas-store%2FMovie-1601%2Fposter%2FyzziUybwSBW1%2Flos%20juegos.jpg&w=1920&q=75",
+    "genero": "Acción, Aventura",
+    "duration": 159,
+    "reparto": "Viola Davis, Peter Dinklage, Rachel Zegler, Tom Blyth",
+    "trailerIframe": "https://www.youtube.com/embed/IWjAy4lIyoY?si=F1QX2fH9hVpGI8zc"
+  },
+  {
+    "uuid": "6328d544-c330-4af2-9bba-e249edd35dbf",
+    "titulo": "Napoleón",
+    "sinopsis": "Napoleón es una epopeya de acción llena de espectáculo que detalla el accidentado ascenso y caída del emblemático emperador francés Napoleón Bonaparte. Con un impresionante escenario cinematográfico a gran escala orquestado por el legendario director Ridley Scott, la película capta la implacable travesía de Bonaparte hacia el poder a través del prisma de su adictiva y volátil relación con su único y verdadero amor, Josefina, mostrando sus visionarias tácticas militares y políticas plasmadas en algunas de las secuencias de batalla más dinámicas y realistas jamás filmadas.",
+    "posterUrl": "https://palomaynacho-1f321.kxcdn.com/wp-content/uploads/2023/10/NUEVO-NPLN_Cannons_1080X1350-jpg.webp",
+    "genero": "Acción, Drama",
+    "duration": 158,
+    "reparto": "Tahar Rahim, Ludivine Sagnier, Vanessa Kirby, Catherine Walker, Joaquin Phoenix",
+    "trailerIframe": "https://www.youtube.com/embed/1DJYiG6wh0w?si=3Su2Xxlx1qigPMsY"
   }
 ]
