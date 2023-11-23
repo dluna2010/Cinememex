@@ -163,19 +163,17 @@ async function showMovies(filteredMovies) {
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const movies = await fetchMovies();
-        const selectedMovieIds = sessionStorage.getItem('selectedMovieId') ? sessionStorage.getItem('selectedMovieId').split(',') : [];
+        let selectedMovieIds = sessionStorage.getItem('selectedMovieId') ? sessionStorage.getItem('selectedMovieId').split(',') : [];
 
         populateMovieDropdown(movies, selectedMovieIds);
-        const filteredMovies = selectedMovieIds.length ? movies.filter(movie => selectedMovieIds.includes(movie.uuid)) : movies;
+        let filteredMovies = selectedMovieIds.length ? movies.filter(movie => selectedMovieIds.includes(movie.uuid)) : movies;
         await showMovies(filteredMovies);
 
         const movieDropdown = document.getElementById('movieDropdown');
         movieDropdown.addEventListener('change', () => {
-            const selectedMovies = Array.from(movieDropdown.querySelectorAll('input:checked')).map(input => input.value);
-            sessionStorage.setItem('selectedMovieId', selectedMovies.join(','));
-        });
-
-        movieDropdown.addEventListener('blur', () => {
+            selectedMovieIds = Array.from(movieDropdown.querySelectorAll('input:checked')).map(input => input.value);
+            sessionStorage.setItem('selectedMovieId', selectedMovieIds.join(','));
+            // Recargar la página después de un breve retraso
             setTimeout(() => location.reload(), 100);
         });
     } catch (error) {
