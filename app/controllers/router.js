@@ -4,7 +4,6 @@ const router = express.Router();
 
 // Importar rutas
 const moviesRoutes = require('../routes/movies');
-const adminMoviesRoutes = require('../routes/admin_movies');
 const funcionesRoutes = require('../routes/funciones');
 const salasRoutes = require('../routes/salas');
 const sucursalRoutes = require('../routes/sucursal');
@@ -12,11 +11,10 @@ const usuariosRoutes = require('../routes/usuarios');
 
 // Montar rutas importadas
 router.use('/api/movies', moviesRoutes);
-router.use('/admin/movies', adminMoviesRoutes);
-router.use('/funciones', funcionesRoutes);
-router.use('/salas', salasRoutes);
-router.use('/sucursal', sucursalRoutes);
-router.use('/usuarios', usuariosRoutes);
+router.use('/api/funciones', funcionesRoutes);
+router.use('/api/salas', salasRoutes);
+router.use('/api/sucursal', sucursalRoutes);
+router.use('/api/usuarios', usuariosRoutes);
 
 // Rutas pata los html
 router.get('/', (req, res) => {
