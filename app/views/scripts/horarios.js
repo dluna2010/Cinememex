@@ -57,7 +57,6 @@ async function fetchFunciones() {
         throw error;
     }
 }
-
 function populateMovieDropdown(movies) {
     const dropdown = document.getElementById('movieDropdown');
     movies.forEach(movie => {
@@ -78,6 +77,35 @@ function populateMovieDropdown(movies) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const movies = await fetchMovies();
+        populateMovieDropdown(movies);
+
+        const selectedMovieId = sessionStorage.getItem('selectedMovieId');
+        const filteredMovies = selectedMovieId ? movies.filter(movie => movie.uuid === selectedMovieId) : movies;
+        await showMovies(filteredMovies);
+
+        // Reiniciar la selección del sessionStorage y del dropdown
+        sessionStorage.removeItem('selectedMovieId');
+        resetDropdown();
+
+        // Manejar el cambio en el dropdown
+        const movieDropdown = document.getElementById('movieDropdown');
+        movieDropdown.addEventListener('change', async () => {
+            const selectedMovies = Array.from(movieDropdown.querySelectorAll('input:checked')).map(input => input.value);
+            const filteredMovies = selectedMovies.length > 0 ? movies.filter(movie => selectedMovies.includes(movie.uuid)) : movies;
+            await showMovies(filteredMovies);
+        });
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+});
+
+function resetDropdown() {
+    const checkboxes = document.querySelectorAll('#movieDropdown input[type="checkbox"]');
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+}
 
 async function showMovies(filteredMovies) {
     const movies = filteredMovies;
@@ -153,85 +181,3 @@ async function showMovies(filteredMovies) {
         moviesContainer.appendChild(movieDiv);
     });
 }
-
-
-
-/*async function showMovies() {
-    const movies = await fetchMovies();
-    const sucursales = await fetchSucursal();
-    const salas = await fetchSalas();
-    const funciones = await fetchFunciones();
-    const moviesContainer = document.getElementById('movie_container');
-
-    movies.forEach(movie => {
-        const movieDiv = document.createElement('div');
-        movieDiv.className = 'container mt-1 movie_container';
-
-        let movieContent = `
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 iframe-container">
-                    <!-- Trailer de la Película (Izquierda) -->
-                    <h4><strong>Trailer</strong></h4>
-                    <iframe width="560" height="315" src="${movie.trailerIframe}"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 info-container">
-                    <!-- Contenido Informativo (Derecha) -->
-                    <h3 class="movie-title">${movie.titulo}</h3>
-                    <p><strong>Sinopsis:</strong> ${movie.sinopsis}</p>
-                    <p><strong>Género:</strong> ${movie.genero}</p>
-                    <p><strong>Duración:</strong> ${movie.duration} min</p>
-                    <p><strong>Reparto:</strong> ${movie.reparto}</p>
-                </div>
-            </div>
-        `;
-
-        // Aquí se recorren las sucursales y funciones
-        sucursales.forEach(sucursal => {
-            let sucursalContent = `
-                <div class="row mt-3 sucursal-container">
-                    <h2>${sucursal.nombre}</h2>
-                    <div class="col-12">
-            `;
-
-            funciones.forEach(funcion => {
-                // Asumiendo que tienes un campo en 'funcion' que relaciona con 'sucursal' y 'movie'
-                if (funcion.idSucursal === sucursal._id && funcion.idPelicula === movie._id) {
-                    sucursalContent += `
-                        <p><strong>Horario:</strong>
-                            <a style="color:white; text-decoration: none;" href="./boletos.html">
-                                <button class="btn btn-primary btn-horario">${funcion.fecha}</button>
-                            </a>
-                        </p>
-                    `;
-                }
-            });
-
-            sucursalContent += `</div></div>`;
-            movieContent += sucursalContent;
-        });
-
-        movieDiv.innerHTML = movieContent;
-        moviesContainer.appendChild(movieDiv);
-    });
-}*/
-
-
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const selectedMovieId = sessionStorage.getItem('selectedMovieId');
-        const movies = await fetchMovies();
-
-        // Filtrar las películas si hay un ID seleccionado
-        const filteredMovies = selectedMovieId ? movies.filter(movie => movie.uuid === selectedMovieId) : movies;
-
-        // Llama a showMovies con el conjunto de películas filtradas
-        await showMovies(filteredMovies);
-
-        // Aquí también podrías llamar a funciones similares para mostrar salas y sucursales
-    } catch (error) {
-        console.error('Error loading data:', error);
-    }
-});
