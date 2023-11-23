@@ -58,8 +58,29 @@ async function fetchFunciones() {
     }
 }
 
-async function showMovies() {
-    const movies = await fetchMovies();
+function populateMovieDropdown(movies) {
+    const dropdown = document.getElementById('movieDropdown');
+    movies.forEach(movie => {
+        const listItem = document.createElement('li');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = movie.uuid;
+        checkbox.name = 'movieOption';
+        checkbox.value = movie.uuid;
+
+        const label = document.createElement('label');
+        label.htmlFor = movie.uuid;
+        label.textContent = movie.titulo;
+
+        listItem.appendChild(checkbox);
+        listItem.appendChild(label);
+        dropdown.appendChild(listItem);
+    });
+}
+
+
+async function showMovies(filteredMovies) {
+    const movies = filteredMovies;
     const sucursales = await fetchSucursal();
     const salas = await fetchSalas();
     const funciones = await fetchFunciones();
@@ -200,7 +221,15 @@ async function showMovies() {
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        await showMovies();
+        const selectedMovieId = sessionStorage.getItem('selectedMovieId');
+        const movies = await fetchMovies();
+
+        // Filtrar las películas si hay un ID seleccionado
+        const filteredMovies = selectedMovieId ? movies.filter(movie => movie.uuid === selectedMovieId) : movies;
+
+        // Llama a showMovies con el conjunto de películas filtradas
+        await showMovies(filteredMovies);
+
         // Aquí también podrías llamar a funciones similares para mostrar salas y sucursales
     } catch (error) {
         console.error('Error loading data:', error);

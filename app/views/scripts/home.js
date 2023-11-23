@@ -119,6 +119,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('ver-horario-button')) {
+        const movieId = event.target.getAttribute('data-movie-id');
+        sessionStorage.setItem('selectedMovieId', movieId);
+        window.location.href = './horarios.html';
+    }
+});
+
+/*
+
 //Añadir a horarios
 function addToHorarios(movie) {
     /* Casteamos la entrada a entero
@@ -132,7 +142,7 @@ function addToHorarios(movie) {
         quantityModal.hide();
         document.querySelector(".modal-backdrop").remove();
         return; // Salimos de la función para no continuar con la adición al carrito
-    }*/
+    }
     
     // Creamos nuestro boleto tipo objeto
     let object = JSON.parse(sessionStorage.getItem('object')) || {};
@@ -144,7 +154,7 @@ function addToHorarios(movie) {
         // Si no existe, lo agregamos
     } else {
         cart[uuid] = { movie, quantity };
-    }*/
+    }
     
     // Lo almacenamos en el SessionStorage
     sessionStorage.setItem('object', JSON.stringify(object));
@@ -153,6 +163,8 @@ function addToHorarios(movie) {
         window.location.href = "./horarios.html";
     }
 }
+
+
 
 // Listener del botón de AÑADIR A HORARIOS
 document.addEventListener('click', function (event) {
@@ -179,9 +191,10 @@ document.addEventListener('click', function (event) {
         }
         /* Abre el modal
         var quantityModal = new bootstrap.Modal(document.getElementById('quantityModal'));
-        quantityModal.show();*/
+        quantityModal.show();
     }
 });
+*/
 
 /*
 // Listener del botón de confirmar del modal de añadir al carrito (declarado fuera de todo tipo de 

@@ -68,7 +68,16 @@
     </header>
     <main>
         <br><br><br>
-        <div class="row">
+
+        <div class="dropdown" style="margin-top: 100px;">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">
+                Filtrar Película:
+            </button>
+            <ul class="dropdown-menu" id="movieDropdown">
+                <!-- Las opciones se generarán dinámicamente -->
+            </ul>
+        </div>
+        <!-- <div class="row">
             <div class="col-xl-1 col-lg-12 col-md-12 col-sm-12">
                 <div class="dropdown" style="margin-bottom: 35px;">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">
@@ -128,7 +137,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12" id="movie_container">
                 
             </div>
