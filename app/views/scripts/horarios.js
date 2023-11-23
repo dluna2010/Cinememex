@@ -15,7 +15,7 @@ async function fetchMovies() {
 
 async function fetchSalas() {
     try {
-        const response = await fetch('http://127.0.0.1:3001/api/sala');
+        const response = await fetch('http://127.0.0.1:3001/api/salas');
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch salas');
@@ -45,7 +45,7 @@ async function fetchSucursal() {
 
 async function fetchFunciones() {
     try {
-        const response = await fetch('http://127.0.0.1:3001/api/funcion');
+        const response = await fetch('http://127.0.0.1:3001/api/funciones');
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch funciones');
