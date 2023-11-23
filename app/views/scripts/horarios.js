@@ -57,8 +57,15 @@ async function fetchFunciones() {
         throw error;
     }
 }
-function populateMovieDropdown(movies) {
+
+// Agregar eventListener al botón "Horarios"
+document.getElementById('horarios').addEventListener('click', () => {
+    sessionStorage.clear(); // Limpiar sessionStorage
+});
+
+function populateMovieDropdown(movies, selectedMovieIds) {
     const dropdown = document.getElementById('movieDropdown');
+    dropdown.innerHTML = ''; // Limpiar dropdown existente
     movies.forEach(movie => {
         const listItem = document.createElement('li');
         const checkbox = document.createElement('input');
@@ -66,6 +73,7 @@ function populateMovieDropdown(movies) {
         checkbox.id = movie.uuid;
         checkbox.name = 'movieOption';
         checkbox.value = movie.uuid;
+        checkbox.checked = selectedMovieIds.includes(movie.uuid); // Marcar si la película está seleccionada
 
         const label = document.createElement('label');
         label.htmlFor = movie.uuid;
@@ -75,36 +83,6 @@ function populateMovieDropdown(movies) {
         listItem.appendChild(label);
         dropdown.appendChild(listItem);
     });
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const movies = await fetchMovies();
-        populateMovieDropdown(movies);
-
-        const selectedMovieId = sessionStorage.getItem('selectedMovieId');
-        const filteredMovies = selectedMovieId ? movies.filter(movie => movie.uuid === selectedMovieId) : movies;
-        await showMovies(filteredMovies);
-
-        // Reiniciar la selección del sessionStorage y del dropdown
-        sessionStorage.removeItem('selectedMovieId');
-        resetDropdown();
-
-        // Manejar el cambio en el dropdown
-        const movieDropdown = document.getElementById('movieDropdown');
-        movieDropdown.addEventListener('change', async () => {
-            const selectedMovies = Array.from(movieDropdown.querySelectorAll('input:checked')).map(input => input.value);
-            const filteredMovies = selectedMovies.length > 0 ? movies.filter(movie => selectedMovies.includes(movie.uuid)) : movies;
-            await showMovies(filteredMovies);
-        });
-    } catch (error) {
-        console.error('Error loading data:', error);
-    }
-});
-
-function resetDropdown() {
-    const checkboxes = document.querySelectorAll('#movieDropdown input[type="checkbox"]');
-    checkboxes.forEach(checkbox => checkbox.checked = false);
 }
 
 async function showMovies(filteredMovies) {
@@ -180,4 +158,32 @@ async function showMovies(filteredMovies) {
         movieDiv.innerHTML = movieContent;
         moviesContainer.appendChild(movieDiv);
     });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const movies = await fetchMovies();
+        const selectedMovieIds = sessionStorage.getItem('selectedMovieId') ? sessionStorage.getItem('selectedMovieId').split(',') : [];
+
+        populateMovieDropdown(movies, selectedMovieIds);
+        const filteredMovies = selectedMovieIds.length ? movies.filter(movie => selectedMovieIds.includes(movie.uuid)) : movies;
+        await showMovies(filteredMovies);
+
+        const movieDropdown = document.getElementById('movieDropdown');
+        movieDropdown.addEventListener('change', () => {
+            const selectedMovies = Array.from(movieDropdown.querySelectorAll('input:checked')).map(input => input.value);
+            sessionStorage.setItem('selectedMovieId', selectedMovies.join(','));
+        });
+
+        movieDropdown.addEventListener('blur', () => {
+            setTimeout(() => location.reload(), 100);
+        });
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+});
+
+function resetDropdown() {
+    const checkboxes = document.querySelectorAll('#movieDropdown input[type="checkbox"]');
+    checkboxes.forEach(checkbox => checkbox.checked = false);
 }
