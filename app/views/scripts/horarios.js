@@ -65,6 +65,13 @@ async function showMovies() {
     const funciones = await fetchFunciones();
     const moviesContainer = document.getElementById('movie_container');
 
+    console.log("Sucursales:");
+    console.table(sucursales);
+    console.log("Salas:");
+    console.table(salas);
+    console.log("Funciones:");
+    console.table(funciones);
+
     movies.forEach(movie => {
         const movieDiv = document.createElement('div');
         movieDiv.className = 'container mt-1 movie_container';
@@ -91,47 +98,41 @@ async function showMovies() {
         `;
 
         sucursales.forEach(sucursal => {
-            if (sucursal && sucursal.uuid) {
-                let sucursalContent = `
-                    <div class="row mt-3 sucursal-container">
-                        <h2>${sucursal.nombre}</h2>
-                        <div class="col-12">
-                `;
+            let sucursalContent = `<div class="row mt-3 sucursal-container">
+                                    <h2>${sucursal.nombre}</h2>
+                                    <div class="col-12">`;
 
-                let funcionesEncontradas = false;
-                salas.filter(sala => sala && sala.idSucursal && sala.idSucursal.toString() === sucursal._id.toString())
-                    .forEach(sala => {
-                        let salaContent = `<p><strong>Sala ${sala.numeroDeSala}:</strong></p>`;
+            let funcionesEncontradasEnSucursal = false;
+            salas.filter(sala => sala.idSucursal === sucursal.uuid)
+                .forEach(sala => {
+                    let salaContent = `<p><strong>Sala ${sala.numeroDeSala}:</strong></p>`;
+                    let funcionesEnSala = funciones.filter(funcion => funcion.idSala === sala.uuid && funcion.idPelicula === movie.uuid);
 
-                        let funcionesEnSala = funciones.filter(funcion => funcion && funcion.idSala && funcion.idSala.toString() === sala._id.toString() && funcion.idPelicula.toString() === movie._id.toString());
+                    if (funcionesEnSala.length > 0) {
+                        funcionesEncontradasEnSucursal = true;
+                        funcionesEnSala.forEach(funcion => {
+                            salaContent += `<a style="color:white; text-decoration: none;" href="./boletos.html">
+                                                <button class="btn btn-primary btn-horario">${funcion.fechaHora}</button>
+                                            </a>`;
+                        });
+                    }
 
-                        if (funcionesEnSala.length > 0) {
-                            funcionesEncontradas = true;
-                            funcionesEnSala.forEach(funcion => {
-                                salaContent += `
-                                    <a style="color:white; text-decoration: none;" href="./boletos.html">
-                                        <button class="btn btn-primary btn-horario">${funcion.fechaHora}</button>
-                                    </a>
-                                `;
-                            });
-                        }
+                    sucursalContent += salaContent;
+                });
 
-                        sucursalContent += salaContent;
-                    });
-
-                if (!funcionesEncontradas) {
-                    sucursalContent += `<p>No hay funciones programadas.</p>`;
-                }
-
-                sucursalContent += `</div></div>`;
-                movieContent += sucursalContent;
+            if (!funcionesEncontradasEnSucursal) {
+                sucursalContent += `<p>No hay funciones programadas.</p>`;
             }
+
+            sucursalContent += `</div></div>`;
+            movieContent += sucursalContent;
         });
 
         movieDiv.innerHTML = movieContent;
         moviesContainer.appendChild(movieDiv);
     });
 }
+
 
 
 /*async function showMovies() {

@@ -6,14 +6,14 @@ const funcionSchema = new mongoose.Schema({
         required: true
     },
     idPelicula: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
-        ref: 'Movie' // Si estás utilizando referencias a otro modelo
+        //ref: 'movie' // Si estás utilizando referencias a otro modelo
     },
     idSala: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
-        ref: 'Sala' // Si estás utilizando referencias a otro modelo
+        //ref: 'sala' // Si estás utilizando referencias a otro modelo
     }
 });
 

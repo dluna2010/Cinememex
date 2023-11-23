@@ -233,3 +233,6 @@ GET http://localhost:3001/api/users/655e86f32343f2e9b2e55565
 
 ###
 GET http://localhost:3001/api/movies
+
+###
+GET http://127.0.0.1:3001/api/salas

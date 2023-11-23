@@ -12,9 +12,9 @@ const salaSchema = new mongoose.Schema({
         min: 1
     },
     idSucursal: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
-        ref: 'Sucursal' // Si estás utilizando referencias a otro modelo
+        //ref: 'Sucursal' // Si estás utilizando referencias a otro modelo
     }
 });
 
