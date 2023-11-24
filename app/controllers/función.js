@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const funcionSchema = new mongoose.Schema({
     fechaHora: {
-        type: Date,
+        type: String,
         required: true
     },
     idPelicula: {
