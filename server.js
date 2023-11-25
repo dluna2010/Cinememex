@@ -97,6 +97,9 @@ app.listen(port, () => {
 
 app.use("/", router);
 
+app.use(express.json());
+app.use(cors());
+app.use('/static', express.static('static'));
 
 /*const express = require('express');
 const cors = require('cors');
