@@ -73,6 +73,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
     boletoContainer.appendChild(movieDiv);
 
+    // Referencias a los elementos del DOM
+    const thisQuantity = movieDiv.querySelector('.quantity-input');
+    const confirmBtn = movieDiv.querySelector('.confirm-btn');
+    const cancelBtn = movieDiv.querySelector('.cancel-btn');
+    const editBtn = movieDiv.querySelector('.edit-btn');
+    const precioTotalInput = movieDiv.querySelector('.precio-total');
+
+    const precioPorBoleto = 75;
+    let cantidadOriginal = 1; // Cantidad original de boletos
+
+    // Función para actualizar el precio total
+    function updatePrecioTotal(cantidad) {
+        const precioTotal = cantidad * precioPorBoleto;
+        precioTotalInput.value = precioTotal;
+    }
+
+    // Evento para editar la cantidad de boletos
+    editBtn.addEventListener('click', function () {
+        cantidadOriginal = parseInt(thisQuantity.value);
+        thisQuantity.removeAttribute('disabled');
+        editBtn.style.display = 'none';
+        confirmBtn.style.display = 'inline-block';
+        cancelBtn.style.display = 'inline-block';
+    });
+
+    // Confirmar la nueva cantidad
+    confirmBtn.addEventListener('click', function () {
+        const nuevaCantidad = parseInt(thisQuantity.value);
+
+        if (nuevaCantidad <= 0) {
+            alert('La cantidad de boletos debe ser mayor que cero.');
+            thisQuantity.value = cantidadOriginal;
+        } else {
+            cantidadOriginal = nuevaCantidad;
+            updatePrecioTotal(nuevaCantidad);
+            sessionStorage.setItem('cantidadBoletos', nuevaCantidad);
+        }
+
+        thisQuantity.setAttribute('disabled', 'true');
+        editBtn.style.display = 'inline-block';
+        confirmBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+    });
+
+    // Cancelar la edición y regresar al valor original
+    cancelBtn.addEventListener('click', function () {
+        thisQuantity.value = cantidadOriginal;
+        updatePrecioTotal(cantidadOriginal);
+        thisQuantity.setAttribute('disabled', 'true');
+        editBtn.style.display = 'inline-block';
+        confirmBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+    });
+
     // Aquí puedes agregar más lógica para manejar la edición de cantidad de boletos, precios, etc.
 });
 
