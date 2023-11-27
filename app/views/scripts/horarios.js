@@ -58,7 +58,7 @@ async function fetchFunciones() {
     }
 }
 
-// Agregar eventListener al botón "Horarios"
+// Agregar eventListener al botón "Horarios" pa limpiar la película
 document.getElementById('horarios').addEventListener('click', () => {
     sessionStorage.clear(); // Limpiar sessionStorage
 });
@@ -68,6 +68,7 @@ document.addEventListener('click', function (event) {
         // Capturamos los datos del botón presionado
         const funcionId = event.target.getAttribute('data-funcion-id');
         const peliculaTitulo = event.target.getAttribute('data-pelicula-titulo');
+        const posterUrl = event.target.getAttribute('data-pelicula-posterurl');
         const horaFuncion = event.target.getAttribute('data-hora-funcion');
         const sucursalNombre = event.target.getAttribute('data-sucursal-nombre');
 
@@ -75,6 +76,7 @@ document.addEventListener('click', function (event) {
         sessionStorage.setItem('funcionSeleccionada', JSON.stringify({
             funcionId,
             peliculaTitulo,
+            posterUrl,
             horaFuncion,
             sucursalNombre
         }));
@@ -162,7 +164,8 @@ async function showMovies(filteredMovies) {
                             salaContent += `<a style="color:white; text-decoration: none;" href="./boletos.html">
                                                 <button class="btn btn-primary btn-horario" 
                                                         data-funcion-id="${funcion._id}" 
-                                                        data-pelicula-titulo="${movie.titulo}" 
+                                                        data-pelicula-titulo="${movie.titulo}"
+                                                        data-pelicula-posterurl="${movie.posterUrl}"  
                                                         data-hora-funcion="${funcion.fechaHora}" 
                                                         data-sucursal-nombre="${sucursal.nombre}">${funcion.fechaHora}</button>
                                             </a>`;
