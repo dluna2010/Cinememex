@@ -10,17 +10,63 @@ document.addEventListener('DOMContentLoaded', function () {
     const movieDiv = document.createElement('div');
     movieDiv.className = 'container my-5';
     movieDiv.innerHTML = `
-        <div class="row">
-            <div class="col-md-4">
-                <img src="${selectedFuncion.moviePosterUrl}" alt="Película" class="img-fluid">
-            </div>
-            <div class="col-md-8 movie-info">
-                <h2 style="color: goldenrod;">Película: ${selectedFuncion.peliculaTitulo}</h2>
-                <p style="color: white;">Sucursal: ${selectedFuncion.sucursalNombre}</p>
-                <p style="color: white;">Fecha y Hora: ${selectedFuncion.fechaHora}</p>
-                
-                <!-- Aquí va la lógica para seleccionar y editar la cantidad de boletos -->
-                <!-- ... -->
+        <div class="movie-description">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="${selectedFuncion.posterUrl}" alt="Película" class="img-fluid">
+                    </div>
+                    <div class="col-md-8 movie-info">
+                        <h2 style="color: goldenrod;">${selectedFuncion.peliculaTitulo}</h2>
+                        <p style="color: white;">Sucursal: ${selectedFuncion.sucursalNombre} </p>
+                        <p style="color: white;">Fecha: 30 de noviembre de 2023</p>
+                        <p style="color: white;">Función: ${selectedFuncion.horaFuncion} </p>
+
+                        <div style="text-align: center; color: white;">
+                            <h1>Selecciona tus boletos</h1>
+                            <p>A continuación selecciona la cantidad de boletos que desea para la función</p>
+                        </div>
+
+                        <div style="text-align: center;">
+
+                            <!-- Grupo de entrada para la cantidad -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Cantidad:</span>
+                                </div>
+                                <input type="number" class="form-control quantity-input" value="1" disabled>
+                                <!-- Botones para editar cantidad -->
+                                <button type="button" class="btn btn-primary btn-sm edit-btn">
+                                    Editar
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm confirm-btn" style="display: none;">
+                                    <i class="fas fa-check confirm-edit-icon"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm cancel-btn" style="display: none;">
+                                    <i class="fas fa-times cancel-edit-icon"></i>
+                                </button>
+                            </div>
+                            <br>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Precio:</span>
+                                </div>
+                                <input type="text" class="form-control" value="75" disabled>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">MXN</span>
+                                </div>
+                            </div>
+                            <br>
+                            <h4 class="mt-0 mb-1">
+
+                                <!-- Botón para eliminar producto -->
+                                <button type="button" class="btn btn-danger btn-sm delete-btn">
+                                    Borrar
+                                </button>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     `;
@@ -247,7 +293,3 @@ function updateCartTotal() {
         document.getElementById('cart-container').innerHTML = '<h5>No hay productos en el carrito.</h5>';
     }
 }*/
-
-document.addEventListener('DOMContentLoaded', function () {
-    showProductsInCart();
-}); 
