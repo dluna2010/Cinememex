@@ -133,17 +133,7 @@ async function showMovies(filteredMovies) {
             salas.filter(sala => sala.idSucursal === sucursal.uuid)
                 .forEach(sala => {
                     let salaContent = `<p><strong>Sala ${sala.numeroDeSala}:</strong></p>`;
-                    let funcionesEnSala = [];
-                    /*
-                    for(funciones){
-                        if(funcion[i].idPelicula == movie.uiid){
-                            if(funcion[i].idSala == sala.uuid){
-                                funcionesEnSala.push(funcion[i]);
-                            }
-                        }
-                    }
-                    */
-                    //let funcionesEnSala = funciones.filter(funcion => (funcion.idSala == sala.uuid && funcion.idPelicula == movie.uuid));
+                    let funcionesEnSala = funciones.filter(funcion => (funcion.idSala == sala.uuid && funcion.idPelícula == movie.uuid));
 
                     if (funcionesEnSala.length > 0) {
                         funcionesEncontradasEnSucursal = true;
