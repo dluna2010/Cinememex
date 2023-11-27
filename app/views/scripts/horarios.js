@@ -63,6 +63,27 @@ document.getElementById('horarios').addEventListener('click', () => {
     sessionStorage.clear(); // Limpiar sessionStorage
 });
 
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('btn-horario')) {
+        // Capturamos los datos del botón presionado
+        const funcionId = event.target.getAttribute('data-funcion-id');
+        const peliculaTitulo = event.target.getAttribute('data-pelicula-titulo');
+        const horaFuncion = event.target.getAttribute('data-hora-funcion');
+        const sucursalNombre = event.target.getAttribute('data-sucursal-nombre');
+
+        // Almacenamos los datos en el sessionStorage
+        sessionStorage.setItem('funcionSeleccionada', JSON.stringify({
+            funcionId,
+            peliculaTitulo,
+            horaFuncion,
+            sucursalNombre
+        }));
+
+        // Redirigir a la página de boletos
+        window.location.href = './boletos.html';
+    }
+});
+
 function populateMovieDropdown(movies, selectedMovieIds) {
     const dropdown = document.getElementById('movieDropdown');
     dropdown.innerHTML = ''; // Limpiar dropdown existente
@@ -139,7 +160,11 @@ async function showMovies(filteredMovies) {
                         funcionesEncontradasEnSucursal = true;
                         funcionesEnSala.forEach(funcion => {
                             salaContent += `<a style="color:white; text-decoration: none;" href="./boletos.html">
-                                                <button class="btn btn-primary btn-horario">${funcion.fechaHora}</button>
+                                                <button class="btn btn-primary btn-horario" 
+                                                        data-funcion-id="${funcion._id}" 
+                                                        data-pelicula-titulo="${movie.titulo}" 
+                                                        data-hora-funcion="${funcion.fechaHora}" 
+                                                        data-sucursal-nombre="${sucursal.nombre}">${funcion.fechaHora}</button>
                                             </a>`;
                         });
                     }
