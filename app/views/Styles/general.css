@@ -74,3 +74,13 @@ li a {
     /* Cambia el fondo a negro */
     background-color: gold;
 }
+
+/* Botones */
+.btn-primary {
+    background-color: goldenrod;
+    /* Cambia el fondo a negro */
+    border: none;
+    /* Remueve el borde */
+    color: black;
+    /* Cambia el texto a blanco */
+}
