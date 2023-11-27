@@ -1,7 +1,38 @@
-const moviesInBoleto = document.getElementById('boleto-container')
+document.addEventListener('DOMContentLoaded', function () {
+    const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
+    const boletoContainer = document.getElementById('boleto-container');
+
+    if (!selectedFuncion) {
+        boletoContainer.innerHTML = '<h5>No hay función seleccionada.</h5>';
+        return;
+    }
+
+    const movieDiv = document.createElement('div');
+    movieDiv.className = 'container my-5';
+    movieDiv.innerHTML = `
+        <div class="row">
+            <div class="col-md-4">
+                <img src="${selectedFuncion.moviePosterUrl}" alt="Película" class="img-fluid">
+            </div>
+            <div class="col-md-8 movie-info">
+                <h2 style="color: goldenrod;">Película: ${selectedFuncion.peliculaTitulo}</h2>
+                <p style="color: white;">Sucursal: ${selectedFuncion.sucursalNombre}</p>
+                <p style="color: white;">Fecha y Hora: ${selectedFuncion.fechaHora}</p>
+                
+                <!-- Aquí va la lógica para seleccionar y editar la cantidad de boletos -->
+                <!-- ... -->
+            </div>
+        </div>
+    `;
+
+    boletoContainer.appendChild(movieDiv);
+
+    // Aquí puedes agregar más lógica para manejar la edición de cantidad de boletos, precios, etc.
+});
+
 //const cartTotal = document.getElementById('total');
 
-function showProductsInCart() {
+/*function showProductsInCart() {
     let boleto = JSON.parse(sessionStorage.getItem('boleto')) || {};
     const moviesInBoleto = document.getElementById('boleto-container'); // Contenedor para los productos en el carrito
 
