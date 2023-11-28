@@ -1,5 +1,5 @@
 html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #333;
     background-color: #f4f4f4;
     padding: 0;
@@ -33,23 +33,11 @@ html {
     font-weight: bold;
 }
 
-/* Estilos para los derechos de autor y desarrollador */
-.footer p {
-    font-size: 12px;
-    margin: 5px 0;
-}
-
 a {
     color: #fff;
+    text-decoration: none;
+    /* Elimina el subrayado de los enlaces */
 }
-/*
-header {
-    background-image: url(https://png.pngtree.com/background/20230617/original/pngtree-abstract-golden-glitter-splash-illuminated-in-3d-on-a-sleek-black-picture-image_3682236.jpg);
-}
-
-main {
-    background-image: url(https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg);
-}*/
 
 .navbar {
     background-color: #333;
@@ -57,20 +45,20 @@ main {
 
 .navbar .nav-link {
     color: #fff;
+    font-size: 1.1em;
+    /* Aumenta el tamaño de la fuente */
 }
 
 .navbar .nav-link:hover {
-    color: #ddd;
+    color: goldenrod;
+    /* Color al pasar el ratón */
 }
 
 /* Botón de sucursal */
 .btn-primary {
     background-color: goldenrod;
-    /* Cambia el fondo a negro */
     border: none;
-    /* Remueve el borde */
     color: black;
-    /* Cambia el texto a blanco */
 }
 
 .row-label {
@@ -89,29 +77,28 @@ main {
     left: 50%;
     transform: translateX(-50%);
 }
-    /* Estilos para los asientos */
+
+/* Estilos para los asientos */
 .seat {
     font-size: 24px;
-    color: #808080; /* Color gris para asientos disponibles */
+    color: #808080;
     margin: 3px;
     cursor: pointer;
     position: relative;
 }
 
 .seat:hover {
-    color: #bfbfbf; /* Color más claro al pasar el mouse */
+    color: #bfbfbf;
 }
 
 .seat.selected {
-    color: #28a745; /* Color verde para asientos seleccionados */
+    color: #28a745;
 }
 
 .seat.unavailable {
-    color: #dc3545; /* Color rojo para asientos no disponibles */
+    color: #dc3545;
 }
 
-/* Estilo para la pantalla */
-/* Estilos para la pantalla */
 .screen {
     width: 100%;
     background-color: #f4f4f4;
@@ -120,8 +107,6 @@ main {
     font-weight: bold;
 }
 
-
-/* Estilos para la descripción de la función */
 .movie-description {
     background-image: url('https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg');
     background-size: cover;
@@ -134,12 +119,21 @@ main {
     padding: 10px;
 }
 
-/* Estilos para la imagen de la película */
-.movie-image {
-    max-width: 220px; /* Tamaño máximo de la imagen */
+.movie-info h2 {
+    color: goldenrod;
+    font-size: 2em;
+    /* Aumenta el tamaño del título */
 }
 
-/* Estilos para centrar las filas de asientos */
+.movie-info p {
+    font-size: 1.2em;
+    /* Aumenta el tamaño de los párrafos */
+}
+
+.movie-image {
+    max-width: 220px;
+}
+
 .seat-row {
     display: flex;
     justify-content: center;
