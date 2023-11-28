@@ -57,13 +57,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </div>
                             </div>
                             <br>
-                            <h4 class="mt-0 mb-1">
-
-                                <!-- Botón para eliminar producto -->
-                                <button type="button" class="btn btn-danger btn-sm delete-btn">
-                                    Borrar
-                                </button>
-                            </h4>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text">Total:</span>
+                                    </div>
+                                    <input type="text" class="form-control precio-total" value="75" disabled>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">MXN</span>
+                                    </div>
+                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -127,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
         cancelBtn.style.display = 'none';
     });
 
-    // Aquí puedes agregar más lógica para manejar la edición de cantidad de boletos, precios, etc.
 });
 
 //const cartTotal = document.getElementById('total');
