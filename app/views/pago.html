@@ -19,6 +19,26 @@
 
 <body>
     <header>
+        <!-- Modal para iniciar sesión -->
+        <div class="modal fade" id="iniciarSesionModal" tabindex="-1" aria-labelledby="iniciarSesionModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="iniciarSesionModalLabel">Iniciar Sesión Requerido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Es necesario iniciar sesión para continuar con el proceso de pago.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <a href="./Inicio_sesión.html" class="btn btn-primary">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Barra de navegación  -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
@@ -110,7 +130,7 @@
         <!-- Botones para los métodos de pago -->
         <div class="row justify-content-center">
             <!-- Botón para Tarjeta de Crédito -->
-            <div class="col-md-4 mb-3 credit-card">
+            <div class="col-md-4 mb-3 credit-card pay-button">
                 <a style="text-decoration: none;" href="confirmacion_pago.html">
                     <button class="btn btn-outline-primary w-100 payment-button">
                         <img src="https://cdn.icon-icons.com/icons2/606/PNG/512/credit-card-back-symbol_icon-icons.com_56187.png" width="200px" alt="Tarjeta de Crédito">
@@ -120,7 +140,7 @@
             </div>
 
             <!-- Botón para PayPal -->
-            <div class="col-md-4 mb-3 paypal">
+            <div class="col-md-4 mb-3 paypal pay-button">
                 <a style="text-decoration: none;" href="confirmacion_pago.html">
                     <button class="btn btn-outline-secondary w-100 payment-button">
                         <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Paypal.png" width="350px" alt="PayPal">
@@ -130,7 +150,7 @@
             </div>
 
             <!-- Botón para Pago en Efectivo -->
-            <div class="col-md-4 mb-3 cash">
+            <div class="col-md-4 mb-3 cash pay-button">
                 <a style="text-decoration: none;" href="confirmacion_pago.html">
                     <button class="btn btn-outline-success w-100 payment-button">
                         <img src="https://static.vecteezy.com/system/resources/previews/020/522/333/original/dollar-currency-symbol-banknote-outline-icon-png.png" width="365px" alt="Efectivo">
