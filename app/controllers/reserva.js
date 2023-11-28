@@ -9,9 +9,11 @@ class ReservaException {
 class Reserva {
     constructor(idReserva, idUsuario, idFuncion, cantidadBoletos, precioTotal) {
         this._idReserva = idReserva;
+        this._idSucursal = idSucursal;
         this._idUsuario = idUsuario; // Relación con Usuario
         this._idFuncion = idFuncion; // Relación con Función
         this._cantidadBoletos = cantidadBoletos;
+        //this._idSucursal = idSucursal; Relación con asientos
         this._precioTotal = precioTotal;
     }
 
