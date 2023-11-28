@@ -20,6 +20,10 @@ const pedidoSchema = new mongoose.Schema({
     asientosSeleccionados: {
         type: String,
         required: true
+    },
+    idUsuario: {
+        type: String,
+        required: true
     }
 });
 
