@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>Sucursal: ${selectedFuncion.sucursalNombre}</p>
                     <p>Fecha: 30 de noviembre de 2023</p>
                     <p>Función: ${selectedFuncion.horaFuncion}</p>
-                    <p>Cantidad de Boletos: ${cantidadDeBoletos} ($75)</p>
+                    <p>Cantidad de Boletos: ${cantidadDeBoletos} </p>
                 </div>
             </div>
         </div>
