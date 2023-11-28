@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <!-- Grupo de entrada para la cantidad -->
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Cantidad:</span>
+                                    <span class="input-group-text">Cantidad de boletos:</span>
                                 </div>
                                 <input type="number" class="form-control quantity-input" value="1" disabled>
                                 <!-- Botones para editar cantidad -->
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <br>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Precio:</span>
+                                    <span class="input-group-text">Precio por boleto:</span>
                                 </div>
                                 <input type="text" class="form-control" value="75" disabled>
                                 <div class="input-group-append">
