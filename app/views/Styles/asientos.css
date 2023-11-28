@@ -136,7 +136,7 @@ main {
 
 /* Estilos para la imagen de la película */
 .movie-image {
-    max-width: 150px; /* Tamaño máximo de la imagen */
+    max-width: 220px; /* Tamaño máximo de la imagen */
 }
 
 /* Estilos para centrar las filas de asientos */
