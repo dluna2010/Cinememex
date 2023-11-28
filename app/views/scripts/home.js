@@ -1,5 +1,8 @@
 // Variable para ver donde va el índice
 let currentPageIndex = 0;
+//Variables para el páginao
+let totalMovies = 0;
+let moviesPerPage = 4;
 
 // Ir a buscar los películas en la base de datos
 async function fetchMovies() {
@@ -65,46 +68,58 @@ function renderMovieCard(movie) {
 // Renderizar todos los películas en la página
 function renderMoviesPage(movies, pageIndex) {
     const moviesContainer = document.getElementById('cards_container');
-    moviesContainer.innerHTML = '';  // Limpiar el container
-    const start = pageIndex * 4; // Empezar en múltiplos de 4
-    const end = start + 4; // Ir brincando de 4 en 4
+    moviesContainer.innerHTML = '';
+    const start = pageIndex * moviesPerPage;
+    const end = start + moviesPerPage;
     const moviesToRender = movies.slice(start, end);
-    moviesToRender.forEach(movie => { //Agregar los películas
+    moviesToRender.forEach(movie => {
         const col = renderMovieCard(movie);
         moviesContainer.appendChild(col);
     });
+
+    updatePaginationButtons();
 }
 
 // Función para que funcione (xD) la paginación
 function handlePaginationClick(event, movies) {
+    event.preventDefault();
     const pageIndex = parseInt(event.target.textContent) - 1;
     currentPageIndex = pageIndex;
     renderMoviesPage(movies, pageIndex);
-
-    // Actualizar la página actual
-    document.querySelectorAll('.pagination .page-item').forEach((item, index) => {
-        item.classList.toggle('active', index === pageIndex + 1);
-    });
 }
 
 // Ahora para los botones de next and previous
 function handlePrevNextClick(event, movies, isNext) {
-    currentPageIndex = isNext ? currentPageIndex + 1 : currentPageIndex - 1;
+    event.preventDefault();
+    currentPageIndex = isNext ? Math.min(currentPageIndex + 1, Math.ceil(totalMovies / moviesPerPage) - 1) : Math.max(0, currentPageIndex - 1);
     renderMoviesPage(movies, currentPageIndex);
+}
 
-    // Actualizar la página actual
-    document.querySelectorAll('.pagination .page-item').forEach((item, index) => {
-        item.classList.toggle('active', index === currentPageIndex + 1);
-    });
+function updatePaginationButtons() {
+    const prevButton = document.querySelector('.pagination .page-item:first-child');
+    const nextButton = document.querySelector('.pagination .page-item:last-child');
+
+    // Desactivar el botón anterior si está en la primera página
+    prevButton.classList.toggle('disabled', currentPageIndex === 0);
+
+    // Desactivar el botón siguiente si está en la última página
+    const lastPageIndex = Math.ceil(totalMovies / moviesPerPage) - 1;
+    nextButton.classList.toggle('disabled', currentPageIndex >= lastPageIndex);
+
+    // Ocular el botón de la página 3 si no es necesario
+    const page3Button = document.querySelector('.pagination .page-item:nth-child(4)');
+    if (page3Button) {
+        page3Button.style.display = (totalMovies > moviesPerPage * 2) ? 'block' : 'none';
+    }
 }
 
 // Renderizar los películas cuando carga la página (o el contenido de DOM mejor dicho)
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const movies = await fetchMovies();
+        totalMovies = movies.length;
         renderMoviesPage(movies, 0);
 
-        // Dejar lista la páginación
         document.querySelectorAll('.pagination .page-item').forEach((item, index) => {
             if (index === 0) {
                 item.addEventListener('click', (event) => handlePrevNextClick(event, movies, false));
