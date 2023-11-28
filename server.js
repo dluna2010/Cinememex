@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const router = require("./app/controllers/router");
 
@@ -61,7 +62,7 @@ app.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
 
-        if (!user || user.password !== password) {
+        if (!user || bcrypt.compareSync(password, user.password)) {
             return res.status(401).json({ message: 'Usuario no encontrado o contraseña incorrecta' });
         }
 

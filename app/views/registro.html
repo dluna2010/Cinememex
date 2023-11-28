@@ -94,6 +94,8 @@
   </script>
 
 <script>
+  const bcrypt = require("bcrypt");
+
   document.addEventListener('DOMContentLoaded', function() {
       const form = document.querySelector('.register-form');
       
@@ -112,6 +114,9 @@
               alert('Las contraseñas no coinciden');
               return;
           }
+
+
+          userData.password = bcrypt.hashSync(userData.password, 10);
 
           // Enviar solicitud POST al servidor
           fetch('http://localhost:3001/api/users', {
