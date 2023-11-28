@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cancelBtn = movieDiv.querySelector('.cancel-btn');
     const editBtn = movieDiv.querySelector('.edit-btn');
     const precioTotalInput = movieDiv.querySelector('.precio-total');
+    const continueButton = document.getElementById("Continue-Ticket");
 
     const precioPorBoleto = 75;
     let cantidadOriginal = 1; // Cantidad original de boletos
@@ -111,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             cantidadOriginal = nuevaCantidad;
             updatePrecioTotal(nuevaCantidad);
-            sessionStorage.setItem('cantidadBoletos', nuevaCantidad);
         }
 
         thisQuantity.setAttribute('disabled', 'true');
@@ -129,8 +129,13 @@ document.addEventListener('DOMContentLoaded', function () {
         confirmBtn.style.display = 'none';
         cancelBtn.style.display = 'none';
     });
-
+    
+    
+    continueButton.addEventListener("click", function() {
+        sessionStorage.setItem('cantidadBoletos', parseInt(thisQuantity.value));
+    })
 });
+
 
 //const cartTotal = document.getElementById('total');
 
