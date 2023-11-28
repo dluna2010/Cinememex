@@ -62,7 +62,9 @@ app.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
 
-        if (!user || user.password !== password) {
+        let correct_pass = bcrypt.compareSync(rqe.body.password, user.password);
+
+        if (!user || correct_pass == false) {
             return res.status(401).json({ message: 'Usuario no encontrado o contraseña incorrecta' });
         }
 
@@ -81,6 +83,8 @@ app.post('/api/users', async (req, res) => {
         }
 
         // Crear nuevo usuario
+        req.body.password = bcrypt.hashSync(req.body.password, 1);
+
         const newUser = new User(req.body);
         await newUser.save();
         res.status(201).json({ message: 'Registro exitoso' });
