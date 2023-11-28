@@ -1,0 +1,26 @@
+.movie-description {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/018/994/854/non_2x/elegant-black-background-with-golden-line-and-lighting-effect-luxury-template-award-modern-design-vector.jpg');
+    background-size: cover;
+    color: white;
+    padding: 10px;
+}
+
+.movie-info {
+    text-align: left;
+    padding: 10px;
+}
+
+.movie-info h2 {
+    color: goldenrod;
+    font-size: 2em;
+    /* Aumenta el tamaño del título */
+}
+
+.movie-info p {
+    font-size: 1.2em;
+    /* Aumenta el tamaño de los párrafos */
+}
+
+.movie-image {
+    max-width: 220px;
+}
