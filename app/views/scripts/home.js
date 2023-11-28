@@ -127,6 +127,20 @@ document.addEventListener('click', function (event) {
     }
 });
 
+window.onload = function() {
+    var usuario = sessionStorage.getItem('usuario');
+    if (usuario) {
+        // Si hay un usuario en sessionStorage, muestra el botón Ver Perfil y oculta Iniciar Sesión
+        document.getElementById('verPerfilBtn').style.display = 'block';
+        document.getElementById('iniciarSesionBtn').style.display = 'none';
+    } else {
+        // Si no hay un usuario, muestra el botón Iniciar Sesión y oculta Ver Perfil
+        document.getElementById('verPerfilBtn').style.display = 'none';
+        document.getElementById('iniciarSesionBtn').style.display = 'block';
+    }
+};
+
+
 /*
 
 //Añadir a horarios

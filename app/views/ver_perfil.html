@@ -68,18 +68,41 @@
                 </div>
                 <div class="user-details">
                     <h2>Perfil de Usuario</h2>
-                    <p><strong>Nombre:</strong> Sebastián Carrillo Cuevas</p>
-                    <p><strong>Email:</strong> seb@gmail.com</p>
+                    <p><strong>Nombre:</strong> <span id="userName">Cargando...</span></p>
+                    <p><strong>Email:</strong> <span id="userEmail">Cargando...</span></p>
+
 
                     <!-- Botón para ver órdenes -->
                     <a href="orders.html" class="btn btn-success btn-orders">Ver Órdenes</a>
 
                     <!-- Botones -->
                     <button class="btn btn-danger btn-delete">Eliminar usuario</button>
-                    <button class="btn btn-primary btn-edit">Editar</button>  
+                    <!-- Botón para abrir el modal de edición -->
+                    <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
                 </div>
             </div>
         </div>
+
+       <!-- Modal para editar información del usuario -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="editName" class="form-control mb-2" placeholder="Nuevo nombre">
+                <input type="email" id="editEmail" class="form-control mb-2" placeholder="Nuevo email">
+                <input type="password" id="editPassword" class="form-control mb-2" placeholder="Nueva contraseña">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="updateUserInfo()">Actualizar Información</button>
+            </div>
+        </div>
+    </div>
+</div>
 
         <br><br><br><br><br><br><br>
     </main>
@@ -118,6 +141,64 @@
             <p> Contenido del sitio 2023© Derechos reservados Exhibidora Mexicana Mov7eZ®, S.A. de C.V. </p>
         </div>
     </footer>
+
+    <script>
+        window.onload = function() {
+            // Obtener los datos del usuario del sessionStorage
+            var usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    
+            if (usuario) {
+                // Si hay un usuario, mostrar su nombre y correo electrónico
+                document.getElementById('userName').textContent = usuario.nombre;
+                document.getElementById('userEmail').textContent = usuario.email;
+            } else {
+                // Redirigir al inicio de sesión si no hay datos de usuario
+                window.location.href = './Inicio_sesión.html';
+            }
+        };
+
+        function updateUserInfo() {
+    var usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    if (!usuario) {
+        alert('No se ha iniciado sesión');
+        return;
+    }
+
+    var updatedName = document.getElementById('editName').value;
+    var updatedEmail = document.getElementById('editEmail').value;
+    var updatedPassword = document.getElementById('editPassword').value;
+
+    fetch('http://localhost:3001/api/users/updateByEmail', { // URL actualizada
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            currentEmail: usuario.email, // Correo electrónico actual para buscar al usuario
+            nombre: updatedName,
+            email: updatedEmail,
+            password: updatedPassword
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('No se pudo actualizar la información');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Actualizado exitosamente');
+        sessionStorage.setItem('usuario', JSON.stringify({ ...usuario, ...data }));
+        document.getElementById('userName').textContent = data.nombre;
+        document.getElementById('userEmail').textContent = data.email;
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+}
+
+    </script>
+    
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
