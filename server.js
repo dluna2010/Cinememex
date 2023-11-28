@@ -62,7 +62,9 @@ app.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
 
-        let correct_pass = bcrypt.compareSync(rqe.body.password, user.password);
+        let correct_pass = bcrypt.compareSync(req.body.password, user.password);
+        //correct_pass == false
+        //user.password !== password
 
         if (!user || correct_pass == false) {
             return res.status(401).json({ message: 'Usuario no encontrado o contraseña incorrecta' });
