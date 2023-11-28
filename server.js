@@ -89,6 +89,26 @@ app.post('/api/users', async (req, res) => {
     }
 });
 
+app.put('/api/users/updateByEmail', async (req, res) => {
+    try {
+        const { currentEmail, nombre, email, password } = req.body;
+        const userToUpdate = await User.findOne({ email: currentEmail });
+
+        if (!userToUpdate) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+
+        userToUpdate.nombre = nombre;
+        userToUpdate.email = email;
+        userToUpdate.password = password; // Considera usar hashing para la contraseña
+
+        await userToUpdate.save();
+        res.status(200).json({ nombre, email });
+    } catch (error) {
+        res.status(500).send('Error al actualizar el usuario: ' + error.message);
+    }
+});
+
 
 // Iniciar el servidor
 const port = process.env.PORT || 3001;

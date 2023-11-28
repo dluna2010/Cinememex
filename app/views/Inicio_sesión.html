@@ -104,6 +104,9 @@
         })
         .then(data => {
             if (data.message === 'Inicio de sesión exitoso') {
+                // Almacenar los datos del usuario en sessionStorage
+                sessionStorage.setItem('usuario', JSON.stringify({ nombre: data.nombre, email: email }));
+
                 alert('Inicio de sesión exitoso, bienvenido ' + data.nombre);
                 window.location.href = './home.html';
             } else {
@@ -115,7 +118,8 @@
             alert('Inicio de sesión fallido, contraseña o usuario incorrectos: ' + error.message);
         });
     });
-</script>    
+</script>
+ 
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

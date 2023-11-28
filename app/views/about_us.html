@@ -52,11 +52,12 @@
                         </li>
                     </ul>
                     <!-- Botón de ver perfil -->
-                    <button class="btn btn-primary ms-3" type="button">
+                    <button id="verPerfilBtn" class="btn btn-primary ms-3" type="button">
                         <a style="color:black; text-decoration: none;" href="./ver_perfil.html">Ver Perfil</a>
-                    </button>  
+                    </button>
+
                     <!-- Botón de inicio de sesión -->
-                    <button class="btn btn-primary ms-3 btn-login" type="button">
+                    <button id="iniciarSesionBtn" class="btn btn-primary ms-3 btn-login" type="button">
                         <a style="color:black; text-decoration: none;" href="./Inicio_sesión.html">Iniciar Sesión</a>
                     </button>
                 </div>
@@ -141,6 +142,21 @@
             <p>Contenido del sitio 2023© Derechos reservados Exhibidora Mexicana Mov7eZ®, S.A. de C.V.</p>
         </div>
     </footer>
+
+    <script>
+        window.onload = function() {
+            var usuario = sessionStorage.getItem('usuario');
+            if (usuario) {
+                // Si hay un usuario en sessionStorage, muestra el botón Ver Perfil y oculta Iniciar Sesión
+                document.getElementById('verPerfilBtn').style.display = 'block';
+                document.getElementById('iniciarSesionBtn').style.display = 'none';
+            } else {
+                // Si no hay un usuario, muestra el botón Iniciar Sesión y oculta Ver Perfil
+                document.getElementById('verPerfilBtn').style.display = 'none';
+                document.getElementById('iniciarSesionBtn').style.display = 'block';
+            }
+        };
+    </script>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
