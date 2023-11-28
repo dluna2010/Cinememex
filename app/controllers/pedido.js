@@ -1,22 +1,28 @@
 const mongoose = require('mongoose');
 
-const funcionSchema = new mongoose.Schema({
-    fechaHora: {
+const pedidoSchema = new mongoose.Schema({
+    tituloPelicula: {
         type: String,
         required: true
     },
-    idPelicula: {
+    nombreSucursal: {
         type: String,
-        required: true,
-        //ref: 'movie' // Si estás utilizando referencias a otro modelo
+        required: true
     },
-    idSala: {
+    funcion: { // Asumiendo que es un String que representa la fecha y hora de la función
         type: String,
-        required: true,
-        //ref: 'sala' // Si estás utilizando referencias a otro modelo
+        required: true
+    },
+    cantidadBoletos: {
+        type: String,
+        required: true
+    },
+    asientosSeleccionados: {
+        type: String,
+        required: true
     }
 });
 
-const Funcion = mongoose.model('Funcion', funcionSchema);
+const Pedido = mongoose.model('Pedido', pedidoSchema);
 
-module.exports = Funcion;
+module.exports = Pedido;
