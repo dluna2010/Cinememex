@@ -32,10 +32,12 @@ router.post('/', async (req, res) => {
         const nuevaPedido = new Pedido({
             // Asegúrate de asignar los campos correctos del cuerpo de la solicitud
             tituloPelicula: req.body.tituloPelicula,
+            posterUrl: req.body.posterUrl,
             nombreSucursal: req.body.nombreSucursal,
             funcion: req.body.funcion,
             cantidadBoletos: req.body.cantidadBoletos,
-            asientosSeleccionados: req.body.asientosSeleccionados
+            asientosSeleccionados: req.body.asientosSeleccionados,
+            emailUsuario: req.body.emailUsuario
         });
         const pedidoGuardada = await nuevaPedido.save();
         res.status(201).json(pedidoGuardada);

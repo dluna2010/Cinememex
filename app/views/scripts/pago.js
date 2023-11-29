@@ -50,9 +50,10 @@ function guardarOrden() {
 
     const usuario = JSON.parse(sessionStorage.getItem('usuario'));
     const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
-    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')); // Asegúrate de que sea un número
+    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos'));
 
-    fetch('http://localhost:3001/api/pedidos/', {
+    // Usa comillas invertidas para la plantilla literal
+    fetch(`http://localhost:3001/api/pedidos/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ function guardarOrden() {
             nombreSucursal: selectedFuncion.sucursalNombre,
             funcion: selectedFuncion.horaFuncion,
             cantidadBoletos: cantidadDeBoletos,
-            asientosSeleccionados: 'Aqui tus asientos', // Asegúrate de que este campo sea correcto
+            asientosSeleccionados: selectedFuncion.funcionId, // Asegúrate de que este campo sea correcto
             emailUsuario: usuario.email
         })
     })
@@ -77,7 +78,7 @@ function guardarOrden() {
         })
         .then(data => {
             alert('Orden guardada con éxito');
-            window.location.href = 'confirmacion_orden.html';
+            window.location.href = 'confirmacion_pago.html';
         })
         .catch(error => {
             console.error('Error en la solicitud:', error);
