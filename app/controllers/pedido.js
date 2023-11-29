@@ -5,6 +5,10 @@ const pedidoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    posterUrl: {
+        type: String,
+        required: true
+    },
     nombreSucursal: {
         type: String,
         required: true

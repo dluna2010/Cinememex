@@ -73,7 +73,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Obtener pedidos por ID de usuario
-router.get('/usuario/:usuarioId', async (req, res) => {
+/* router.get('/usuario/:usuarioId', async (req, res) => {
     try {
         const usuarioId = req.params.usuarioId;
         const pedidosUsuario = await Pedido.find({ idUsuario: usuarioId });
@@ -85,7 +85,7 @@ router.get('/usuario/:usuarioId', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Error fetching pedidos for user", error: error.message });
     }
-});
+}); */
 
 // Obtener pedidos por email de usuario
 router.get('/usuario/:emailUsuario', async (req, res) => {
