@@ -159,87 +159,86 @@
             }
         };
 
-function updateUserInfo() {
-    var usuario = JSON.parse(sessionStorage.getItem('usuario'));
-    if (!usuario) {
-        alert('No se ha iniciado sesión');
-        return;
-    }
-
-    var updatedName = document.getElementById('editName').value;
-    var updatedEmail = document.getElementById('editEmail').value;
-    var updatedPassword = document.getElementById('editPassword').value;
-
-    fetch('http://localhost:3001/api/users/updateByEmail', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            currentEmail: usuario.email,
-            nombre: updatedName,
-            email: updatedEmail,
-            password: updatedPassword
-        })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('No se pudo actualizar la información');
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert('Actualizado exitosamente');
-        sessionStorage.setItem('usuario', JSON.stringify({ ...usuario, ...data }));
-        document.getElementById('userName').textContent = data.nombre;
-        document.getElementById('userEmail').textContent = data.email;
-
-        // Cerrar el modal
-        var editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
-        editModal.hide();
-    })
-    .catch(error => {
-        alert(error.message);
-    });
-}
-
-function cerrarSesion() {
-    sessionStorage.removeItem('usuario'); // Elimina la información del usuario del sessionStorage
-    window.location.href = './home.html'; // Redirige al usuario a la página de inicio
-}
-
-function eliminarUsuario() {
-    var usuario = JSON.parse(sessionStorage.getItem('usuario'));
-    if (!usuario) {
-        alert('No se ha iniciado sesión');
-        return;
-    }
-
-    if (confirm('¿Estás seguro de que deseas eliminar tu cuenta?')) {
-        fetch('http://localhost:3001/api/users', { // Actualiza la URL según tu API
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: usuario.email })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al eliminar el usuario');
+        function updateUserInfo() {
+            var usuario = JSON.parse(sessionStorage.getItem('usuario'));
+            if (!usuario) {
+                alert('No se ha iniciado sesión');
+                return;
             }
-            return response.json();
-        })
-        .then(() => {
-            alert('Usuario eliminado exitosamente');
+
+            var updatedName = document.getElementById('editName').value;
+            var updatedEmail = document.getElementById('editEmail').value;
+            var updatedPassword = document.getElementById('editPassword').value;
+
+            fetch('http://localhost:3001/api/users/updateByEmail', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    currentEmail: usuario.email,
+                    nombre: updatedName,
+                    email: updatedEmail,
+                    password: updatedPassword
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo actualizar la información');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('Actualizado exitosamente');
+                sessionStorage.setItem('usuario', JSON.stringify({ ...usuario, ...data }));
+                document.getElementById('userName').textContent = data.nombre;
+                document.getElementById('userEmail').textContent = data.email;
+
+                // Cerrar el modal
+                var editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+                editModal.hide();
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        }
+
+        function cerrarSesion() {
             sessionStorage.removeItem('usuario'); // Elimina la información del usuario del sessionStorage
             window.location.href = './home.html'; // Redirige al usuario a la página de inicio
-        })
-        .catch(error => {
-            alert(error.message);
-        });
-    }
-}
+        }
 
+        function eliminarUsuario() {
+            var usuario = JSON.parse(sessionStorage.getItem('usuario'));
+            if (!usuario) {
+                alert('No se ha iniciado sesión');
+                return;
+            }
+
+            if (confirm('¿Estás seguro de que deseas eliminar tu cuenta?')) {
+                fetch('http://localhost:3001/api/users', { // Actualiza la URL según tu API
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: usuario.email })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al eliminar el usuario');
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    alert('Usuario eliminado exitosamente');
+                    sessionStorage.removeItem('usuario'); // Elimina la información del usuario del sessionStorage
+                    window.location.href = './home.html'; // Redirige al usuario a la página de inicio
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+            }
+        }
     </script>
     
 
