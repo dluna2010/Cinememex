@@ -95,6 +95,7 @@ app.post('/api/users', async (req, res) => {
     }
 });
 
+//Ruta para actualizar un usuario filtrando por correo
 app.put('/api/users/updateByEmail', async (req, res) => {
     try {
         const { currentEmail, nombre, email, password } = req.body;
@@ -106,7 +107,7 @@ app.put('/api/users/updateByEmail', async (req, res) => {
 
         userToUpdate.nombre = nombre;
         userToUpdate.email = email;
-        userToUpdate.password = password; // Considera usar hashing para la contraseña
+        userToUpdate.password = bcrypt.hashSync(password, 10); // Encripta la contraseña
 
         await userToUpdate.save();
         res.status(200).json({ nombre, email });
@@ -114,6 +115,24 @@ app.put('/api/users/updateByEmail', async (req, res) => {
         res.status(500).send('Error al actualizar el usuario: ' + error.message);
     }
 });
+
+//Ruta para borrar un usuario filtrando por correo
+app.delete('/api/users', async (req, res) => {
+    try {
+        const email = req.body.email;
+        const userToDelete = await User.findOne({ email: email });
+
+        if (!userToDelete) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        await User.deleteOne({ email: email });
+        res.status(200).json({ message: 'Usuario eliminado exitosamente' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al eliminar el usuario', error: error.message });
+    }
+});
+
 
 
 // Iniciar el servidor
