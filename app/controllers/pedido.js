@@ -21,7 +21,7 @@ const pedidoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    idUsuario: {
+    emailUsuario: {
         type: String,
         required: true
     }

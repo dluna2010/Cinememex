@@ -87,5 +87,20 @@ router.get('/usuario/:usuarioId', async (req, res) => {
     }
 });
 
+// Obtener pedidos por email de usuario
+router.get('/usuario/:emailUsuario', async (req, res) => {
+    try {
+        const emailUsuario = req.params.emailUsuario;
+        const pedidosUsuario = await Pedido.find({ emailUsuario: emailUsuario });
+        if (pedidosUsuario.length === 0) {
+            res.status(404).send('No se encontraron pedidos para el email proporcionado');
+            return;
+        }
+        res.json(pedidosUsuario);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching pedidos for email", error: error.message });
+    }
+});
+
 
 module.exports = router;
