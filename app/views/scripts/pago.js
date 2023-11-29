@@ -51,3 +51,39 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function guardarOrden(orden) {
+    fetch('http://localhost:3001/api/pedidos/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tituloPelicula: orden.funcion.peliculaTitulo,
+            nombreSucursal: orden.funcion.sucursalNombre,
+            funcion: orden.funcion.horaFuncion,
+            cantidadBoletos: orden.cantidadDeBoletos,
+            asientosSeleccionados: orden.funcion.asientosSeleccionados, // Asegúrate de tener esta información en orden.funcion
+            emailUsuario: JSON.parse(orden.usuario).email // Asumiendo que el email está en el objeto de usuario
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al guardar la orden');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Orden guardada:', data);
+            // Reiniciar sessionStorage manteniendo solo el objeto de usuario
+            const usuario = sessionStorage.getItem('usuario');
+            sessionStorage.clear();
+            sessionStorage.setItem('usuario', usuario);
+
+            // Redirigir a otra página o mostrar mensaje de éxito
+            alert('Orden guardada con éxito');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al guardar la orden: ' + error.message);
+        });
+}
