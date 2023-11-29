@@ -156,7 +156,13 @@ async function showMovies(filteredMovies) {
             salas.filter(sala => sala.idSucursal === sucursal.uuid)
                 .forEach(sala => {
                     let salaContent = `<p><strong>Sala ${sala.numeroDeSala}:</strong></p>`;
-                    let funcionesEnSala = funciones.filter(funcion => (funcion.idSala == sala.uuid && funcion.idPelícula == movie.uuid));
+                    let funcionesEnSala = funciones.filter(funcion => (funcion.idSala == sala.uuid && funcion.idPelícula == movie.uuid))
+                        .sort((a, b) => {
+                            // Asumiendo que fechaHora es un string en formato 'HH:MM', por ejemplo '13:30'
+                            const horaA = a.fechaHora.split(':');
+                            const horaB = b.fechaHora.split(':');
+                            return horaA[0] - horaB[0] || horaA[1] - horaB[1];
+                        });
 
                     if (funcionesEnSala.length > 0) {
                         funcionesEncontradasEnSucursal = true;
