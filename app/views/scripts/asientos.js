@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const funcionSeleccionada = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
     const selectedFuncionId = funcionSeleccionada.funcionIdManual;
+    console.log(selectedFuncionId);
     
     if (!selectedFuncionId) {
         // Manejar el caso en que no se haya seleccionado ninguna función
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     try {
         // Obtener los asientos correspondientes a la función seleccionada desde la API
-        const response = await fetch(`/api/asientos?idFuncion=${selectedFuncionId}`);
+        const response = await fetch(`http://127.0.0.1:3001/api/asientos/por-id-funcion/${selectedFuncionId}`);
         
         if (!response.ok) {
             throw new Error(`Error al obtener los asientos. Código de estado: ${response.status}`);
@@ -227,7 +228,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const rows = [...new Set(asientos.map(asiento => asiento.row))];
         const numSeatsPerRow = 5;
 
-        function createSeats() {
+        /*function createSeats() {
             rows.forEach(row => {
                 const seatRow = document.createElement('div');
                 seatRow.classList.add('seat-row');
@@ -264,6 +265,58 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
 
                 seatsContainer.appendChild(seatRow);
+            });
+        }*/
+
+        function createSeats() {
+            const columns = ['A', 'B', 'C', 'D', 'E', 'F']; // Las columnas representan las filas en este caso
+        
+            columns.forEach(column => {
+                const seatsInColumn = asientos.filter(asiento => asiento.columna === column);
+        
+                if (seatsInColumn.length > 0) {
+                    // Ordenar los asientos en esta columna por número
+                    seatsInColumn.sort((a, b) => a.numero - b.numero);
+        
+                    const seatRow = document.createElement('div');
+                    seatRow.classList.add('seat-row');
+        
+                    // Crear y agregar la letra de la fila (columna)
+                    const rowLabel = document.createElement('div');
+                    rowLabel.classList.add('row-label');
+                    rowLabel.textContent = column;
+                    seatRow.appendChild(rowLabel);
+        
+                    seatsInColumn.forEach(seatInfo => {
+                        const seat = document.createElement('i');
+                        seat.classList.add('fas', 'fa-couch', 'seat');
+                        seat.dataset.row = seatInfo.columna; // Usar el valor de columna como fila
+                        seat.dataset.seatNumber = seatInfo.numero;
+
+                        //Crear y agregar el número del asiento
+                        const seatNumber = document.createElement('div');
+                        seatNumber.classList.add('seat-number');
+                        seatNumber.textContent = seatInfo.numero;
+                        seat.appendChild(seatNumber);
+        
+                        if (seatInfo.estado === 'Disponible') {
+                            seat.classList.add('available');
+                        } else {
+                            seat.classList.add('unavailable');
+                        }
+        
+                        // Comprobar si el asiento está seleccionado y marcarlo
+                        if (asientosSeleccionados.some(s => s.row === column && s.seatNumber === seatInfo.numero)) {
+                            seat.classList.add('selected');
+                        }
+        
+                        seat.addEventListener('click', toggleSeatSelection);
+        
+                        seatRow.appendChild(seat);
+                    });
+        
+                    seatsContainer.appendChild(seatRow); // Agregar la fila al contenedor
+                }
             });
         }
 

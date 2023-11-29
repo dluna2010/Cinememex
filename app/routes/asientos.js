@@ -13,6 +13,35 @@ router.get('/', async (req, res) => {
     }
 });
 
+/* Ruta para obtener los asientos por idFuncion
+router.get('/:idFuncion', async (req, res) => {
+    //const idFuncion = req.params.idFuncion;
+
+    try {
+        // Filtrar los asientos por idFuncion
+        const asientos = await Asiento.find(req.params.idFuncion);
+
+        if (!asientos || asientos.length === 0) {
+            return res.status(404).json({ message: "No se encontraron asientos para la función seleccionada" });
+        }
+
+        res.json(asientos);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching asientos", error: error.message });
+    }
+});*/
+
+// Nueva ruta para obtener asientos por idFuncion
+router.get('/por-id-funcion/:idFuncion', async (req, res) => {
+    try {
+        const idFuncion = req.params.idFuncion;
+        const asientos = await Asiento.find({ idFuncion: idFuncion }); // Filtra los asientos por idFuncion
+        res.json(asientos);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching asientos by idFuncion", error: error.message });
+    }
+});
+
 /*
 router.get('/', async (req, res) => {
     try {
