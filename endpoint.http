@@ -236,3 +236,17 @@ GET http://localhost:3001/api/movies
 
 ###
 GET http://127.0.0.1:3001/api/salas
+
+###
+POST http://localhost:3001/api/pedidos/
+Content-Type: application/json
+
+{
+    "tituloPelicula": "The Jester",
+    "posterUrl": "https://m.media-amazon.com/images/M/MV5BZDcyYzRiZmItMTliMS00M2JkLWE0MGMtOWFkMDJmOTAzY2IzXkEyXkFqcGdeQXVyOTMzOTMzMTg@._V1_FMjpg_UX1000_.jpg",
+    "nombreSucursal": "La Gran Plaza",
+    "funcion": "20:15",
+    "cantidadBoletos": "4",
+    "asientosSeleccionados": "F2, F3, F4",
+    "emailUsuario": "dluna2010@live.com"
+}
