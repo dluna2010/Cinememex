@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    document.getElementById("movie_container");
     const usuario = sessionStorage.getItem('usuario');
+    //Cambiar esta lógica a si el usuario no hay realizado órdenes
     if (!usuario) {
         // Manejar el caso en que no hay un usuario en sessionStorage
-        document.querySelector('.movie_container').innerHTML = `<p>No se han realizado órdenes</p>`;
+        document.querySelector('.movie_container').innerHTML = `<h4> No se han realizado órdenes </h4>`;
         return;
     }
 
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 iframe-container">
                                             <h4><strong>Órden ${contador} </strong></h4>
                                             <div style="display: flex; justify-content: center;">
-                                                <img src="${pedido.posterUrl}" alt="${pedido.tituloPelicula}" class="img-fluid">
+                                                <img src="${pedido.posterUrl}" alt="${pedido.tituloPelicula}" class="img-fluid orders-img">
                                             </div>
                                         </div>
 
