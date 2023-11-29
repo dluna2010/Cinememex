@@ -1,8 +1,7 @@
-const Asiento = require('../controllers/asiento');
 const express = require('express');
-const dataHandler = require('../controllers/data_handler');
-
 const router = express.Router();
+const Asiento = require('../controllers/asiento');
+
 
 // Obtener todas los asientos
 router.get('/', async (req, res) => {
