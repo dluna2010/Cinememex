@@ -8,6 +8,7 @@ const funcionesRoutes = require('../routes/funciones');
 const salasRoutes = require('../routes/salas');
 const sucursalRoutes = require('../routes/sucursal');
 const usuariosRoutes = require('../routes/usuarios');
+const pedidosRoutes = require('../routes/pedidos');
 
 // Montar rutas importadas
 router.use('/api/movies', moviesRoutes);
@@ -15,6 +16,7 @@ router.use('/api/funciones', funcionesRoutes);
 router.use('/api/salas', salasRoutes);
 router.use('/api/sucursal', sucursalRoutes);
 router.use('/api/usuarios', usuariosRoutes);
+router.use('/api/pedidos', pedidosRoutes);
 
 // Rutas pata los html
 router.get('/', (req, res) => {

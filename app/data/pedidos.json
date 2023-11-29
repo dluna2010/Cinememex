@@ -1,0 +1,11 @@
+[
+    {
+        "tituloPelicula": "Five Nights at Freddy’s: La Película",
+        "posterUrl": "https: //m.media-amazon.com/images/M/MV5BYTI0ZmI4NDItZGFlZC00M2E4LWIyZWEtMTFhMjQwYmU4MGNlXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+        "nombreSucursal": "Sania",
+        "funcion": "19:30",
+        "cantidadBoletos": 4,
+        "asientosSeleccionados": "F2,F3,F4,F5",
+        "emailUsuario": "dluna2010d@gmail.com"
+    }
+]
