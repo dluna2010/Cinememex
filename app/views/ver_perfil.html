@@ -79,6 +79,8 @@
                     <button class="btn btn-danger btn-delete">Eliminar usuario</button>
                     <!-- Botón para abrir el modal de edición -->
                     <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
+                    <!-- Botón para cerrar sesión -->
+                    <button class="btn btn-warning btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
                 </div>
             </div>
         </div>
@@ -196,6 +198,12 @@
         alert(error.message);
     });
 }
+
+function cerrarSesion() {
+    sessionStorage.removeItem('usuario'); // Elimina la información del usuario del sessionStorage
+    window.location.href = './home.html'; // Redirige al usuario a la página de inicio
+}
+
 
     </script>
     
