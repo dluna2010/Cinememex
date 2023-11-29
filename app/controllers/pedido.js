@@ -18,7 +18,7 @@ const pedidoSchema = new mongoose.Schema({
         required: true
     },
     cantidadBoletos: {
-        type: String,
+        type: Number,
         required: true
     },
     asientosSeleccionados: {
