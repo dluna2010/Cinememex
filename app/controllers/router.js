@@ -28,6 +28,9 @@ router.get('/home', (req, res) => {
 router.get('/shopping_cart', (req, res) => {
     res.sendFile(path.join(__dirname, '../views', 'shopping_cart.html'));
 });
+router.get('/pagos', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views', 'pago.html'));
+});
 
 // Ruta para añadir películas al carrito mediante su ID
 router.post('/movies/cart', async (req, res) => {
