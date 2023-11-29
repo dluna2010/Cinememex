@@ -71,14 +71,16 @@ document.addEventListener('click', function (event) {
         const posterUrl = event.target.getAttribute('data-pelicula-posterurl');
         const horaFuncion = event.target.getAttribute('data-hora-funcion');
         const sucursalNombre = event.target.getAttribute('data-sucursal-nombre');
-
+        const salaID = event.target.getAttribute('data-sala-id');
+        
         // Almacenamos los datos en el sessionStorage
         sessionStorage.setItem('funcionSeleccionada', JSON.stringify({
             funcionId,
             peliculaTitulo,
             posterUrl,
             horaFuncion,
-            sucursalNombre
+            sucursalNombre,
+            salaID
         }));
 
         // Redirigir a la página de boletos
@@ -173,6 +175,7 @@ async function showMovies(filteredMovies) {
                                                         data-pelicula-titulo="${movie.titulo}"
                                                         data-pelicula-posterurl="${movie.posterUrl}"  
                                                         data-hora-funcion="${funcion.fechaHora}" 
+                                                        data-sala-id="${funcion.idSala}"
                                                         data-sucursal-nombre="${sucursal.nombre}">${funcion.fechaHora}</button>
                                             </a>`;
                         });
