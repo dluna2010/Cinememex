@@ -83,50 +83,6 @@
   </main>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-
-    fetch('http://localhost:3001/login', { // Asegúrate de que la URL sea correcta
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error en el servidor');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.message === 'Inicio de sesión exitoso') {
-            // Almacenar los datos del usuario en sessionStorage
-            sessionStorage.setItem('usuario', JSON.stringify({ nombre: data.nombre, email: email }));
-
-            // Verificar si existe la información de la función seleccionada en sessionStorage
-            const funcionSeleccionada = sessionStorage.getItem('funcionSeleccionada');
-            if (funcionSeleccionada) {
-                // Si existe, redirige a la página de pagos
-                window.location.href = './pagos.html';
-            } else {
-                // Si no existe, redirige a la página de inicio
-                window.location.href = './home.html';
-            }
-
-            alert('Inicio de sesión exitoso, bienvenido ' + data.nombre);
-        } else {
-            alert(data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Inicio de sesión fallido, contraseña o usuario incorrectos: ' + error.message);
-    });
-});
     document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
 

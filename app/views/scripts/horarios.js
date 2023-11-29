@@ -67,6 +67,7 @@ document.addEventListener('click', function (event) {
     if (event.target.classList.contains('btn-horario')) {
         // Capturamos los datos del botón presionado
         const funcionId = event.target.getAttribute('data-funcion-id');
+        const funcionIdManual = event.target.getAttribute('data-funcion-id-manual');
         const peliculaTitulo = event.target.getAttribute('data-pelicula-titulo');
         const posterUrl = event.target.getAttribute('data-pelicula-posterurl');
         const horaFuncion = event.target.getAttribute('data-hora-funcion');
@@ -76,6 +77,7 @@ document.addEventListener('click', function (event) {
         // Almacenamos los datos en el sessionStorage
         sessionStorage.setItem('funcionSeleccionada', JSON.stringify({
             funcionId,
+            funcionIdManual,
             peliculaTitulo,
             posterUrl,
             horaFuncion,
@@ -172,6 +174,7 @@ async function showMovies(filteredMovies) {
                             salaContent += `<a style="color:white; text-decoration: none;" href="./boletos.html">
                                                 <button class="btn btn-primary btn-horario" 
                                                         data-funcion-id="${funcion._id}" 
+                                                        data-funcion-id-manual="${funcion.idFuncion}"
                                                         data-pelicula-titulo="${movie.titulo}"
                                                         data-pelicula-posterurl="${movie.posterUrl}"  
                                                         data-hora-funcion="${funcion.fechaHora}" 
