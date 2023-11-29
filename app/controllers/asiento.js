@@ -1,4 +1,32 @@
-// Clase de excepción personalizada para Asiento
+const mongoose = require('mongoose');
+
+const asientoSchema = new mongoose.Schema({
+    estado: {
+        type: String,
+        required: true
+    },
+    idFuncion: {
+        type: String,
+        required: true,
+        //ref: 'movie' // Si estás utilizando referencias a otro modelo
+    },
+    columna: {
+        type: String,
+        required: true,
+        //ref: 'sala' // Si estás utilizando referencias a otro modelo
+    },
+    numero: {
+        type: String,
+        required: true,
+        //ref: 'sala' // Si estás utilizando referencias a otro modelo
+    }
+});
+
+const Asiento = mongoose.model('Asiento', asientoSchema);
+
+module.exports = Asiento;
+
+/* Clase de excepción personalizada para Asiento
 class AsientoException {
     constructor(errorMessage) {
         this.errorMessage = errorMessage;
@@ -75,4 +103,4 @@ class Asiento {
     }
 }
 
-module.exports = Asiento;
+module.exports = Asiento;*/
