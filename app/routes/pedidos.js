@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Pedido = require('../models/pedido'); // Asegúrate de que la ruta sea correcta
+const Pedido = require('../controllers/pedido'); // Asegúrate de que la ruta sea correcta
 
 // Obtener todas las pedidos
 router.get('/', async (req, res) => {
