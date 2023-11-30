@@ -73,6 +73,7 @@ document.addEventListener('click', function (event) {
         const horaFuncion = event.target.getAttribute('data-hora-funcion');
         const sucursalNombre = event.target.getAttribute('data-sucursal-nombre');
         const salaID = event.target.getAttribute('data-sala-id');
+        //const asientosString = event.target.getAttribute('data-asientos-string');
         
         // Almacenamos los datos en el sessionStorage
         sessionStorage.setItem('funcionSeleccionada', JSON.stringify({
@@ -83,6 +84,7 @@ document.addEventListener('click', function (event) {
             horaFuncion,
             sucursalNombre,
             salaID
+            //asientosString
         }));
 
         // Redirigir a la página de boletos
