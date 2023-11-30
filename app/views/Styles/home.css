@@ -46,7 +46,7 @@ body{
 }
 
 .card-img {
-    max-height: 430px;
+    max-height: 400px;
     object-fit: cover;
 }
 
