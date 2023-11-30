@@ -52,7 +52,6 @@ function guardarOrden() {
     const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
     const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos'));
 
-    // Usa comillas invertidas para la plantilla literal
     fetch(`http://localhost:3001/api/pedidos/`, {
         method: 'POST',
         headers: {
@@ -64,7 +63,7 @@ function guardarOrden() {
             nombreSucursal: selectedFuncion.sucursalNombre,
             funcion: selectedFuncion.horaFuncion,
             cantidadBoletos: cantidadDeBoletos,
-            asientosSeleccionados: selectedFuncion.funcionId, // Asegúrate de que este campo sea correcto
+            asientosSeleccionados: selectedFuncion.funcionId,
             emailUsuario: usuario.email
         })
     })
@@ -78,6 +77,10 @@ function guardarOrden() {
         })
         .then(data => {
             alert('Orden guardada con éxito');
+            // Limpia todo el sessionStorage y luego almacena nuevamente el objeto del usuario
+            sessionStorage.clear();
+            sessionStorage.setItem('usuario', JSON.stringify(usuario));
+            // Redireccionar a la página de confirmación de la orden
             window.location.href = 'confirmacion_pago.html';
         })
         .catch(error => {
