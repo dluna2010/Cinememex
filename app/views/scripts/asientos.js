@@ -110,26 +110,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-/*function toggleSeatSelection(asiento, seatElement) {
-    let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
-    const asientoId = asiento._id;
-
-    if (!seatElement.classList.contains('unavailable')) {
-        seatElement.classList.toggle('selected');
-        seatElement.style.color = seatElement.classList.contains('selected') ? 'green' : 'grey';
-
-        if (seatElement.classList.contains('selected')) {
-            if (!asientosSeleccionados.includes(asientoId)) {
-                asientosSeleccionados.push(asientoId);
-            }
-        } else {
-            asientosSeleccionados = asientosSeleccionados.filter(id => id !== asientoId);
-        }
-
-        sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
-    }
-}*/
-
 function toggleSeatSelection(asiento, seatElement) {
     const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
     let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
@@ -164,26 +144,11 @@ function validarSeleccionDeAsientos() {
     const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
 
     if (asientosSeleccionados.length < cantidadDeBoletos) {
-        // Mostrar una alerta si no se han seleccionado suficientes asientos
-        //alert('Debes seleccionar todos los asientos. Número de asientos seleccionados es menor que la cantidad de boletos.');
         return false;
     }
     
     return true;
 }
-
-
-/*document.getElementById('botonContinuar').addEventListener('click', function() {
-    if (validarSeleccionDeAsientos()) {
-        // Si la validación es exitosa, permite al usuario continuar con el proceso.
-        // Por ejemplo, puedes redirigir al usuario a la página de pago o llamar a otra función que maneje el siguiente paso.
-        // Aquí puedes llamar a guardarOrden() si eso forma parte del flujo de proceso después de seleccionar asientos.
-        guardarOrden();
-    } else {
-        // Si la validación falla, no hagas nada o puedes mostrar un mensaje adicional si es necesario.
-        // La alerta en validarSeleccionDeAsientos() ya informa al usuario sobre el problema.
-    }
-});*/
 
 document.getElementById('botonContinuar').addEventListener('click', function() {
     if (validarSeleccionDeAsientos()) {
@@ -199,8 +164,6 @@ document.getElementById('botonContinuar').addEventListener('click', function() {
 
 document.getElementById('botonRegresar').addEventListener('click', function() {
     sessionStorage.removeItem('asientosSeleccionados');
-    // Aquí puedes agregar cualquier otra lógica necesaria, como redireccionar al usuario.
-    //window.location.href = 'paginaAnterior.html'; // Cambia esto por la URL de la página a la que debe regresar el usuario.
 });
 
 
