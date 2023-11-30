@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function guardarOrden() {
     if (!sessionStorage.getItem('funcionSeleccionada') || !sessionStorage.getItem('cantidadBoletos')) {
-        alert('Información de la orden incompleta');
+        //alert('Información de la orden incompleta');
         return;
     }
 
