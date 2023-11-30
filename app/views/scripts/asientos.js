@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 function toggleSeatSelection(asiento, seatElement) {
     let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
     const asientoId = asiento._id;
+    const asientoCodigo = asiento.columna + asiento.numero; // Código del asiento, como "A1"
+    
 
     if (!seatElement.classList.contains('unavailable')) {
         seatElement.classList.toggle('selected');
@@ -126,7 +128,17 @@ function toggleSeatSelection(asiento, seatElement) {
             asientosSeleccionados = asientosSeleccionados.filter(id => id !== asientoId);
         }
 
+        // Actualiza el sessionStorage
         sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
+        actualizarSeleccionEnFuncion(asientosSeleccionados); // Actualiza el objeto seleccionado
     }
 }
 
+function actualizarSeleccionEnFuncion(asientosSeleccionados) {
+    const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
+    // Convierte el arreglo en una cadena con formato "A1, A2, A3"
+    const asientosString = asientosSeleccionados.join(', ');
+    // Actualiza el objeto selectedFuncion
+    selectedFuncion.asientosSeleccionados = asientosString;
+    sessionStorage.setItem('funcionSeleccionada', JSON.stringify(selectedFuncion));
+}

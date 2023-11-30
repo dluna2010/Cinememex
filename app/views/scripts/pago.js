@@ -63,7 +63,7 @@ function guardarOrden() {
             nombreSucursal: selectedFuncion.sucursalNombre,
             funcion: selectedFuncion.horaFuncion,
             cantidadBoletos: cantidadDeBoletos,
-            asientosSeleccionados: selectedFuncion.funcionId,
+            asientosSeleccionados: selectedFuncion.funcionId, //Cambiar esto
             emailUsuario: usuario.email
         })
     })
