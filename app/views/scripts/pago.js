@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>Fecha: 30 de noviembre de 2023</p>
                     <p>Función: ${selectedFuncion.horaFuncion}</p>
                     <p>Cantidad de Boletos: ${cantidadDeBoletos} </p>
-                    <p>Asientos: (Al chile no se wey, regresate) </p>
+                    <p>Asientos: ${selectedFuncion.asientosSeleccionados} </p>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ function guardarOrden() {
             nombreSucursal: selectedFuncion.sucursalNombre,
             funcion: selectedFuncion.horaFuncion,
             cantidadBoletos: cantidadDeBoletos,
-            asientosSeleccionados: selectedFuncion.funcionId, //Cambiar esto
+            asientosSeleccionados: selectedFuncion.asientosSeleccionados, //Cambiar esto
             emailUsuario: usuario.email
         })
     })

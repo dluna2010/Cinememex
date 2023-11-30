@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     asientosContainer.appendChild(seatsDiv);
 });
 
-window.onload = function() {
+window.onload = function () {
     var usuario = sessionStorage.getItem('usuario');
     if (usuario) {
         // Si hay un usuario en sessionStorage, muestra el botón Ver Perfil y oculta Iniciar Sesión
@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                             seat.classList.add('selected');
                             seat.style.color = 'green';
                         }
-                        seat.addEventListener('click', function() { toggleSeatSelection(seatInfo, seat); });
+                        seat.addEventListener('click', function () { toggleSeatSelection(seatInfo, seat); });
                     }
-                    
+
                     seatRow.appendChild(seat);
                 }
             }
@@ -114,8 +114,6 @@ function toggleSeatSelection(asiento, seatElement) {
     const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
     let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
     const asientoId = asiento._id;
-    const asientoCodigo = asiento.columna + asiento.numero; // Código del asiento, como "A1"
-    
 
     if (!seatElement.classList.contains('unavailable')) {
         if (seatElement.classList.contains('selected')) {
@@ -137,9 +135,7 @@ function toggleSeatSelection(asiento, seatElement) {
             }
         }
 
-        // Actualiza el sessionStorage
         sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
-        actualizarSeleccionEnFuncion(asientosSeleccionados); // Actualiza el objeto seleccionado
     }
 }
 
@@ -150,11 +146,11 @@ function validarSeleccionDeAsientos() {
     if (asientosSeleccionados.length < cantidadDeBoletos) {
         return false;
     }
-    
+
     return true;
 }
 
-document.getElementById('botonContinuar').addEventListener('click', function() {
+document.getElementById('botonContinuar').addEventListener('click', function () {
     if (validarSeleccionDeAsientos()) {
         // Si la validación es exitosa (el usuario ha seleccionado la cantidad correcta de asientos),
         // redirige al usuario a la página de pago.
@@ -166,44 +162,6 @@ document.getElementById('botonContinuar').addEventListener('click', function() {
 });
 
 
-document.getElementById('botonRegresar').addEventListener('click', function() {
+document.getElementById('botonRegresar').addEventListener('click', function () {
     sessionStorage.removeItem('asientosSeleccionados');
 });
-
-
-function validarSeleccionDeAsientos() {
-    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
-    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
-
-    if (asientosSeleccionados.length < cantidadDeBoletos) {
-        return false;
-    }
-    
-    return true;
-}
-
-document.getElementById('botonContinuar').addEventListener('click', function() {
-    if (validarSeleccionDeAsientos()) {
-        // Si la validación es exitosa (el usuario ha seleccionado la cantidad correcta de asientos),
-        // redirige al usuario a la página de pago.
-        window.location.href = 'pago.html'; // Reemplaza 'rutaPago.html' con la ruta real de tu página de pago.
-    } else {
-        // Si la validación falla, muestra una alerta y no hagas nada más (el usuario permanece en la misma página).
-        alert('Debes seleccionar todos los asientos. Número de asientos seleccionados es menor que la cantidad de boletos.');
-    }
-});
-
-
-document.getElementById('botonRegresar').addEventListener('click', function() {
-    sessionStorage.removeItem('asientosSeleccionados');
-});
-
-
-function actualizarSeleccionEnFuncion(asientosSeleccionados) {
-    const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
-    // Convierte el arreglo en una cadena con formato "A1, A2, A3"
-    const asientosString = asientosSeleccionados.join(', ');
-    // Actualiza el objeto selectedFuncion
-    selectedFuncion.asientosSeleccionados = asientosString;
-    sessionStorage.setItem('funcionSeleccionada', JSON.stringify(selectedFuncion));
-}
