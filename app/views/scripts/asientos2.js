@@ -13,24 +13,6 @@ async function fetchAsientos() {
     }
 }
 
-
-/* Suponemos que el idFuncion se almacena en sessionStorage cuando se selecciona una función
-const idFuncionSeleccionada = sessionStorage.getItem('idFuncionSeleccionada');
-
-async function fetchAsientosPorFuncion(idFuncion) {
-    try {
-        const response = await fetch(`http://127.0.0.1:3001/api/asientos/${idFuncion}`);
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error(data.message || 'Failed to fetch asientos');
-        }
-        return data;
-    } catch (error) {
-        console.error('Error fetching asientos:', error);
-        throw error;
-    }
-}*/
-
 document.addEventListener('DOMContentLoaded', function () {
     const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
     const cantidadDeBoletos = sessionStorage.getItem('cantidadBoletos');
@@ -337,24 +319,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
         }
-
-        // Suponiendo que los asientos ya están renderizados en el DOM
-        const asientosElements = document.querySelectorAll('.asiento'); // Asegúrate de que este selector corresponda a tus elementos de asiento en el DOM.
-
-        asientosElements.forEach(asientoElement => {
-            asientoElement.addEventListener('click', () => {
-                const asientoId = asientoElement.id.split('-')[1]; // Asumiendo que el id del asiento es 'asiento-<ID>'
-                let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados') || '[]');
-
-                if (!asientosSeleccionados.includes(asientoId)) {
-                    asientosSeleccionados.push(asientoId);
-                    sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
-                    asientoElement.style.backgroundColor = 'green'; // Asiento seleccionado
-                } else {
-                    // Código para deseleccionar el asiento, si es necesario.
-                }
-            });
-        })
 
         function toggleSeatSelection(event) {
             const seat = event.target.closest('.seat');
