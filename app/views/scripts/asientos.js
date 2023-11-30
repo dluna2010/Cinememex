@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-function toggleSeatSelection(asiento, seatElement) {
+/*function toggleSeatSelection(asiento, seatElement) {
     let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
     const asientoId = asiento._id;
 
@@ -128,5 +128,79 @@ function toggleSeatSelection(asiento, seatElement) {
 
         sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
     }
+}*/
+
+function toggleSeatSelection(asiento, seatElement) {
+    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
+    let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+    const asientoId = asiento._id;
+
+    if (!seatElement.classList.contains('unavailable')) {
+        if (seatElement.classList.contains('selected')) {
+            // Deseleccionar el asiento
+            seatElement.classList.remove('selected');
+            seatElement.style.color = 'grey';
+            asientosSeleccionados = asientosSeleccionados.filter(id => id !== asientoId);
+        } else {
+            // Seleccionar el asiento si no se ha alcanzado el límite
+            if (asientosSeleccionados.length < cantidadDeBoletos) {
+                seatElement.classList.add('selected');
+                seatElement.style.color = 'green';
+                if (!asientosSeleccionados.includes(asientoId)) {
+                    asientosSeleccionados.push(asientoId);
+                }
+            } else {
+                alert('No puedes seleccionar más asientos que boletos.');
+                return;
+            }
+        }
+
+        sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
+    }
 }
+
+function validarSeleccionDeAsientos() {
+    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
+    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+
+    if (asientosSeleccionados.length < cantidadDeBoletos) {
+        // Mostrar una alerta si no se han seleccionado suficientes asientos
+        //alert('Debes seleccionar todos los asientos. Número de asientos seleccionados es menor que la cantidad de boletos.');
+        return false;
+    }
+    
+    return true;
+}
+
+
+/*document.getElementById('botonContinuar').addEventListener('click', function() {
+    if (validarSeleccionDeAsientos()) {
+        // Si la validación es exitosa, permite al usuario continuar con el proceso.
+        // Por ejemplo, puedes redirigir al usuario a la página de pago o llamar a otra función que maneje el siguiente paso.
+        // Aquí puedes llamar a guardarOrden() si eso forma parte del flujo de proceso después de seleccionar asientos.
+        guardarOrden();
+    } else {
+        // Si la validación falla, no hagas nada o puedes mostrar un mensaje adicional si es necesario.
+        // La alerta en validarSeleccionDeAsientos() ya informa al usuario sobre el problema.
+    }
+});*/
+
+document.getElementById('botonContinuar').addEventListener('click', function() {
+    if (validarSeleccionDeAsientos()) {
+        // Si la validación es exitosa (el usuario ha seleccionado la cantidad correcta de asientos),
+        // redirige al usuario a la página de pago.
+        window.location.href = 'pago.html'; // Reemplaza 'rutaPago.html' con la ruta real de tu página de pago.
+    } else {
+        // Si la validación falla, muestra una alerta y no hagas nada más (el usuario permanece en la misma página).
+        alert('Debes seleccionar todos los asientos. Número de asientos seleccionados es menor que la cantidad de boletos.');
+    }
+});
+
+
+document.getElementById('botonRegresar').addEventListener('click', function() {
+    sessionStorage.removeItem('asientosSeleccionados');
+    // Aquí puedes agregar cualquier otra lógica necesaria, como redireccionar al usuario.
+    //window.location.href = 'paginaAnterior.html'; // Cambia esto por la URL de la página a la que debe regresar el usuario.
+});
+
 
