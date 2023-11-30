@@ -1,36 +1,3 @@
-async function fetchAsientos() {
-    try {
-        const response = await fetch('http://127.0.0.1:3001/api/asientos');
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error(data.message || 'Failed to fetch asientos');
-        }
-        return data;
-        // Si no se encuentran
-    } catch (error) {
-        console.error('Error fetching asientos:', error);
-        throw error;
-    }
-}
-
-
-/* Suponemos que el idFuncion se almacena en sessionStorage cuando se selecciona una función
-const idFuncionSeleccionada = sessionStorage.getItem('idFuncionSeleccionada');
-
-async function fetchAsientosPorFuncion(idFuncion) {
-    try {
-        const response = await fetch(`http://127.0.0.1:3001/api/asientos/${idFuncion}`);
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error(data.message || 'Failed to fetch asientos');
-        }
-        return data;
-    } catch (error) {
-        console.error('Error fetching asientos:', error);
-        throw error;
-    }
-}*/
-
 document.addEventListener('DOMContentLoaded', function () {
     const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
     const cantidadDeBoletos = sessionStorage.getItem('cantidadBoletos');
@@ -72,317 +39,94 @@ window.onload = function() {
     }
 };
 
-/*document.addEventListener('DOMContentLoaded', function () {
-    const seatsContainer = document.getElementById('seats');
-    const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
-    const numSeatsPerRow = 5;
+document.addEventListener('DOMContentLoaded', async function () {
+    const funcionSeleccionada = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
+    const selectedFuncionId = funcionSeleccionada.funcionIdManual;
 
-    var idFuncion
+    if (!selectedFuncionId) {
+        alert('Por favor, seleccione una función antes de visualizar los asientos.');
+        return;
+    }
 
-    function createSeats() {
-        rows.forEach(row => {
+    try {
+        const response = await fetch(`http://127.0.0.1:3001/api/asientos/por-id-funcion/${selectedFuncionId}`);
+        if (!response.ok) {
+            throw new Error(`Error al obtener los asientos. Código de estado: ${response.status}`);
+        }
+
+        const asientos = await response.json();
+        const seatsContainer = document.getElementById('seats');
+        let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+
+        const columns = ['A', 'B', 'C', 'D', 'E'];
+        const numSeatsPerColumn = 5;
+
+        columns.forEach(column => {
             const seatRow = document.createElement('div');
             seatRow.classList.add('seat-row');
 
-            // Crear y agregar la letra de la fila
             const rowLabel = document.createElement('div');
             rowLabel.classList.add('row-label');
-            rowLabel.textContent = row;
+            rowLabel.textContent = column;
             seatRow.appendChild(rowLabel);
 
-            for (let i = 1; i <= numSeatsPerRow; i++) {
-                const seat = document.createElement('i');
-                seat.classList.add('fas', 'fa-couch', 'seat');
-                seat.dataset.row = row;
-                seat.dataset.seatNumber = i;
+            for (let i = 1; i <= numSeatsPerColumn; i++) {
+                const seatInfo = asientos.find(a => a.columna === column && a.numero === i.toString());
 
-                // Crear y agregar el número del asiento
-                const seatNumber = document.createElement('span');
-                seatNumber.classList.add('seat-number');
-                seatNumber.textContent = i;
-                seat.appendChild(seatNumber);
+                if (seatInfo) {
+                    const seat = document.createElement('i');
+                    seat.classList.add('fa', 'fa-couch', 'seat');
+                    seat.dataset.row = column;
+                    seat.dataset.seatNumber = i;
+                    seat.dataset.asientoId = seatInfo._id;
 
-                /*if (Math.random() < 0.3) { // Ejemplo de asientos no disponibles
-                    seat.classList.add('unavailable');
-                }/
+                    const seatNumber = document.createElement('span');
+                    seatNumber.classList.add('seat-number');
+                    seatNumber.textContent = i;
+                    seat.appendChild(seatNumber);
 
-                seat.addEventListener('click', toggleSeatSelection);
-                seatRow.appendChild(seat);
+                    if (seatInfo.estado === 'ocupado') {
+                        seat.classList.add('unavailable');
+                        seat.style.color = 'red';
+                    } else {
+                        seat.classList.add('available');
+                        seat.style.color = 'grey';
+                        if (asientosSeleccionados.includes(seatInfo._id)) {
+                            seat.classList.add('selected');
+                            seat.style.color = 'green';
+                        }
+                        seat.addEventListener('click', function() { toggleSeatSelection(seatInfo, seat); });
+                    }
+                    
+                    seatRow.appendChild(seat);
+                }
             }
 
             seatsContainer.appendChild(seatRow);
         });
-    }
 
-    function toggleSeatSelection(event) {
-        const seat = event.target.closest('.seat');
-        if (!seat.classList.contains('unavailable')) {
-            seat.classList.toggle('selected');
-        }
-    }
-
-    createSeats();
-});*/
-
-/*document.addEventListener('DOMContentLoaded', async function () {
-    // Obtener la función seleccionada desde sessionStorage
-    const selectedFuncionId = sessionStorage.getItem('funcionIdManual');
-    
-    if (!selectedFuncionId) {
-        // Manejar el caso en que no se haya seleccionado ninguna función
-        alert('Por favor, seleccione una función antes de visualizar los asientos.');
-        return;
-    }
-
-    try {
-        // Obtener los asientos correspondientes a la función seleccionada desde la API
-        const response = await fetch(`/api/asientos?idFuncion=${selectedFuncionId}`);
-        
-        if (!response.ok) {
-            throw new Error(`Error al obtener los asientos. Código de estado: ${response.status}`);
-        }
-
-        const asientos = await response.json();
-        
-        /* Lógica para mostrar los detalles de la función (puedes mantener esto como está)
-        const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
-        const cantidadDeBoletos = sessionStorage.getItem('cantidadBoletos');
-        const asientosContainer = document.getElementById('movie-description');/
-        
-        // ... Resto de tu código para mostrar detalles de la función
-        
-        // Mostrar los asientos obtenidos de la API
-        const seatsContainer = document.getElementById('seats');
-        const rows = [...new Set(asientos.map(asiento => asiento.row))];
-        const numSeatsPerRow = 5;
-
-        function createSeats() {
-            rows.forEach(row => {
-                const seatRow = document.createElement('div');
-                seatRow.classList.add('seat-row');
-                seatRow.dataset.row = row;
-
-                // Crear y agregar la letra de la fila
-                const rowLabel = document.createElement('div');
-                rowLabel.classList.add('row-label');
-                rowLabel.textContent = row;
-                seatRow.appendChild(rowLabel);
-
-                for (let i = 1; i <= numSeatsPerRow; i++) {
-                    const seat = document.createElement('i');
-                    seat.classList.add('fas', 'fa-couch', 'seat');
-                    seat.dataset.row = row;
-                    seat.dataset.seatNumber = i;
-
-                    const seatInfo = asientos.find(a => a.row === row && a.seatNumber === i);
-                    if (seatInfo) {
-                        if (seatInfo.isAvailable) {
-                            seat.classList.add('available');
-                        } else {
-                            seat.classList.add('unavailable');
-                        }
-                    }
-
-                    seat.addEventListener('click', toggleSeatSelection);
-                    seatRow.appendChild(seat);
-                }
-
-                seatsContainer.appendChild(seatRow);
-            });
-        }
-
-        function toggleSeatSelection(event) {
-            const seat = event.target.closest('.seat');
-            if (seat.classList.contains('available')) {
-                seat.classList.toggle('selected');
-            }
-        }
-
-        createSeats();
-    } catch (error) {
-        console.error('Error al obtener los asientos:', error);
-    }
-});*/
-
-document.addEventListener('DOMContentLoaded', async function () {
-    /* Obtener la función seleccionada desde sessionStorage
-    const selectedFuncion = sessionStorage.getItem('funcionSeleccionada');
-    const selectedFuncionId = sessionStorage.getItem('funcionIdManual');
-    console.log(selectedFuncion);
-    console.log(selectedFuncionId);*/
-
-    const funcionSeleccionada = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
-    const selectedFuncionId = funcionSeleccionada.funcionIdManual;
-    console.log(selectedFuncionId);
-    
-    if (!selectedFuncionId) {
-        // Manejar el caso en que no se haya seleccionado ninguna función
-        alert('Por favor, seleccione una función antes de visualizar los asientos.');
-        return;
-    }
-
-    // Obtener los asientos seleccionados del sessionStorage
-    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
-
-    try {
-        // Obtener los asientos correspondientes a la función seleccionada desde la API
-        const response = await fetch(`http://127.0.0.1:3001/api/asientos/por-id-funcion/${selectedFuncionId}`);
-        
-        if (!response.ok) {
-            throw new Error(`Error al obtener los asientos. Código de estado: ${response.status}`);
-        }
-
-        const asientos = await response.json();
-        
-        /* Lógica para mostrar los detalles de la función (puedes mantener esto como está)
-        const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
-        const cantidadDeBoletos = sessionStorage.getItem('cantidadBoletos');
-        const asientosContainer = document.getElementById('movie-description');*/
-        
-        // ... Resto de tu código para mostrar detalles de la función
-        
-        // Mostrar los asientos obtenidos de la API y los asientos seleccionados
-        const seatsContainer = document.getElementById('seats');
-        const rows = [...new Set(asientos.map(asiento => asiento.row))];
-        const numSeatsPerRow = 5;
-
-        /*function createSeats() {
-            rows.forEach(row => {
-                const seatRow = document.createElement('div');
-                seatRow.classList.add('seat-row');
-                seatRow.dataset.row = row;
-
-                // Crear y agregar la letra de la fila
-                const rowLabel = document.createElement('div');
-                rowLabel.classList.add('row-label');
-                rowLabel.textContent = row;
-                seatRow.appendChild(rowLabel);
-
-                for (let i = 1; i <= numSeatsPerRow; i++) {
-                    const seat = document.createElement('i');
-                    seat.classList.add('fas', 'fa-couch', 'seat');
-                    seat.dataset.row = row;
-                    seat.dataset.seatNumber = i;
-
-                    const seatInfo = asientos.find(a => a.row === row && a.seatNumber === i);
-                    if (seatInfo) {
-                        if (seatInfo.isAvailable) {
-                            seat.classList.add('available');
-                        } else {
-                            seat.classList.add('unavailable');
-                        }
-
-                        // Comprobar si el asiento está seleccionado y marcarlo
-                        if (asientosSeleccionados.some(s => s.row === row && s.seatNumber === i)) {
-                            seat.classList.add('selected');
-                        }
-                    }
-
-                    seat.addEventListener('click', toggleSeatSelection);
-                    seatRow.appendChild(seat);
-                }
-
-                seatsContainer.appendChild(seatRow);
-            });
-        }*/
-
-        function createSeats() {
-            const columns = ['A', 'B', 'C', 'D', 'E', 'F']; // Las columnas representan las filas en este caso
-        
-            columns.forEach(column => {
-                const seatsInColumn = asientos.filter(asiento => asiento.columna === column);
-        
-                if (seatsInColumn.length > 0) {
-                    // Ordenar los asientos en esta columna por número
-                    seatsInColumn.sort((a, b) => a.numero - b.numero);
-        
-                    const seatRow = document.createElement('div');
-                    seatRow.classList.add('seat-row');
-        
-                    // Crear y agregar la letra de la fila (columna)
-                    const rowLabel = document.createElement('div');
-                    rowLabel.classList.add('row-label');
-                    rowLabel.textContent = column;
-                    seatRow.appendChild(rowLabel);
-        
-                    seatsInColumn.forEach(seatInfo => {
-                        const seat = document.createElement('i');
-                        seat.classList.add('fas', 'fa-couch', 'seat');
-                        seat.dataset.row = seatInfo.columna; // Usar el valor de columna como fila
-                        seat.dataset.seatNumber = seatInfo.numero;
-
-                        //Crear y agregar el número del asiento
-                        const seatNumber = document.createElement('div');
-                        seatNumber.classList.add('seat-number');
-                        seatNumber.textContent = seatInfo.numero;
-                        seat.appendChild(seatNumber);
-        
-                        if (seatInfo.estado === 'Disponible') {
-                            seat.classList.add('available');
-                        } else {
-                            seat.classList.add('unavailable');
-                        }
-        
-                        // Comprobar si el asiento está seleccionado y marcarlo
-                        if (asientosSeleccionados.some(s => s.row === column && s.seatNumber === seatInfo.numero)) {
-                            seat.classList.add('selected');
-                        }
-        
-                        seat.addEventListener('click', toggleSeatSelection);
-        
-                        seatRow.appendChild(seat);
-                    });
-        
-                    seatsContainer.appendChild(seatRow); // Agregar la fila al contenedor
-                }
-            });
-        }
-
-        // Suponiendo que los asientos ya están renderizados en el DOM
-        const asientosElements = document.querySelectorAll('.asiento'); // Asegúrate de que este selector corresponda a tus elementos de asiento en el DOM.
-
-        asientosElements.forEach(asientoElement => {
-            asientoElement.addEventListener('click', () => {
-                const asientoId = asientoElement.id.split('-')[1]; // Asumiendo que el id del asiento es 'asiento-<ID>'
-                let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados') || '[]');
-
-                if (!asientosSeleccionados.includes(asientoId)) {
-                    asientosSeleccionados.push(asientoId);
-                    sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
-                    asientoElement.style.backgroundColor = 'green'; // Asiento seleccionado
-                } else {
-                    // Código para deseleccionar el asiento, si es necesario.
-                }
-            });
-        })
-
-        function toggleSeatSelection(event) {
-            const seat = event.target.closest('.seat');
-            if (seat.classList.contains('available')) {
-                seat.classList.toggle('selected');
-
-                // Actualizar la lista de asientos seleccionados en sessionStorage
-                updateSelectedSeats();
-            }
-        }
-
-        function updateSelectedSeats() {
-            const selectedSeats = [];
-            const selectedSeatElements = document.querySelectorAll('.seat.selected');
-            
-            selectedSeatElements.forEach(seatElement => {
-                selectedSeats.push({
-                    row: seatElement.dataset.row,
-                    seatNumber: seatElement.dataset.seatNumber
-                });
-            });
-            
-            // Guardar la lista de asientos seleccionados en sessionStorage
-            sessionStorage.setItem('asientosSeleccionados', JSON.stringify(selectedSeats));
-        }
-
-        createSeats();
     } catch (error) {
         console.error('Error al obtener los asientos:', error);
     }
 });
+
+function toggleSeatSelection(asiento, seatElement) {
+    let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+    const asientoId = asiento._id;
+
+    if (!seatElement.classList.contains('unavailable')) {
+        seatElement.classList.toggle('selected');
+        seatElement.style.color = seatElement.classList.contains('selected') ? 'green' : 'grey';
+
+        if (seatElement.classList.contains('selected')) {
+            if (!asientosSeleccionados.includes(asientoId)) {
+                asientosSeleccionados.push(asientoId);
+            }
+        } else {
+            asientosSeleccionados = asientosSeleccionados.filter(id => id !== asientoId);
+        }
+
+        sessionStorage.setItem('asientosSeleccionados', JSON.stringify(asientosSeleccionados));
+    }
+}
+

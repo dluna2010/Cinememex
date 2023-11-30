@@ -86,6 +86,50 @@ function guardarOrden() {
         });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const payButtons = document.querySelectorAll('.payment-button');
+    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+
+    payButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            actualizarEstadoAsientos(asientosSeleccionados, (error, data) => {
+                if (error) {
+                    console.error('Error al actualizar asientos:', error);
+                    alert('Error al actualizar asientos: ' + error.message);
+                    return;
+                }
+
+                guardarOrden();
+            });
+        });
+    });
+});
+
+function actualizarEstadoAsientos(asientosSeleccionados, callback) {
+    fetch('http://localhost:3001/api/asientos/actualizar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ asientosSeleccionados })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al actualizar los asientos');
+        }
+        return response.json();
+    })
+    .then(data => {
+        callback(null, data);
+    })
+    .catch(error => {
+        callback(error);
+    });
+}
+
+
 window.onload = function() {
     var usuario = sessionStorage.getItem('usuario');
     if (usuario) {
