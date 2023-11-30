@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
     confirmBtn.addEventListener('click', function () {
         const nuevaCantidad = parseInt(thisQuantity.value);
 
-        if (nuevaCantidad <= 0) {
-            alert('La cantidad de boletos debe ser mayor que cero.');
+        if (nuevaCantidad <= 0 || nuevaCantidad > 25) {
+            alert('La cantidad de boletos debe ser mayor que 0 y menor que 26.');
             thisQuantity.value = cantidadOriginal;
         } else {
             cantidadOriginal = nuevaCantidad;
@@ -132,10 +132,15 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     continueButton.addEventListener("click", function() {
-        sessionStorage.setItem('cantidadBoletos', parseInt(thisQuantity.value));
+        if (confirmBtn.style.display == 'none') {
+            sessionStorage.setItem('cantidadBoletos', parseInt(thisQuantity.value));
+            window.location.href = 'asientos.html'; 
+        } else {
+            alert('Debes confirmar los boletos seleccionados');
+        }
+        //sessionStorage.setItem('cantidadBoletos', parseInt(thisQuantity.value));
     })
 });
-
 
 //const cartTotal = document.getElementById('total');
 
