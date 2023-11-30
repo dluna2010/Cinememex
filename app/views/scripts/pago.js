@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>Fecha: 30 de noviembre de 2023</p>
                     <p>Función: ${selectedFuncion.horaFuncion}</p>
                     <p>Cantidad de Boletos: ${cantidadDeBoletos} </p>
-                    <p>Asientos: ${selectedFuncion.asientosSeleccionados} </p>
+                    <p>Asientos: ${selectedFuncion.asientosString} </p>
                 </div>
             </div>
         </div>
@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function guardarOrden() {
-    if (!sessionStorage.getItem('usuario') || !sessionStorage.getItem('funcionSeleccionada') || !sessionStorage.getItem('cantidadBoletos')) {
-        alert('Información de la orden incompleta o no iniciaste sesión.');
+    if (!sessionStorage.getItem('funcionSeleccionada') || !sessionStorage.getItem('cantidadBoletos')) {
+        alert('Información de la orden incompleta');
         return;
     }
 
@@ -63,7 +63,7 @@ function guardarOrden() {
             nombreSucursal: selectedFuncion.sucursalNombre,
             funcion: selectedFuncion.horaFuncion,
             cantidadBoletos: cantidadDeBoletos,
-            asientosSeleccionados: selectedFuncion.asientosSeleccionados, //Cambiar esto
+            asientosSeleccionados: selectedFuncion.asientosString, //Cambiar esto
             emailUsuario: usuario.email
         })
     })

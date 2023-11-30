@@ -165,3 +165,54 @@ document.getElementById('botonContinuar').addEventListener('click', function () 
 document.getElementById('botonRegresar').addEventListener('click', function () {
     sessionStorage.removeItem('asientosSeleccionados');
 });
+
+// Función para obtener detalles de asientos por IDs
+async function fetchAsientosPorIds(asientosIds) {
+    try {
+        const response = await fetch('http://localhost:3001/api/asientos/por-ids', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ids: asientosIds })
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener los asientos');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener los asientos:', error);
+        throw error;
+    }
+}
+
+// ... código anterior ...
+
+// Función para generar la cadena de asientos y actualizar el sessionStorage
+async function actualizarCadenaAsientosEnSessionStorage() {
+    console.log("Actualizando cadena de asientos en sessionStorage...");
+    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+    if (asientosSeleccionados.length === 0) {
+        console.log("No hay asientos seleccionados para actualizar.");
+        return;
+    }
+
+    try {
+        const asientosDetalles = await fetchAsientosPorIds(asientosSeleccionados);
+        console.log("Asientos obtenidos de la API:", asientosDetalles);
+        const asientosString = asientosDetalles.map(asiento => `${asiento.columna}${asiento.numero}`).join(', ');
+
+        const funcionSeleccionada = JSON.parse(sessionStorage.getItem('funcionSeleccionada')) || {};
+        funcionSeleccionada.asientosString = asientosString;
+        sessionStorage.setItem('funcionSeleccionada', JSON.stringify(funcionSeleccionada));
+
+        console.log("SessionStorage actualizado con asientosString:", funcionSeleccionada);
+    } catch (error) {
+        console.error('Error al actualizar cadena de asientos:', error);
+    }
+}
+
+// Asegúrate de que esta función se llama en el momento adecuado
+actualizarCadenaAsientosEnSessionStorage();
