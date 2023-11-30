@@ -42,6 +42,20 @@ router.get('/por-id-funcion/:idFuncion', async (req, res) => {
     }
 });
 
+router.post('/actualizar', async (req, res) => {
+    try {
+        const { asientosSeleccionados } = req.body; // Array de IDs de asientos seleccionados
+        await Asiento.updateMany(
+            { _id: { $in: asientosSeleccionados } },
+            { $set: { estado: 'ocupado' } }
+        );
+        res.json({ message: 'Asientos actualizados exitosamente' });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
 /*
 router.get('/', async (req, res) => {
     try {
