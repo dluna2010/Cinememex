@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             actualizarEstadoAsientos(asientosSeleccionados, (error, data) => {
                 if (error) {
                     console.error('Error al actualizar asientos:', error);
-                    alert('Error al actualizar asientos: ' + error.message);
+                    //alert('Error al actualizar asientos: ' + error.message);
                     return;
                 }
 
