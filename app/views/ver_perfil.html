@@ -70,17 +70,17 @@
                     <h2>Perfil de Usuario</h2>
                     <p><strong>Nombre:</strong> <span id="userName">Cargando...</span></p>
                     <p><strong>Email:</strong> <span id="userEmail">Cargando...</span></p>
-
-
-                    <!-- Botón para ver órdenes -->
-                    <a href="orders.html" class="btn btn-success btn-orders">Ver Órdenes</a>
-
-                    <!-- Botones -->
-                    <button class="btn btn-danger btn-delete" onclick="eliminarUsuario()">Eliminar usuario</button>
-                    <!-- Botón para abrir el modal de edición -->
-                    <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
-                    <!-- Botón para cerrar sesión -->
-                    <button class="btn btn-warning btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+                    <div class="d-flex mx-2">
+                        <!-- Botón para ver órdenes -->
+                        <a href="orders.html" class="btn btn-success btn-orders">Ver Órdenes</a>
+                    
+                        <!-- Botones -->
+                        <button class="btn btn-danger btn-delete" onclick="eliminarUsuario()">Eliminar usuario</button>
+                        <!-- Botón para abrir el modal de edición -->
+                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#editModal">Editar Perfil</button>
+                        <!-- Botón para cerrar sesión -->
+                        <button class="btn btn-warning btn-logout" onclick="cerrarSesion()" style="color: white;">Cerrar Sesión</button>
+                    </div>
                 </div>
             </div>
         </div>
