@@ -111,21 +111,30 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 function toggleSeatSelection(asiento, seatElement) {
+    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
     let asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
     const asientoId = asiento._id;
     const asientoCodigo = asiento.columna + asiento.numero; // Código del asiento, como "A1"
     
 
     if (!seatElement.classList.contains('unavailable')) {
-        seatElement.classList.toggle('selected');
-        seatElement.style.color = seatElement.classList.contains('selected') ? 'green' : 'grey';
-
         if (seatElement.classList.contains('selected')) {
-            if (!asientosSeleccionados.includes(asientoId)) {
-                asientosSeleccionados.push(asientoId);
-            }
-        } else {
+            // Deseleccionar el asiento
+            seatElement.classList.remove('selected');
+            seatElement.style.color = 'grey';
             asientosSeleccionados = asientosSeleccionados.filter(id => id !== asientoId);
+        } else {
+            // Seleccionar el asiento si no se ha alcanzado el límite
+            if (asientosSeleccionados.length < cantidadDeBoletos) {
+                seatElement.classList.add('selected');
+                seatElement.style.color = 'green';
+                if (!asientosSeleccionados.includes(asientoId)) {
+                    asientosSeleccionados.push(asientoId);
+                }
+            } else {
+                alert('No puedes seleccionar más asientos que boletos.');
+                return;
+            }
         }
 
         // Actualiza el sessionStorage
@@ -133,6 +142,62 @@ function toggleSeatSelection(asiento, seatElement) {
         actualizarSeleccionEnFuncion(asientosSeleccionados); // Actualiza el objeto seleccionado
     }
 }
+
+function validarSeleccionDeAsientos() {
+    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
+    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+
+    if (asientosSeleccionados.length < cantidadDeBoletos) {
+        return false;
+    }
+    
+    return true;
+}
+
+document.getElementById('botonContinuar').addEventListener('click', function() {
+    if (validarSeleccionDeAsientos()) {
+        // Si la validación es exitosa (el usuario ha seleccionado la cantidad correcta de asientos),
+        // redirige al usuario a la página de pago.
+        window.location.href = 'pago.html'; // Reemplaza 'rutaPago.html' con la ruta real de tu página de pago.
+    } else {
+        // Si la validación falla, muestra una alerta y no hagas nada más (el usuario permanece en la misma página).
+        alert('Debes seleccionar todos los asientos. Número de asientos seleccionados es menor que la cantidad de boletos.');
+    }
+});
+
+
+document.getElementById('botonRegresar').addEventListener('click', function() {
+    sessionStorage.removeItem('asientosSeleccionados');
+});
+
+
+function validarSeleccionDeAsientos() {
+    const cantidadDeBoletos = parseInt(sessionStorage.getItem('cantidadBoletos')) || 0;
+    const asientosSeleccionados = JSON.parse(sessionStorage.getItem('asientosSeleccionados')) || [];
+
+    if (asientosSeleccionados.length < cantidadDeBoletos) {
+        return false;
+    }
+    
+    return true;
+}
+
+document.getElementById('botonContinuar').addEventListener('click', function() {
+    if (validarSeleccionDeAsientos()) {
+        // Si la validación es exitosa (el usuario ha seleccionado la cantidad correcta de asientos),
+        // redirige al usuario a la página de pago.
+        window.location.href = 'pago.html'; // Reemplaza 'rutaPago.html' con la ruta real de tu página de pago.
+    } else {
+        // Si la validación falla, muestra una alerta y no hagas nada más (el usuario permanece en la misma página).
+        alert('Debes seleccionar todos los asientos. Número de asientos seleccionados es menor que la cantidad de boletos.');
+    }
+});
+
+
+document.getElementById('botonRegresar').addEventListener('click', function() {
+    sessionStorage.removeItem('asientosSeleccionados');
+});
+
 
 function actualizarSeleccionEnFuncion(asientosSeleccionados) {
     const selectedFuncion = JSON.parse(sessionStorage.getItem('funcionSeleccionada'));
