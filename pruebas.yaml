@@ -1,0 +1,17 @@
+trigger:
+- main
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- task: UseNode@1
+  inputs:
+    version: '16.x'
+- script: npm install
+  displayName: 'Instalar dependencias'
+- script: npm test -- --coverage
+  displayName: 'Ejecutar pruebas unitarias'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/test-results.xml'
+    testRunTitle: 'Resultados de Pruebas Unitarias'
+  condition: succeededOrFailed()
